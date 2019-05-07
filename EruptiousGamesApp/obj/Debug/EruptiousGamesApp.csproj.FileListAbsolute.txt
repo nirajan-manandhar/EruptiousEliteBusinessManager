@@ -312,5 +312,8 @@ C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\Eru
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.CopyComplete
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.dll
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.pdb
-C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.IntialCreate.resources
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.GenerateResource.cache
+C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration1.resources
+C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration4.resources
+C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration5.resources
+C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration6.resources
