@@ -168,16 +168,38 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CampaignsController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NotesController.cs" />
+    <Compile Include="Controllers\RequestsController.cs" />
+    <Compile Include="Controllers\WorksController.cs" />
+    <Compile Include="Entities\Campaign.cs" />
+    <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Entities\Note.cs" />
+    <Compile Include="Entities\Request.cs" />
+    <Compile Include="Entities\Work.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905070216575_IntialCreate.cs" />
-    <Compile Include="Migrations\201905070216575_IntialCreate.Designer.cs">
-      <DependentUpon>201905070216575_IntialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201905062053390_Migration1.cs" />
+    <Compile Include="Migrations\201905062053390_Migration1.Designer.cs">
+      <DependentUpon>201905062053390_Migration1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905062124016_Migration4.cs" />
+    <Compile Include="Migrations\201905062124016_Migration4.Designer.cs">
+      <DependentUpon>201905062124016_Migration4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905070201534_Migration5.cs" />
+    <Compile Include="Migrations\201905070201534_Migration5.Designer.cs">
+      <DependentUpon>201905070201534_Migration5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905070224563_Migration6.cs" />
+    <Compile Include="Migrations\201905070224563_Migration6.Designer.cs">
+      <DependentUpon>201905070224563_Migration6.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -197,6 +219,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -247,6 +270,31 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\Campaigns\Create.cshtml" />
+    <Content Include="Views\Campaigns\Delete.cshtml" />
+    <Content Include="Views\Campaigns\Details.cshtml" />
+    <Content Include="Views\Campaigns\Edit.cshtml" />
+    <Content Include="Views\Campaigns\Index.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Notes\Create.cshtml" />
+    <Content Include="Views\Notes\Delete.cshtml" />
+    <Content Include="Views\Notes\Details.cshtml" />
+    <Content Include="Views\Notes\Edit.cshtml" />
+    <Content Include="Views\Notes\Index.cshtml" />
+    <Content Include="Views\Requests\Create.cshtml" />
+    <Content Include="Views\Requests\Delete.cshtml" />
+    <Content Include="Views\Requests\Details.cshtml" />
+    <Content Include="Views\Requests\Edit.cshtml" />
+    <Content Include="Views\Requests\Index.cshtml" />
+    <Content Include="Views\Works\Create.cshtml" />
+    <Content Include="Views\Works\Delete.cshtml" />
+    <Content Include="Views\Works\Details.cshtml" />
+    <Content Include="Views\Works\Edit.cshtml" />
+    <Content Include="Views\Works\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -265,8 +313,17 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905070216575_IntialCreate.resx">
-      <DependentUpon>201905070216575_IntialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905062053390_Migration1.resx">
+      <DependentUpon>201905062053390_Migration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905062124016_Migration4.resx">
+      <DependentUpon>201905062124016_Migration4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905070201534_Migration5.resx">
+      <DependentUpon>201905070201534_Migration5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905070224563_Migration6.resx">
+      <DependentUpon>201905070224563_Migration6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
