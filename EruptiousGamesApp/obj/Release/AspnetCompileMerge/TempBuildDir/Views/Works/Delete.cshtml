@@ -1,0 +1,64 @@
+﻿@model EruptiousGamesApp.Entities.Work
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Work</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Campaign.CamName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Campaign.CamName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.EmpName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.EmpName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sold)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sold)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerPlayWith)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerPlayWith)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
