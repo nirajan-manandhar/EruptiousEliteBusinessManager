@@ -40,7 +40,7 @@ namespace EruptiousGamesApp.Controllers
         // GET: Notes/Create
         public ActionResult Create()
         {
-            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName");
+            //ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName");
             return View();
         }
 
@@ -51,6 +51,9 @@ namespace EruptiousGamesApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "NoteID,EmpID,DateTime,Title,Comment")] Note note)
         {
+            //Hard coded empID
+            note.EmpID = 5;
+
             if (ModelState.IsValid)
             {
                 db.Notes.Add(note);
@@ -58,7 +61,7 @@ namespace EruptiousGamesApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", note.EmpID);
+            //ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", note.EmpID);
             return View(note);
         }
 
@@ -74,7 +77,7 @@ namespace EruptiousGamesApp.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", note.EmpID);
+            //ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", note.EmpID);
             return View(note);
         }
 
@@ -91,7 +94,7 @@ namespace EruptiousGamesApp.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", note.EmpID);
+            //ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", note.EmpID);
             return View(note);
         }
 
