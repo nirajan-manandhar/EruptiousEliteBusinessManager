@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using EruptiousGamesApp.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -25,9 +26,21 @@ namespace EruptiousGamesApp.Models
         {
         }
 
+        public DbSet<Employee> Employees { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<EruptiousGamesApp.Entities.Campaign> Campaigns { get; set; }
+
+        public System.Data.Entity.DbSet<EruptiousGamesApp.Entities.Customer> Customers { get; set; }
+
+        public System.Data.Entity.DbSet<EruptiousGamesApp.Entities.Note> Notes { get; set; }
+
+        public System.Data.Entity.DbSet<EruptiousGamesApp.Entities.Request> Requests { get; set; }
+
+        public System.Data.Entity.DbSet<EruptiousGamesApp.Entities.Work> Works { get; set; }
     }
 }

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<EruptiousGamesApp.Entities.Work>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Campaign.CamName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.EmpName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sold)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerPlayWith)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Campaign.CamName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.EmpName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sold)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerPlayWith)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.WorkID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WorkID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WorkID })
+        </td>
+    </tr>
+}
+
+</table>
