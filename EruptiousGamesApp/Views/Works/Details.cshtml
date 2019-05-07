@@ -1,0 +1,58 @@
+﻿@model EruptiousGamesApp.Entities.Work
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Work</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Campaign.CamName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Campaign.CamName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.EmpName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.EmpName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sold)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sold)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerPlayWith)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerPlayWith)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WorkID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -32,5 +32,15 @@ namespace EruptiousGamesApp.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<EruptiousGamesApp.Entities.Campaign> Campaigns { get; set; }
+
+        public System.Data.Entity.DbSet<EruptiousGamesApp.Entities.Customer> Customers { get; set; }
+
+        public System.Data.Entity.DbSet<EruptiousGamesApp.Entities.Note> Notes { get; set; }
+
+        public System.Data.Entity.DbSet<EruptiousGamesApp.Entities.Request> Requests { get; set; }
+
+        public System.Data.Entity.DbSet<EruptiousGamesApp.Entities.Work> Works { get; set; }
     }
 }
