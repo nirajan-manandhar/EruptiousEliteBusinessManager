@@ -9,7 +9,7 @@ namespace EruptiousGamesApp.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(EruptiousGamesApp.Models.ApplicationDbContext context)
