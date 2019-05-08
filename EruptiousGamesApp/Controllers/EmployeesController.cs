@@ -47,7 +47,7 @@ namespace EruptiousGamesApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmpID,EmpName,Role,UserName,Password,EmpStatus")] Employee employee)
+        public ActionResult Create([Bind(Include = "EmpID,EmpName,Role,EmpStatus,DecksOnHand")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace EruptiousGamesApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EmpID,EmpName,Role,UserName,Password,EmpStatus")] Employee employee)
+        public ActionResult Edit([Bind(Include = "EmpID,EmpName,Role,EmpStatus,DecksOnHand")] Employee employee)
         {
             if (ModelState.IsValid)
             {
