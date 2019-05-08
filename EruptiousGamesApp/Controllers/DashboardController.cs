@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace EruptiousGamesApp.Controllers
 {
-    public class HomeController : Controller
+    public class DashboardController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
