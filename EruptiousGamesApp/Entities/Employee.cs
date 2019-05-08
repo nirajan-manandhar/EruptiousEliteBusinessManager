@@ -21,16 +21,20 @@ namespace EruptiousGamesApp.Entities
         [Key]
         public int EmpID { get; set; }
         public string EmpName { get; set; }
-
-        public string UserName { get; set; }
-        public string Password { get; set; }
         public Role Role { get; set; }
         public EmpStatus EmpStatus { get; set; }
+        public int DecksOnHand { get; set; }
 
         public virtual ICollection<Campaign> Campaigns { get; set; }
         public virtual ICollection<Work> Workings { get; set; }
         public virtual ICollection<Customer> Customers { get; set; }
         public virtual ICollection<Note> Notes { get; set; }
         public virtual ICollection<Request> Requests { get; set; }
+
+        public Campaign GetTodaysCampaign()
+        {
+
+            return null;
+        }
     }
 }
