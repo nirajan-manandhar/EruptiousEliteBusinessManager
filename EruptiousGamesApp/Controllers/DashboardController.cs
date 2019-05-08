@@ -27,7 +27,7 @@ namespace EruptiousGamesApp.Controllers
         {
             DashBoardItem di = new DashBoardItem();
 
-            int testEmpId = 5;
+            int testEmpId = 1;
 
             var work = db.Works.Where(s => s.EmpID == testEmpId);
             if (work.Count() > 0)
