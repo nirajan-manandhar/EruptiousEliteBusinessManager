@@ -18,6 +18,12 @@ namespace EruptiousGamesApp.Entities
 
     public class Request
     {
+
+        public Request()
+        {
+            DateTime = DateTime.Now;
+        }
+
         [Key]
         public int RequestID { get; set; }
         public int CamID { get; set; }
