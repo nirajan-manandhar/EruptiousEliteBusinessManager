@@ -45,6 +45,15 @@ namespace EruptiousGamesApp.Controllers
             return View();
         }
 
+        // Custom Function - Aska
+        // GET: Requests/InputRequest
+        public ActionResult InputRequest()
+        {
+            ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName");
+            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName");
+            return View();
+        }
+
         // POST: Requests/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -52,6 +61,28 @@ namespace EruptiousGamesApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "RequestID,CamID,EmpID,DateTime,Amount,Action,RequestStatus")] Request request)
         {
+           
+            if (ModelState.IsValid)
+            {
+                db.Requests.Add(request);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
+            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
+            return View(request);
+        }
+
+        // POST: Requests/InputRequest
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult InputRequest([Bind(Include = "RequestID,CamID,EmpID,DateTime,Amount,Action,RequestStatus")] Request request)
+        {
+            request.CamID = 1;
+            request.EmpID = 1;
             if (ModelState.IsValid)
             {
                 db.Requests.Add(request);
