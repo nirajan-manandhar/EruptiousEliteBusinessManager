@@ -52,7 +52,7 @@ namespace EruptiousGamesApp.Controllers
         public ActionResult Create([Bind(Include = "NoteID,EmpID,DateTime,Title,Comment")] Note note)
         {
             //Hard coded empID
-            note.EmpID = 5;
+            note.EmpID = 1;
 
             if (ModelState.IsValid)
             {
