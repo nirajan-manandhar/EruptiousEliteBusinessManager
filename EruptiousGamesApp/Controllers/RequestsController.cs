@@ -45,6 +45,15 @@ namespace EruptiousGamesApp.Controllers
             return View();
         }
 
+        // Custom Function - Aska
+        // GET: Requests/InputRequest
+        public ActionResult InputRequest()
+        {
+            ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName");
+            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName");
+            return View();
+        }
+
         // POST: Requests/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
