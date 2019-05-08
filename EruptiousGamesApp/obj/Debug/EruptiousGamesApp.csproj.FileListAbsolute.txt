@@ -418,10 +418,6 @@ C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\Eruptio
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csprojAssemblyReference.cache
-C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration1.resources
-C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration4.resources
-C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration5.resources
-C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration6.resources
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.GenerateResource.cache
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.CoreCompileInputs.cache
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.CopyComplete
@@ -534,3 +530,4 @@ D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGam
 D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.pdb
 D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration41.resources
 D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.GenerateResource.cache
+C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration41.resources
