@@ -103,7 +103,5 @@ D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGam
 D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Release\EruptiousGamesApp.csproj.CopyComplete
 D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Release\EruptiousGamesApp.dll
 D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Release\EruptiousGamesApp.pdb
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Release\EruptiousGamesApp.Migrations.Migration1.resources
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Release\EruptiousGamesApp.Migrations.Migration4.resources
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Release\EruptiousGamesApp.Migrations.Migration5.resources
 D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Release\EruptiousGamesApp.csproj.GenerateResource.cache
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Release\EruptiousGamesApp.Migrations.Migration41.resources

@@ -1,0 +1,32 @@
+﻿<Properties StartupConfiguration="{6C27EF2F-CCBA-4D23-A5A7-863E9D0378DB}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="EruptiousGamesApp/Views/Shared/_Layout.cshtml">
+    <Files>
+      <File FileName="EruptiousGamesApp/App_Start/BundleConfig.cs" Line="16" Column="1" />
+      <File FileName="EruptiousGamesApp/Views/Shared/_Layout.cshtml" Line="27" Column="22" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="EruptiousGamesApp" expanded="True">
+            <Node name="EruptiousGamesApp" expanded="True">
+              <Node name="App_Start" expanded="True" />
+              <Node name="Content" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Shared" expanded="True">
+                  <Node name="_Layout.cshtml" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.EruptiousGamesApp PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
