@@ -30,11 +30,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Workspace", "About", "Home")</li>
-                    <li>@Html.ActionLink("Campaigns", "About", "Home")</li>
-                    <li>@Html.ActionLink("Feedback", "About", "Home")</li>
-                    <li>@Html.ActionLink("Inventory", "About", "Home")</li>
-                    <li>@Html.ActionLink("Account", "About", "Home")</li>
+                    <li>@Html.ActionLink("Workspace", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Campaigns", "Index", "Campaigns")</li>
+                    <li>@Html.ActionLink("Feedback", "Index", "Notes")</li>
+                    <li>@Html.ActionLink("Inventory", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Account", "Index", "Account")</li>
                     <li>@Html.ActionLink("Employee", "Index", "Employees")</li>
 
                     @if (Request.IsAuthenticated)

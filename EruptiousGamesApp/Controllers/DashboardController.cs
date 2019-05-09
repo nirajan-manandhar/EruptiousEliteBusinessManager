@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace EruptiousGamesApp.Controllers
 {
-    public class HomeController : Controller
+    public class DashboardController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -27,7 +27,7 @@ namespace EruptiousGamesApp.Controllers
         {
             DashBoardItem di = new DashBoardItem();
 
-            int testEmpId = 5;
+            int testEmpId = 1;
 
             var work = db.Works.Where(s => s.EmpID == testEmpId);
             if (work.Count() > 0)
