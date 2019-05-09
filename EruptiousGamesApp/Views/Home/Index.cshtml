@@ -31,6 +31,14 @@
                 <hr />
             </div>
         </div>
+
+        <div class="row" style="margin:7%">
+            <a href='@Url.Action("Index", "Dashboard")'>
+                <button type="button" class="btn btn-primary btn-lg btn-block">Dashboard</button>
+            </a>
+        </div>
+
+
         <div class="row" style="margin:7%">
             @if (Request.IsAuthenticated)
             {
