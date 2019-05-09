@@ -281,7 +281,6 @@
     <Content Include="Views\Works\Details.cshtml" />
     <Content Include="Views\Works\Edit.cshtml" />
     <Content Include="Views\Works\Index.cshtml" />
-    <Content Include="Views\CustomerInfo\Index.cshtml" />
     <Content Include="Views\Shared\Workspace.cshtml" />
     <Content Include="Views\Requests\InputRequest.cshtml" />
     <Content Include="Views\Employees\Create.cshtml" />
@@ -289,8 +288,8 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
-    <Content Include="Views\CustomerInfo\Index.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\CustomerInfo\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
