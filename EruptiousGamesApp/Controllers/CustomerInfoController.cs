@@ -16,15 +16,11 @@ namespace EruptiousGamesApp.Controllers
 
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: CustomerInfo
+        // GET: Customers
         public ActionResult Index()
         {
-            //ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName");
-            //ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName");
-
-            ViewBag.CamID = 1;
-            ViewBag.EmpID = 1;
-
+            ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName");
+            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName");
             return View();
         }
 
