@@ -15,6 +15,11 @@ namespace EruptiousGamesApp.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        public class WorkSession {
+            public Note note;
+            public Work work;
+        }
+
         // GET: Notes
         public ActionResult Index()
         {
@@ -40,8 +45,8 @@ namespace EruptiousGamesApp.Controllers
         // GET: Notes/Create
         public ActionResult Create()
         {
-            //ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName");
-            return View();
+            WorkSession ws = new WorkSession();
+            return View(ws);
         }
 
         // POST: Notes/Create
@@ -49,15 +54,34 @@ namespace EruptiousGamesApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "NoteID,EmpID,DateTime,Title,Comment")] Note note)
+        public ActionResult Create([Bind(Include = "NoteID,EmpID,DateTime,Title,Comment")] Note note, [Bind(Include = "CustomerPlayWith, Sold")] Work work)
         {
-            //Hard coded empID
-            note.EmpID = 1;
+            //Hard coded ID
+            int empID = 1;
+            int camID = 1;
+            note.EmpID = empID;
+            work.EmpID = empID;
+            work.CamID = camID;
 
             if (ModelState.IsValid)
             {
-                db.Notes.Add(note);
+                if (!String.IsNullOrWhiteSpace(note.Title) && !String.IsNullOrWhiteSpace(note.Comment)) {
+                    db.Notes.Add(note);
+                }
+
+                var existingWork = db.Works.Where(s => s.Date == work.Date && s.EmpID == work.EmpID);
+
+                if (existingWork.Count() > 0)
+                {
+                    existingWork.First().CustomerPlayWith += work.CustomerPlayWith;
+                    existingWork.First().Sold += work.Sold;
+                }
+                else
+                {
+                    db.Works.Add(work);
+                }
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 

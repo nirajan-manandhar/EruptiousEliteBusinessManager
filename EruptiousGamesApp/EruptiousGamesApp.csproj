@@ -316,6 +316,7 @@
     <Content Include="Views\Works\Details.cshtml" />
     <Content Include="Views\Works\Edit.cshtml" />
     <Content Include="Views\Works\Index.cshtml" />
+    <Content Include="Views\CustomerInfo\Index.cshtml" />
     <Content Include="Views\Shared\Workspace.cshtml" />
     <Content Include="Views\Requests\InputRequest.cshtml" />
     <Content Include="Views\Employees\Create.cshtml" />
