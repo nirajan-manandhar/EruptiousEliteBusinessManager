@@ -316,7 +316,6 @@
     <Content Include="Views\Works\Details.cshtml" />
     <Content Include="Views\Works\Edit.cshtml" />
     <Content Include="Views\Works\Index.cshtml" />
-    <Content Include="Views\CustomerInfo\Index.cshtml" />
     <Content Include="Views\Shared\Workspace.cshtml" />
     <Content Include="Views\Requests\InputRequest.cshtml" />
     <Content Include="Views\Employees\Create.cshtml" />
@@ -324,7 +323,6 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
-    <Content Include="Views\CustomerInfo\Index.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -338,6 +336,7 @@
     <Content Include="Views\Account\AccountList.cshtml" />
     <Content Include="Views\Account\AccountCreate.cshtml" />
     <Content Include="Views\Account\AccountEdit.cshtml" />
+    <Content Include="Views\CustomerInfo\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
