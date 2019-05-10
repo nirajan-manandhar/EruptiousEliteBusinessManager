@@ -335,6 +335,9 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Account\AccountList.cshtml" />
+    <Content Include="Views\Account\AccountCreate.cshtml" />
+    <Content Include="Views\Account\AccountEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
