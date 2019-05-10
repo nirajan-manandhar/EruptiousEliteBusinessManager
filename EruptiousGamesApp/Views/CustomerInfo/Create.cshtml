@@ -59,11 +59,24 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Gender, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
-                <label class="radio-inline"><input type="radio" name="optradio" checked>Option 1</label>
-<label class="radio-inline"><input type="radio" name="optradio">Option 2</label>
-<label class="radio-inline"><input type="radio" name="optradio">Option 3</label>
+              @*@Html.EnumDropDownListFor(model => model.Gender, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" }) *@
+                <table>
+                    <tr>
+                        <td>
+                            @Html.Label("Male", "Male")
+                            @Html.RadioButtonFor(model => model.Gender, "MALE")
+                        </td>
+                        <td>
+                            @Html.Label("Female", "Female")
+                            @Html.RadioButtonFor(model => model.Gender, "FEMALE")
+                        </td>
+                        <td>
+                            @Html.Label("Female", "Other")
+                            @Html.RadioButtonFor(model => model.Gender, "OTHER")
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
 
