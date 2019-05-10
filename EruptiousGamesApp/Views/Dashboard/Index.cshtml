@@ -16,6 +16,184 @@
         }
 </style>
 
+<br /><br />
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Sales Ambassador
+                </button>
+            </h5>
+        </div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="panel-body" style="margin:5%">
+                <div class="row">
+                    <div class="col-md-4 d-flex pb-3">
+                        <div class="alert alert-secondary" style="margin:5px">
+                            <div class="card-header"><h2>Total Customers</h2></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Customers you have served</h5>
+                                <p class="card-text">
+                                    <div class="content">
+                                        <h1>
+                                            @Html.DisplayFor(m => Model.personalPlayed)
+                                        </h1>
+                                    </div>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex pb-3">
+                        <div class="alert alert-secondary" style="margin:5px">
+                            <div class="card-header"><h2>Total Decks</h2></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Decks you have sold</h5>
+                                <p class="card-text">
+                                    <div class="content">
+                                        <h1>
+                                            @Html.DisplayFor(m => Model.personalSale)
+                                        </h1>
+                                    </div>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex pb-3">
+                        <div class="alert alert-secondary" style="margin:5px">
+                            <div class="card-header"><h2>Total Customer Feedback</h2></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Customer feedback you have collected</h5>
+                                <p class="card-text">
+                                    <div class="content">
+                                        <h1>
+                                            @Html.DisplayFor(m => Model.personalInfoCollected)
+                                        </h1>
+                                    </div>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Collapsible Group Item #2
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="panel panel-primary" style="text-align:center">
+                            <div class="panel-heading">
+                                <h4 class="title">Total Customers</h4>
+                                <p class="category">Customers campaign has served</p>
+                            </div>
+                            <div class="content">
+                                <h1>
+                                    @Html.DisplayFor(m => Model.campaignPlayed)
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card" style="text-align:center">
+                            <div class="header">
+                                <h4 class="title">Decks Sold</h4>
+                                <p class="category">Decks sold by the campaign</p>
+                            </div>
+                            <div class="content">
+                                <h1>
+                                    @Html.DisplayFor(m => Model.campaignSale)
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card" style="text-align:center">
+                            <div class="header">
+                                <h4 class="title">Customer information colleted</h4>
+                                <p class="category">Customer information colleted by the campaign</p>
+                            </div>
+                            <div class="content">
+                                <h1>
+                                    @Html.DisplayFor(m => Model.campaignInfoColleted)
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Collapsible Group Item #3
+                </button>
+            </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="panel-body">
+                <div class="row">
+                    <a href="">
+                        <div class="col-md-4">
+                            <div class="card" style="text-align:center">
+                                <div class="header">
+                                    <h4 class="title">Number of Accounts</h4>
+                                    <p class="category"></p>
+                                </div>
+                                <div class="content">
+                                    <h1>
+                                        @Html.DisplayFor(m => Model.totalAccount)
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <div class="col-md-4">
+                        <div class="card" style="text-align:center">
+
+                            <div class="header">
+                                <h4 class="title">Value 2</h4>
+                                <p class="category">value</p>
+                            </div>
+                            <div class="content">
+                                <h1>?</h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card" style="text-align:center">
+
+                            <div class="header">
+                                <h4 class="title">Value 3</h4>
+                                <p class="category">value</p>
+                            </div>
+                            <div class="content">
+                                <h1>?</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <div class="content" style="padding-top:50px">
     <div class="container-fluid">
         <div class="panel-group" id="accordion">
@@ -77,119 +255,3 @@
                     </div>
                 </div>
             </div>
-
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-                        <h4 class="panel-title">
-                            Manager
-                        </h4>
-                    </a>
-                </div>
-                <div id="collapse2" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card" style="text-align:center">
-                                    <div class="header">
-                                        <h4 class="title">Total Customers</h4>
-                                        <p class="category">Customers campaign has served</p>
-                                    </div>
-                                    <div class="content">
-                                        <h1>
-                                            @Html.DisplayFor(m => Model.campaignPlayed)
-                                        </h1>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="card" style="text-align:center">
-                                    <div class="header">
-                                        <h4 class="title">Decks Sold</h4>
-                                        <p class="category">Decks sold by the campaign</p>
-                                    </div>
-                                    <div class="content">
-                                        <h1>
-                                            @Html.DisplayFor(m => Model.campaignSale)
-                                        </h1>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="card" style="text-align:center">
-                                    <div class="header">
-                                        <h4 class="title">Customer information colleted</h4>
-                                        <p class="category">Customer information colleted by the campaign</p>
-                                    </div>
-                                    <div class="content">
-                                        <h1>
-                                            @Html.DisplayFor(m => Model.campaignInfoColleted)
-                                        </h1>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                        <h4 class="panel-title">
-                            Admin
-                        </h4>
-                    </a>
-                </div>
-                <div id="collapse3" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <div class="row">
-                            <a href="">
-                                <div class="col-md-4">
-                                    <div class="card" style="text-align:center">
-                                        <div class="header">
-                                            <h4 class="title">Number of Accounts</h4>
-                                            <p class="category"></p>
-                                        </div>
-                                        <div class="content">
-                                            <h1>
-                                                @Html.DisplayFor(m => Model.totalAccount)
-                                            </h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <div class="col-md-4">
-                                <div class="card" style="text-align:center">
-
-                                    <div class="header">
-                                        <h4 class="title">Value 2</h4>
-                                        <p class="category">value</p>
-                                    </div>
-                                    <div class="content">
-                                        <h1>?</h1>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="card" style="text-align:center">
-
-                                    <div class="header">
-                                        <h4 class="title">Value 3</h4>
-                                        <p class="category">value</p>
-                                    </div>
-                                    <div class="content">
-                                        <h1>?</h1>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
