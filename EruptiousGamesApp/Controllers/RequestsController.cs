@@ -8,12 +8,21 @@ using System.Web;
 using System.Web.Mvc;
 using EruptiousGamesApp.Entities;
 using EruptiousGamesApp.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace EruptiousGamesApp.Controllers
 {
     public class RequestsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        public class EmployeeRequest
+        {
+            public Request request;
+            public Employee employee;
+        }
+
 
         // GET: Requests
         public ActionResult Index()
@@ -49,9 +58,14 @@ namespace EruptiousGamesApp.Controllers
         // GET: Requests/InputRequest
         public ActionResult InputRequest()
         {
+            EmployeeRequest empReq = new EmployeeRequest();
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
+
+            empReq.employee = currentUser.Employee;
             ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName");
             ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName");
-            return View();
+            return View(empReq);
         }
 
         // POST: Requests/Create
@@ -81,8 +95,11 @@ namespace EruptiousGamesApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult InputRequest([Bind(Include = "RequestID,CamID,EmpID,DateTime,Amount,Action,RequestStatus")] Request request)
         {
-            request.CamID = 1;
-            request.EmpID = 1;
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
+
+            request.CamID = currentUser.GetTodaysCampaign().CamID;
+            request.EmpID = currentUser.Employee.EmpID;
             if (ModelState.IsValid)
             {
                 db.Requests.Add(request);

@@ -1,212 +1,110 @@
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/EruptiousGamesApp.dll.config
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/EruptiousGamesApp.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/EruptiousGamesApp.pdb
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/csc.exe
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/csc.exe.config
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/csc.rsp
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/csi.exe
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/csi.exe.config
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/csi.rsp
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/Microsoft.CodeAnalysis.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/Microsoft.CSharp.Core.targets
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/Microsoft.Managed.Core.targets
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/Microsoft.VisualBasic.Core.targets
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.AppContext.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.Collections.Immutable.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.Console.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.Diagnostics.FileVersionInfo.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.Diagnostics.StackTrace.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.IO.Compression.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.IO.FileSystem.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.IO.FileSystem.Primitives.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.IO.Pipes.AccessControl.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.IO.Pipes.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.Reflection.Metadata.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.Security.AccessControl.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.Security.Claims.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.Security.Cryptography.Algorithms.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.Security.Cryptography.Encoding.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.Security.Cryptography.Primitives.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.Security.Cryptography.X509Certificates.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.Security.Principal.Windows.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.Text.Encoding.CodePages.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.ValueTuple.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.Xml.ReaderWriter.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.Xml.XmlDocument.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.Xml.XPath.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/System.Xml.XPath.XDocument.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/vbc.exe
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/vbc.exe.config
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/vbc.rsp
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/VBCSCompiler.exe
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/roslyn/VBCSCompiler.exe.config
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Antlr3.Runtime.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/EntityFramework.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/EntityFramework.SqlServer.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.AspNet.Identity.Core.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.AspNet.Identity.EntityFramework.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.AspNet.Identity.Owin.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Owin.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Owin.Host.SystemWeb.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Owin.Security.Cookies.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Owin.Security.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Owin.Security.Facebook.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Owin.Security.Google.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Owin.Security.MicrosoftAccount.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Owin.Security.OAuth.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Owin.Security.Twitter.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Web.Infrastructure.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Newtonsoft.Json.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Owin.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/System.Web.Helpers.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/System.Web.Mvc.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/System.Web.Optimization.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/System.Web.Razor.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/System.Web.WebPages.Deployment.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/System.Web.WebPages.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/System.Web.WebPages.Razor.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/WebGrease.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/System.Web.Helpers.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/System.Web.Mvc.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/System.Web.Optimization.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/System.Web.Razor.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/System.Web.WebPages.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/System.Web.WebPages.Deployment.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/System.Web.WebPages.Razor.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Newtonsoft.Json.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Antlr3.Runtime.pdb
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/EntityFramework.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/EntityFramework.SqlServer.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.AspNet.Identity.Core.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.AspNet.Identity.Owin.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.AspNet.Identity.EntityFramework.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Owin.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Owin.Host.SystemWeb.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Owin.Security.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Owin.Security.Facebook.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Owin.Security.Cookies.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Owin.Security.Google.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Owin.Security.Twitter.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Owin.Security.MicrosoftAccount.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.Owin.Security.OAuth.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/obj/Debug/EruptiousGamesApp.csprojAssemblyReference.cache
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/obj/Debug/EruptiousGamesApp.csproj.CoreCompileInputs.cache
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/obj/Debug/EruptiousGamesApp.csproj.CopyComplete
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/obj/Debug/EruptiousGamesApp.dll
-D:/BCIT/term4/COMP 4900 Computer Projects Practicum 2/code_new/EruptiousGamesApp/obj/Debug/EruptiousGamesApp.pdb
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/EruptiousGamesApp.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/EruptiousGamesApp.pdb
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/csc.exe
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/csc.exe.config
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/csc.rsp
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/csi.exe
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/csi.exe.config
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/csi.rsp
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/Microsoft.CodeAnalysis.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/Microsoft.CSharp.Core.targets
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/Microsoft.Managed.Core.targets
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/Microsoft.VisualBasic.Core.targets
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.AppContext.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.Collections.Immutable.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.Console.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.Diagnostics.FileVersionInfo.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.Diagnostics.StackTrace.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.IO.Compression.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.IO.FileSystem.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.IO.FileSystem.Primitives.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.IO.Pipes.AccessControl.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.IO.Pipes.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.Reflection.Metadata.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.Security.AccessControl.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.Security.Claims.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.Security.Cryptography.Algorithms.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.Security.Cryptography.Encoding.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.Security.Cryptography.Primitives.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.Security.Cryptography.X509Certificates.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.Security.Principal.Windows.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.Text.Encoding.CodePages.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.ValueTuple.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.Xml.ReaderWriter.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.Xml.XmlDocument.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.Xml.XPath.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/System.Xml.XPath.XDocument.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/vbc.exe
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/vbc.exe.config
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/vbc.rsp
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/VBCSCompiler.exe
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/roslyn/VBCSCompiler.exe.config
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Antlr3.Runtime.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/EntityFramework.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/EntityFramework.SqlServer.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.AspNet.Identity.Core.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.AspNet.Identity.EntityFramework.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.AspNet.Identity.Owin.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Owin.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Owin.Host.SystemWeb.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Owin.Security.Cookies.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Owin.Security.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Owin.Security.Facebook.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Owin.Security.Google.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Owin.Security.MicrosoftAccount.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Owin.Security.OAuth.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Owin.Security.Twitter.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Web.Infrastructure.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Newtonsoft.Json.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Owin.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/System.Web.Helpers.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/System.Web.Mvc.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/System.Web.Optimization.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/System.Web.Razor.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/System.Web.WebPages.Deployment.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/System.Web.WebPages.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/System.Web.WebPages.Razor.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/WebGrease.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/System.Web.Helpers.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/System.Web.Mvc.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/System.Web.Optimization.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/System.Web.Razor.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/System.Web.WebPages.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/System.Web.WebPages.Deployment.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/System.Web.WebPages.Razor.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Newtonsoft.Json.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Antlr3.Runtime.pdb
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/EntityFramework.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/EntityFramework.SqlServer.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.AspNet.Identity.Core.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.AspNet.Identity.Owin.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.AspNet.Identity.EntityFramework.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Owin.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Owin.Host.SystemWeb.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Owin.Security.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Owin.Security.Facebook.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Owin.Security.Cookies.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Owin.Security.Google.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Owin.Security.Twitter.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Owin.Security.MicrosoftAccount.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.Owin.Security.OAuth.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/obj/Debug/EruptiousGamesApp.csprojAssemblyReference.cache
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/obj/Debug/EruptiousGamesApp.csproj.CoreCompileInputs.cache
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/obj/Debug/EruptiousGamesApp.csproj.CopyComplete
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/obj/Debug/EruptiousGamesApp.dll
-/Users/askafang/Documents/GitHub/EruptiousGamesApp/EruptiousGamesApp/obj/Debug/EruptiousGamesApp.pdb
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\EruptiousGamesApp.dll.config
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\EruptiousGamesApp.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\EruptiousGamesApp.pdb
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\csc.exe
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\csc.exe.config
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\csc.rsp
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\csi.exe
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\csi.exe.config
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\csi.rsp
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.Managed.Core.targets
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.AppContext.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Collections.Immutable.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Console.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.IO.Compression.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.IO.FileSystem.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.IO.Pipes.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Reflection.Metadata.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Security.AccessControl.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Security.Claims.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Security.Principal.Windows.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.ValueTuple.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Xml.XmlDocument.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Xml.XPath.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\vbc.exe
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\vbc.exe.config
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\vbc.rsp
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\VBCSCompiler.exe
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\VBCSCompiler.exe.config
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Antlr3.Runtime.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\EntityFramework.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\EntityFramework.SqlServer.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.AspNet.Identity.Core.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.Cookies.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.Facebook.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.Google.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.OAuth.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.Twitter.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Web.Infrastructure.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Newtonsoft.Json.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Owin.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Helpers.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Mvc.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Optimization.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Razor.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.WebPages.Deployment.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.WebPages.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.WebPages.Razor.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\WebGrease.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Helpers.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Mvc.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Optimization.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Razor.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.WebPages.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.WebPages.Deployment.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.WebPages.Razor.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Newtonsoft.Json.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Antlr3.Runtime.pdb
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\EntityFramework.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\EntityFramework.SqlServer.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.AspNet.Identity.Core.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.Facebook.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.Cookies.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.Google.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.Twitter.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.OAuth.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csprojAssemblyReference.cache
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration41.resources
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.GenerateResource.cache
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.CoreCompileInputs.cache
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.CopyComplete
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.pdb
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\EruptiousGamesApp.dll.config
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\EruptiousGamesApp.dll
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\EruptiousGamesApp.pdb
@@ -307,117 +205,9 @@ C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration41.resources
+C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.GenerateResource.cache
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.CoreCompileInputs.cache
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.CopyComplete
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.dll
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.pdb
-C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.GenerateResource.cache
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\EruptiousGamesApp.dll.config
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\EruptiousGamesApp.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\EruptiousGamesApp.pdb
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\csc.exe
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\csc.exe.config
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\csc.rsp
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\csi.exe
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\csi.exe.config
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\csi.rsp
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.Managed.Core.targets
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.AppContext.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Collections.Immutable.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Console.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Diagnostics.StackTrace.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.IO.Compression.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.IO.FileSystem.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.IO.FileSystem.Primitives.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.IO.Pipes.AccessControl.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.IO.Pipes.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Reflection.Metadata.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Security.AccessControl.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Security.Claims.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Security.Cryptography.Encoding.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Security.Cryptography.Primitives.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Security.Principal.Windows.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Text.Encoding.CodePages.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.ValueTuple.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Xml.ReaderWriter.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Xml.XmlDocument.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Xml.XPath.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\System.Xml.XPath.XDocument.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\vbc.exe
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\vbc.exe.config
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\vbc.rsp
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\VBCSCompiler.exe
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\roslyn\VBCSCompiler.exe.config
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Antlr3.Runtime.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\EntityFramework.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\EntityFramework.SqlServer.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.AspNet.Identity.Core.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.AspNet.Identity.Owin.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Host.SystemWeb.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.Cookies.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.Facebook.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.Google.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.OAuth.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.Twitter.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Web.Infrastructure.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Newtonsoft.Json.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Owin.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Helpers.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Mvc.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Optimization.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Razor.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.WebPages.Deployment.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.WebPages.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.WebPages.Razor.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\WebGrease.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Helpers.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Mvc.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Optimization.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Razor.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.WebPages.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.WebPages.Deployment.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.WebPages.Razor.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Newtonsoft.Json.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Antlr3.Runtime.pdb
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\EntityFramework.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\EntityFramework.SqlServer.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.AspNet.Identity.Core.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.AspNet.Identity.Owin.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Host.SystemWeb.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.Facebook.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.Cookies.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.Google.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.Twitter.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.Owin.Security.OAuth.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csprojAssemblyReference.cache
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.CoreCompileInputs.cache
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.CopyComplete
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.dll
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.pdb
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration41.resources
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.GenerateResource.cache
-C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration41.resources
-C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csprojAssemblyReference.cache

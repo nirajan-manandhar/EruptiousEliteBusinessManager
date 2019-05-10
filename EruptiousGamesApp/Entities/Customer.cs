@@ -8,7 +8,7 @@ namespace EruptiousGamesApp.Entities
 {
     public enum Gender
     {
-        MALE, FEMALE
+        MALE, FEMALE, OTHER
     }
 
     public class Customer

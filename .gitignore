@@ -693,3 +693,12 @@ healthchecksdb
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 
 MigrationBackup/
+.vs/EruptiousGamesApp/v16/.suo
+.vs/EruptiousGamesApp/v16/Server/sqlite3/storage.ide
+.vs/EruptiousGamesApp/v16/Server/sqlite3/storage.ide-shm
+.vs/EruptiousGamesApp/v16/Server/sqlite3/storage.ide-wal
+.vs/EruptiousGamesApp/v16/Server/sqlite3/storage.ide
+
+*.ide
+*.ide-shm
+*.ide-wal

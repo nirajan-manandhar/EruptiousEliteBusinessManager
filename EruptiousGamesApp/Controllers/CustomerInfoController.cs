@@ -16,11 +16,34 @@ namespace EruptiousGamesApp.Controllers
 
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: CustomerInfo
-        public ActionResult Index()
+        // GET: Customers/Create
+        public ActionResult Create()
         {
-            var customers = db.Customers.Include(c => c.Campaign).Include(c => c.Employee);
-            return View(customers.ToList());
+            ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName");
+            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName");
+            return View();
+        }
+
+        //POST: CustomerInfo/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "CustID,CamID,EmpID,DateTime,CustName,Email,Phone,City,Age,Gender,PTCheck")] Customer customer)
+        {
+
+            customer.CamID = 1;
+            customer.EmpID = 1;
+            customer.DateTime = DateTime.Now;
+
+            if (ModelState.IsValid)
+            {
+                db.Customers.Add(customer);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", customer.CamID);
+            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", customer.EmpID);
+            return View(customer);
         }
     }
 }
