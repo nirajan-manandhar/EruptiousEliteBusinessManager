@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using EruptiousGamesApp.Entities;
@@ -18,6 +19,19 @@ namespace EruptiousGamesApp.Models
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
             return userIdentity;
+        }
+
+        public Campaign GetTodaysCampaign()
+        {
+            foreach (Campaign c in Employee.Campaigns)
+            {
+                if (c.StartDate <= DateTime.Now && c.EndDate >= DateTime.Now)
+                {
+                    return c;
+                }
+            }
+
+            return null;
         }
 
     }
