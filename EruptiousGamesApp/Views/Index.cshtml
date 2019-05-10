@@ -1,0 +1,195 @@
+﻿@model EruptiousGamesApp.Controllers.DashboardController.DashBoardItem
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    a {
+        color: inherit;
+        text-decoration: inherit;
+    }
+
+        a:hover, a:focus {
+            color: inherit;
+            text-decoration: inherit;
+        }
+</style>
+
+<div class="content" style="padding-top:50px">
+    <div class="container-fluid">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                        <h4 class="panel-title">
+                            Sales Ambassador
+                        </h4>
+                    </a>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card" style="text-align:center">
+                                    <div class="header">
+                                        <h4 class="title">Total Customers</h4>
+                                        <p class="category">Customers you have served</p>
+                                    </div>
+                                    <div class="content">
+                                        <h1>
+                                            @Html.DisplayFor(m => Model.personalPlayed)
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card" style="text-align:center">
+
+                                    <div class="header">
+                                        <h4 class="title">Total Decks</h4>
+                                        <p class="category">Decks you have sold</p>
+                                    </div>
+                                    <div class="content">
+                                        <h1>
+                                            @Html.DisplayFor(m => Model.personalSale)
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card" style="text-align:center">
+
+                                    <div class="header">
+                                        <h4 class="title">Total Customer Feedback</h4>
+                                        <p class="category">Customer feedback you have collected</p>
+                                    </div>
+                                    <div class="content">
+                                        <h1>
+                                            @Html.DisplayFor(m => Model.personalInfoCollected)
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                        <h4 class="panel-title">
+                            Manager
+                        </h4>
+                    </a>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card" style="text-align:center">
+                                    <div class="header">
+                                        <h4 class="title">Total Customers</h4>
+                                        <p class="category">Customers campaign has served</p>
+                                    </div>
+                                    <div class="content">
+                                        <h1>
+                                            @Html.DisplayFor(m => Model.campaignPlayed)
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card" style="text-align:center">
+                                    <div class="header">
+                                        <h4 class="title">Decks Sold</h4>
+                                        <p class="category">Decks sold by the campaign</p>
+                                    </div>
+                                    <div class="content">
+                                        <h1>
+                                            @Html.DisplayFor(m => Model.campaignSale)
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card" style="text-align:center">
+                                    <div class="header">
+                                        <h4 class="title">Customer information colleted</h4>
+                                        <p class="category">Customer information colleted by the campaign</p>
+                                    </div>
+                                    <div class="content">
+                                        <h1>
+                                            @Html.DisplayFor(m => Model.campaignInfoColleted)
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                        <h4 class="panel-title">
+                            Admin
+                        </h4>
+                    </a>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="row">
+                            <a href="">
+                                <div class="col-md-4">
+                                    <div class="card" style="text-align:center">
+                                        <div class="header">
+                                            <h4 class="title">Number of Accounts</h4>
+                                            <p class="category"></p>
+                                        </div>
+                                        <div class="content">
+                                            <h1>
+                                                @Html.DisplayFor(m => Model.totalAccount)
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <div class="col-md-4">
+                                <div class="card" style="text-align:center">
+
+                                    <div class="header">
+                                        <h4 class="title">Value 2</h4>
+                                        <p class="category">value</p>
+                                    </div>
+                                    <div class="content">
+                                        <h1>?</h1>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card" style="text-align:center">
+
+                                    <div class="header">
+                                        <h4 class="title">Value 3</h4>
+                                        <p class="category">value</p>
+                                    </div>
+                                    <div class="content">
+                                        <h1>?</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
