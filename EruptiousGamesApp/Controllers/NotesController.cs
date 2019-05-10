@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using EruptiousGamesApp.Entities;
 using EruptiousGamesApp.Models;
+using Microsoft.AspNet.Identity;
 
 namespace EruptiousGamesApp.Controllers
 {
@@ -57,17 +58,22 @@ namespace EruptiousGamesApp.Controllers
         public ActionResult Create([Bind(Include = "NoteID,EmpID,DateTime,Title,Comment")] Note note, [Bind(Include = "CustomerPlayWith, Sold")] Work work)
         {
             //Hard coded ID
-            int empID = 1;
-            int camID = 1;
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
+
+            int empID = currentUser.Employee.EmpID;
+            var currentCam = currentUser.GetTodaysCampaign();
+
             note.EmpID = empID;
             work.EmpID = empID;
-            work.CamID = camID;
 
-            if (ModelState.IsValid)
+            if (currentCam == null)
             {
-                if (!String.IsNullOrWhiteSpace(note.Title) && !String.IsNullOrWhiteSpace(note.Comment)) {
-                    db.Notes.Add(note);
-                }
+                work.CamID = 0;
+            }
+            else {
+                int camID = currentCam.CamID;
+                work.CamID = camID;
 
                 var existingWork = db.Works.Where(s => s.Date == work.Date && s.EmpID == work.EmpID);
 
@@ -80,8 +86,17 @@ namespace EruptiousGamesApp.Controllers
                 {
                     db.Works.Add(work);
                 }
-                db.SaveChanges();
+            }
 
+            if (!String.IsNullOrWhiteSpace(note.Title) && !String.IsNullOrWhiteSpace(note.Comment))
+            {
+                db.Notes.Add(note);
+            }
+
+            db.SaveChanges();
+
+            if (ModelState.IsValid)
+            {
                 return RedirectToAction("Index");
             }
 
