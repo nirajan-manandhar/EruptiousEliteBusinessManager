@@ -1,6 +1,8 @@
 ﻿using EruptiousGamesApp.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -27,9 +29,12 @@ namespace EruptiousGamesApp.Controllers
         {
             DashBoardItem di = new DashBoardItem();
 
-            int testEmpId = 1;
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
 
-            var work = db.Works.Where(s => s.EmpID == testEmpId);
+            int empID = currentUser.Employee.EmpID;
+
+            var work = db.Works.Where(s => s.EmpID == empID);
             if (work.Count() > 0)
             {
                 di.personalPlayed = work.Sum(s => s.CustomerPlayWith);
@@ -39,7 +44,7 @@ namespace EruptiousGamesApp.Controllers
                 di.personalPlayed = 0;
                 di.personalSale = 0;
             }
-            var customer = db.Customers.Where(s => s.EmpID == testEmpId);
+            var customer = db.Customers.Where(s => s.EmpID == empID);
             if (customer.Count() > 0)
             {
                 di.personalInfoCollected = customer.Count();
@@ -48,20 +53,31 @@ namespace EruptiousGamesApp.Controllers
                 di.personalInfoCollected = 0;
             }
 
-            int campaignId = 1;
-            var campaign = db.Works.Where(s => s.CamID == campaignId);
-            if(campaign.Count() > 0) { 
-                di.campaignPlayed = campaign.Sum(s => s.CustomerPlayWith);
-                di.campaignSale = campaign.Sum(s => s.Sold);
-            }
-            customer = db.Customers.Where(s => s.CamID == campaignId);
-            if (customer.Count() > 0)
+            var todayCam = currentUser.GetTodaysCampaign();
+
+            if (todayCam == null)
             {
-                di.campaignInfoColleted = customer.Count();
-            }
-            else
-            {
+                di.campaignPlayed = 0;
+                di.campaignSale = 0;
                 di.campaignInfoColleted = 0;
+            }
+            else {
+                int campaignId = todayCam.CamID;
+                var campaign = db.Works.Where(s => s.CamID == campaignId);
+                if (campaign.Count() > 0)
+                {
+                    di.campaignPlayed = campaign.Sum(s => s.CustomerPlayWith);
+                    di.campaignSale = campaign.Sum(s => s.Sold);
+                }
+                customer = db.Customers.Where(s => s.CamID == campaignId);
+                if (customer.Count() > 0)
+                {
+                    di.campaignInfoColleted = customer.Count();
+                }
+                else
+                {
+                    di.campaignInfoColleted = 0;
+                }
             }
 
             di.totalAccount = db.Employees.Count();
