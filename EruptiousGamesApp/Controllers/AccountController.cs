@@ -139,13 +139,13 @@ namespace EruptiousGamesApp.Controllers
         }
 
         // GET: Account/AccountEdit/5
-        public ActionResult AccountEdit(int? id)
+        public ActionResult AccountEdit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser ApplicationUser = db.Users.Find(id);
+            ApplicationUser ApplicationUser = db.Users.Include(r => r.Employee).FirstOrDefault(x => x.Id == id);
             if (ApplicationUser == null)
             {
                 return HttpNotFound();
@@ -159,11 +159,13 @@ namespace EruptiousGamesApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Employee,UserName")] ApplicationUser ApplicationUser)
+        public ActionResult AccountEdit([Bind(Include = "Id,UserName,Employee")] ApplicationUser ApplicationUser)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(ApplicationUser).State = EntityState.Modified;
+                //db.Entry(ApplicationUser).State = EntityState.Modified;
+                //db.SaveChanges();
+                db.Entry(ApplicationUser.Employee).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("AccountList");
             }
