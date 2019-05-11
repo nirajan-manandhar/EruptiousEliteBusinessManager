@@ -2,6 +2,9 @@
 
 @{
     ViewBag.Title = "Home Page";
+    <link href="~/Content/adminForms.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/tiles.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 }
 
 <style>
@@ -18,7 +21,138 @@
 
 
 <br /><br />
-<div id="accordion">
+
+<div class="container">
+
+    <div class="row no-gutters" style="padding-right:0;padding-left:0;">
+        <div class="col-md-4">
+            <a class="btn btn-light btn-block shadow" style="width:100%" data-toggle="collapse" href="#salesAmbassadorPanel" aria-expanded="false" aria-controls="salesAmbassadorPanel">
+                <img src="~/Content/Images/salesAmbassador.png" style="max-width:40%; max-height:40%;" />
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a class="btn btn-light shadow" style="width:100%" data-toggle="collapse" href="#managerPanel" aria-expanded="false" aria-controls="managerPanel">
+                <img src="~/Content/Images/manager.png" style="max-width:40%; max-height:40%;" />
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a class="btn btn-light shadow" style="width:100%" data-toggle="collapse" href="#adminPanel" aria-expanded="false" aria-controls="adminPanel">
+                <img src="~/Content/Images/admin.png" style="max-width:40%; max-height:40%;" />
+            </a>
+        </div>
+    </div>
+
+    <div class="collapse show" id="salesAmbassadorPanel">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="arial">Sales Ambassador</h2>
+            </div>
+            <div class="card-body">
+                        <div class="tile wide quote">
+                            <div class="header">
+                                <div class="left">
+                                    <div class="count">@Html.DisplayFor(m => Model.personalPlayed)</div>
+                                    <div class="title">Customers</div>
+                                </div>
+                                <div class="right">
+                                    <div class="count">@Html.DisplayFor(m => Model.personalInfoCollected)</div>
+                                    <div class="title">Feedback</div>
+                                </div>
+                            </div>
+                            <div class="body">
+                                <div class="title">Customer Statistics</div>
+                            </div>
+                        </div>
+                        <div class="tile job">
+                            <div class="header">
+                                <div class="count">@Html.DisplayFor(m => Model.personalSale)</div>
+                                <div class="title">Decks Sold</div>
+                            </div>
+                            <div class="body">
+                                <div class="title">Sales</div>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="collapse show" id="managerPanel">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="arial">Manager</h2>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="tile wide invoice">
+                        <div class="header">
+                            <div class="left">
+                                <div class="count">@Html.DisplayFor(m => Model.campaignPlayed)</div>
+                                <div class="title">Customers</div>
+                            </div>
+                            <div class="right">
+                                <div class="count">@Html.DisplayFor(m => Model.personalInfoCollected)</div>
+                                <div class="title">Feedback</div>
+                            </div>
+                        </div>
+                        <div class="body">
+                            <div class="title">Customer Statistics</div>
+                        </div>
+                    </div>
+
+                    <div class="tile job">
+                        <div class="header">
+                            <div class="count"> @Html.DisplayFor(m => Model.campaignSale)</div>
+                            <div class="title">Decks Sold</div>
+                        </div>
+                        <div class="body">
+                            <div class="title">Sales</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="collapse show" id="adminPanel">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="arial">Admin</h2>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="tile wide resource">
+                        <div class="header">
+                            <div class="left">
+                                <div class="count">@Html.DisplayFor(m => Model.totalAccount)</div>
+                                <div class="title">Number of Accounts</div>
+                            </div>
+                            <div class="right">
+                                <div class="count">?</div>
+                                <div class="title">?</div>
+                            </div>
+                        </div>
+                        <div class="body">
+                            <div class="title">Accounts</div>
+                        </div>
+                    </div>
+                    <div class="tile job">
+                        <div class="header">
+                            <div class="count">?</div>
+                            <div class="title">?</div>
+                        </div>
+                        <div class="body">
+                            <div class="title">?</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </div>
+
+</div>
+
+@*
+ <div id="accordion">
     <div class="card">
         <div class="card-header" id="headingOne">
             <h5 class="mb-0">
@@ -49,7 +183,7 @@
                     <div class="col-md-4 d-flex pb-3">
                         <div class="alert alert-secondary" style="margin:5px">
                             <div class="card-header"><h2>Total Decks</h2></div>
-                            <div class="card-body">
+                            <div class="card-body"> 
                                 <h5 class="card-title">Decks you have sold</h5>
                                 <p class="card-text">
                                     <div class="content">
@@ -192,8 +326,7 @@
             </div>
         </div>
     </div>
-</div>
-
+</div>   
 
 
 <div class="content" style="padding-top:50px">
@@ -257,3 +390,9 @@
                     </div>
                 </div>
             </div>
+
+
+*@
+
+
+
