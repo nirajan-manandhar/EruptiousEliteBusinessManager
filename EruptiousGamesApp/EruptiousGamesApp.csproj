@@ -202,6 +202,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animate.min.css" />
+    <Content Include="Content\Basic.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -209,6 +210,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\dashboard.css" />
+    <Content Include="Content\form.css" />
     <Content Include="Content\Images\Logo.png" />
     <Content Include="Content\Images\sidebar-5.jpg" />
     <Content Include="Content\signin.css" />
@@ -337,6 +339,8 @@
     <Content Include="Views\Account\AccountCreate.cshtml" />
     <Content Include="Views\Account\AccountEdit.cshtml" />
     <Content Include="Views\CustomerInfo\Create.cshtml" />
+    <Content Include="Views\Requests\RequestAdmin.cshtml" />
+    <Content Include="Views\Requests\ChangeStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

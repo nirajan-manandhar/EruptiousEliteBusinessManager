@@ -53,6 +53,7 @@ namespace EruptiousGamesApp.Controllers
             return View(request);
         }
 
+
         // GET: Requests/Create
         public ActionResult Create()
         {
@@ -143,6 +144,42 @@ namespace EruptiousGamesApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "RequestID,CamID,EmpID,DateTime,Amount,Action,RequestStatus")] Request request)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(request).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
+            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
+            return View(request);
+        }
+
+        // GET: Requests/ChangeStatus/5
+        public ActionResult ChangeStatus(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Request request = db.Requests.Find(id);
+            if (request == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
+            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
+
+            return View(request);
+        }
+
+        // POST: Requests/ChangeStatus/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeStatus([Bind(Include = "RequestID,CamID,EmpID,DateTime,Amount,Action,RequestStatus")] Request request)
         {
             if (ModelState.IsValid)
             {
