@@ -211,6 +211,7 @@
     <Content Include="Content\dashboard.css" />
     <Content Include="Content\Images\Logo.png" />
     <Content Include="Content\Images\sidebar-5.jpg" />
+    <Content Include="Content\modal.css" />
     <Content Include="Content\signin.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -248,6 +249,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modal.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
