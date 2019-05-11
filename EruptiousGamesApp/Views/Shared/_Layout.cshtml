@@ -52,9 +52,6 @@
                         @Html.ActionLink("Account", "AccountList", "Account", null, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item h6">
-                        @Html.ActionLink("Employee", "Index", "Employees", null, new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item h6">
                         @if (Request.IsAuthenticated)
                         {
                             using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))

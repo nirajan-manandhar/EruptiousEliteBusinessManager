@@ -12,6 +12,7 @@ using EruptiousGamesApp.Models;
 using EruptiousGamesApp.Entities;
 using System.Data.Entity;
 using System.Net;
+using EruptiousGamesApp.Authorization;
 
 namespace EruptiousGamesApp.Controllers
 {
@@ -132,6 +133,7 @@ namespace EruptiousGamesApp.Controllers
         }
 
         // GET: /Account/AccountList
+        [AuthorizeUser(Role = Role.ADMIN)]
         public ActionResult AccountList()
         {
             var users = db.Users.Include(r => r.Employee);
