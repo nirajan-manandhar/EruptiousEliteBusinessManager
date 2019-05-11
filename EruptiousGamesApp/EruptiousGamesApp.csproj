@@ -221,6 +221,7 @@
     <Content Include="Content\Images\Logo.png" />
     <Content Include="Content\Images\sidebar-5.jpg" />
     <Content Include="Content\signin.css" />
+    <Content Include="Content\tiles.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
