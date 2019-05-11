@@ -31,6 +31,13 @@ namespace EruptiousGamesApp.Controllers
             return View(requests.ToList());
         }
 
+        // GET: Requests/RequestAdmin
+        public ActionResult RequestAdmin()
+        {
+            var requests = db.Requests.Include(r => r.Campaign).Include(r => r.Employee);
+            return View(requests.ToList());
+        }
+
         // GET: Requests/Details/5
         public ActionResult Details(int? id)
         {
@@ -53,6 +60,7 @@ namespace EruptiousGamesApp.Controllers
             ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName");
             return View();
         }
+
 
         // Custom Function - Aska
         // GET: Requests/InputRequest
