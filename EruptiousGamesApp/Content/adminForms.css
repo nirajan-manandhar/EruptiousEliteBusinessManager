@@ -33,9 +33,8 @@ body {
 
 .form-basic {
     width: 100%;
-    max-width: 550px;
-    padding: 15px;
-    margin: auto;
+    min-width: 80%
+
 }
 
 .arial {
@@ -73,6 +72,7 @@ body {
 }
 
 table {
+    width:100%
     border-collapse: collapse;
     border-radius: 1em;
     overflow: hidden;
