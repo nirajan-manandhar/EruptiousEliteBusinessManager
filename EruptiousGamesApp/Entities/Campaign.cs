@@ -10,9 +10,17 @@ namespace EruptiousGamesApp.Entities
     {
         [Key]
         public int CamID { get; set; }
+        [Required]
         public string CamName { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime StartDate { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime EndDate { get; set; }
+        [Required]
         public int Inventory { get; set; }
 
         public virtual ICollection<Employee> Employees { get; set; }

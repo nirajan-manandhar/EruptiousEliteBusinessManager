@@ -195,9 +195,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905081235457_Migration4.1.cs" />
-    <Compile Include="Migrations\201905081235457_Migration4.1.Designer.cs">
-      <DependentUpon>201905081235457_Migration4.1.cs</DependentUpon>
+    <Compile Include="Migrations\201905121142139_Migration9.9.cs" />
+    <Compile Include="Migrations\201905121142139_Migration9.9.Designer.cs">
+      <DependentUpon>201905121142139_Migration9.9.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -360,15 +360,15 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905081235457_Migration4.1.resx">
-      <DependentUpon>201905081235457_Migration4.1.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201905121142139_Migration9.9.resx">
+      <DependentUpon>201905121142139_Migration9.9.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

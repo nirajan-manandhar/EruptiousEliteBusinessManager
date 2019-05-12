@@ -214,4 +214,6 @@ C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\Eruptio
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Release\EruptiousGamesApp.csproj.CopyComplete
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Release\EruptiousGamesApp.dll
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Release\EruptiousGamesApp.pdb
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Release\EruptiousGamesApp.Migrations.Migration41.resources
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\EPPlus.dll
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\EPPlus.xml
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Release\EruptiousGamesApp.Migrations.Migration99.resources
