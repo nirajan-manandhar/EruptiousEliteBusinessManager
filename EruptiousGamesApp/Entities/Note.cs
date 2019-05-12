@@ -8,11 +8,19 @@ namespace EruptiousGamesApp.Entities
 {
     public class Note
     {
+        public Note()
+        {
+            DateTime = DateTime.Now;
+        }
         [Key]
         public int NoteID { get; set; }
+        [Required]
         public int EmpID { get; set; }
+        [Required]
         public DateTime DateTime { get; set; }
+        [Required]
         public string Title { get; set; }
+        [Required]
         public string Comment { get; set; }
 
         public virtual Employee Employee { get; set; }

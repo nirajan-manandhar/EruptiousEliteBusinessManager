@@ -10,6 +10,10 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EruptiousGamesApp.Models;
 using EruptiousGamesApp.Entities;
+using System.Data.Entity;
+using System.Net;
+using EruptiousGamesApp.Authorization;
+using OfficeOpenXml;
 
 namespace EruptiousGamesApp.Controllers
 {
@@ -18,6 +22,8 @@ namespace EruptiousGamesApp.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public AccountController()
         {
@@ -92,63 +98,17 @@ namespace EruptiousGamesApp.Controllers
             }
         }
 
-        //
-        // GET: /Account/VerifyCode
-        [AllowAnonymous]
-        public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
-        {
-            // Require that the user has already logged in via username/password or external login
-            if (!await SignInManager.HasBeenVerifiedAsync())
-            {
-                return View("Error");
-            }
-            return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
-        }
-
-        //
-        // POST: /Account/VerifyCode
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            // The following code protects for brute force attacks against the two factor codes. 
-            // If a user enters incorrect codes for a specified amount of time then the user account 
-            // will be locked out for a specified amount of time. 
-            // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(model.ReturnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid code.");
-                    return View(model);
-            }
-        }
-
-        //
-        // GET: /Account/Register
-        [AllowAnonymous]
-        public ActionResult Register()
+        // GET: /Account/AccountCreaet
+        public ActionResult AccountCreate()
         {
             return View();
         }
 
         //
-        // POST: /Account/Register
+        // POST: /Account/AccountCreaet
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> AccountCreate(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -156,15 +116,13 @@ namespace EruptiousGamesApp.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("AccountList", "Account");
                 }
                 AddErrors(result);
             }
@@ -172,6 +130,180 @@ namespace EruptiousGamesApp.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        // GET: /Account/AccountList
+        [AuthorizeUser(Role = Role.ADMIN)]
+        public ActionResult AccountList()
+        {
+            var users = db.Users.Include(r => r.Employee);
+            return View(users.ToList());
+        }
+
+        // GET: Account/AccountEdit/5
+        public ActionResult AccountEdit(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ApplicationUser ApplicationUser = db.Users.Include(r => r.Employee).FirstOrDefault(x => x.Id == id);
+            if (ApplicationUser == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(ApplicationUser);
+        }
+
+        // POST: Account/AccountEdit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AccountEdit([Bind(Include = "Id,UserName,Employee")] ApplicationUser ApplicationUser)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(ApplicationUser).State = EntityState.Modified;
+                db.Entry(ApplicationUser.Employee).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("AccountList");
+            }
+
+            return View(ApplicationUser);
+        }
+
+        //public void DownloadExcel(DateTime Start, DateTime End)
+        public void DownloadExcel()
+        {
+            //var Customers = db.Customers.Include(r => r.Campaign).Include(r => r.Employee).Where(x => x.DateTime >= Start).Where(x => x.DateTime <= End).ToList();
+
+            var Customers = db.Customers.Include(r => r.Campaign).Include(r => r.Employee).ToList();
+
+
+            ExcelPackage Ep = new ExcelPackage();
+            ExcelWorksheet Sheet = Ep.Workbook.Worksheets.Add("Customer");
+            Sheet.Cells["A1"].Value = "ID";
+            Sheet.Cells["B1"].Value = "Campaign Name";
+            Sheet.Cells["C1"].Value = "Employee Name";
+            Sheet.Cells["D1"].Value = "Date Time";
+            Sheet.Cells["E1"].Value = "Name";
+            Sheet.Cells["F1"].Value = "E-mail";
+            Sheet.Cells["G1"].Value = "Phone";
+            Sheet.Cells["H1"].Value = "City";
+            Sheet.Cells["I1"].Value = "Age";
+            Sheet.Cells["J1"].Value = "Gender";
+            Sheet.Cells["K1"].Value = "PTCheck";
+
+            int row = 2;
+            foreach (var item in Customers)
+            {
+
+                Sheet.Cells[string.Format("A{0}", row)].Value = item.CustID;
+                Sheet.Cells[string.Format("B{0}", row)].Value = item.Campaign.CamName;
+                Sheet.Cells[string.Format("C{0}", row)].Value = item.Employee.EmpName;
+                Sheet.Cells[string.Format("D{0}", row)].Value = item.DateTime.ToString("MM/dd/yyyy hh:mm tt");
+                Sheet.Cells[string.Format("E{0}", row)].Value = item.CustName;
+                Sheet.Cells[string.Format("F{0}", row)].Value = item.Email;
+                Sheet.Cells[string.Format("G{0}", row)].Value = item.Phone;
+                Sheet.Cells[string.Format("H{0}", row)].Value = item.City;
+                Sheet.Cells[string.Format("I{0}", row)].Value = item.Age;
+                Sheet.Cells[string.Format("J{0}", row)].Value = item.Gender;
+                Sheet.Cells[string.Format("K{0}", row)].Value = item.PTCheck;
+                row++;
+            }
+
+
+            Sheet.Cells["A:AZ"].AutoFitColumns();
+            Response.Clear();
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment: filename=" + "Report.xlsx");
+            Response.BinaryWrite(Ep.GetAsByteArray());
+            Response.End();
+        }
+
+
+
+        //
+        // GET: /Account/VerifyCode
+        //[AllowAnonymous]
+        //public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
+        //{
+        //    // Require that the user has already logged in via username/password or external login
+        //    if (!await SignInManager.HasBeenVerifiedAsync())
+        //    {
+        //        return View("Error");
+        //    }
+        //    return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
+        //}
+
+        //
+        // POST: /Account/VerifyCode
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(model);
+        //    }
+
+        //    // The following code protects for brute force attacks against the two factor codes. 
+        //    // If a user enters incorrect codes for a specified amount of time then the user account 
+        //    // will be locked out for a specified amount of time. 
+        //    // You can configure the account lockout settings in IdentityConfig
+        //    var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+        //    switch (result)
+        //    {
+        //        case SignInStatus.Success:
+        //            return RedirectToLocal(model.ReturnUrl);
+        //        case SignInStatus.LockedOut:
+        //            return View("Lockout");
+        //        case SignInStatus.Failure:
+        //        default:
+        //            ModelState.AddModelError("", "Invalid code.");
+        //            return View(model);
+        //    }
+        //}
+
+        //
+        // GET: /Account/Register
+        //[AllowAnonymous]
+        //public ActionResult Register()
+        //{
+        //    return View();
+        //}
+
+        //
+        // POST: /Account/Register
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Register(RegisterViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = new ApplicationUser { UserName = model.UserName, Employee = new Employee { EmpName = model.Employee.EmpName, Role = model.Employee.Role, EmpStatus = model.Employee.EmpStatus, DecksOnHand = 0 } };
+        //        var result = await UserManager.CreateAsync(user, model.Password);
+        //        if (result.Succeeded)
+        //        {
+        //            await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
+        //            // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+        //            // Send an email with this link
+        //            // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+        //            // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+        //            // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+        //            return RedirectToAction("Index", "Home");
+        //        }
+        //        AddErrors(result);
+        //    }
+
+        //    // If we got this far, something failed, redisplay form
+        //    return View(model);
+        //}
 
         //
         // GET: /Account/ConfirmEmail

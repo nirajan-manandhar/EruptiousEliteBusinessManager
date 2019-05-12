@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using EruptiousGamesApp.Entities;
 using EruptiousGamesApp.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace EruptiousGamesApp.Controllers
 {
@@ -15,8 +17,22 @@ namespace EruptiousGamesApp.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        public class EmployeeRequest
+        {
+            public Request request;
+            public Employee employee;
+        }
+
+
         // GET: Requests
         public ActionResult Index()
+        {
+            var requests = db.Requests.Include(r => r.Campaign).Include(r => r.Employee);
+            return View(requests.ToList());
+        }
+
+        // GET: Requests/RequestAdmin
+        public ActionResult RequestAdmin()
         {
             var requests = db.Requests.Include(r => r.Campaign).Include(r => r.Employee);
             return View(requests.ToList());
@@ -37,6 +53,7 @@ namespace EruptiousGamesApp.Controllers
             return View(request);
         }
 
+
         // GET: Requests/Create
         public ActionResult Create()
         {
@@ -45,13 +62,19 @@ namespace EruptiousGamesApp.Controllers
             return View();
         }
 
+
         // Custom Function - Aska
         // GET: Requests/InputRequest
         public ActionResult InputRequest()
         {
+            EmployeeRequest empReq = new EmployeeRequest();
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
+
+            empReq.employee = currentUser.Employee;
             ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName");
             ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName");
-            return View();
+            return View(empReq);
         }
 
         // POST: Requests/Create
@@ -81,8 +104,11 @@ namespace EruptiousGamesApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult InputRequest([Bind(Include = "RequestID,CamID,EmpID,DateTime,Amount,Action,RequestStatus")] Request request)
         {
-            request.CamID = 1;
-            request.EmpID = 1;
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
+
+            request.CamID = currentUser.GetTodaysCampaign().CamID;
+            request.EmpID = currentUser.Employee.EmpID;
             if (ModelState.IsValid)
             {
                 db.Requests.Add(request);
@@ -118,6 +144,42 @@ namespace EruptiousGamesApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "RequestID,CamID,EmpID,DateTime,Amount,Action,RequestStatus")] Request request)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(request).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
+            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
+            return View(request);
+        }
+
+        // GET: Requests/ChangeStatus/5
+        public ActionResult ChangeStatus(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Request request = db.Requests.Find(id);
+            if (request == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
+            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
+
+            return View(request);
+        }
+
+        // POST: Requests/ChangeStatus/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeStatus([Bind(Include = "RequestID,CamID,EmpID,DateTime,Amount,Action,RequestStatus")] Request request)
         {
             if (ModelState.IsValid)
             {

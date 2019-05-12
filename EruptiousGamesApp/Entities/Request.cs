@@ -26,11 +26,17 @@ namespace EruptiousGamesApp.Entities
 
         [Key]
         public int RequestID { get; set; }
+        [Required]
         public int CamID { get; set; }
+        [Required]
         public int EmpID { get; set; }
+        [Required]
         public DateTime DateTime { get; set; }
+        [Required]
         public int Amount { get; set; }
+        [Required]
         public Action Action { get; set; }
+        [Required]
         public RequestStatus RequestStatus { get; set; }
 
         public virtual Campaign Campaign { get; set; }
