@@ -634,3 +634,5 @@ D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\Eruptiou
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration41.resources
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration41.resources
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csprojAssemblyReference.cache
+C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\bin\EPPlus.dll
+C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\bin\EPPlus.xml
