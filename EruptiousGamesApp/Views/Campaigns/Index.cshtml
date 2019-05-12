@@ -10,53 +10,96 @@
 <div class="mainContent">
     <div class="form-basic">
 
+        <hr />
+        <h3>Open Campaigns</h3>
+        <hr />
 
-            <h2>Index</h2>
+        <table class="table shadow overflow-auto">
+            <tr class="thead-dark">
+                <th>
+                    <p>Campaign Name</p>
+                </th>
+                <th>
+                    <p>Start Date</p>
+                </th>
+                <th>
+                    <p>End Date</p>
+                </th>
+                <th>
+                    <p>Inventory</p>
+                </th>
+                <th></th>
+            </tr>
 
-            <p>
-                @Html.ActionLink("Create New", "Create")
-            </p>
-
-            <table class="table shadow overflow-auto">
-                <tr class="thead-dark">
-                    <th>
-                        @Html.DisplayNameFor(model => model.CamName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.StartDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.EndDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Inventory)
-                    </th>
-                    <th></th>
+            @foreach (var item in Model.Where(i => i.EndDate > DateTime.Now))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CamName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Inventory)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CamID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CamID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CamID })
+                    </td>
                 </tr>
+            }
+        </table>
 
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CamName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.StartDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EndDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Inventory)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.CamID }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.CamID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.CamID })
-                        </td>
-                    </tr>
-                }
+        <hr />
+        <h3>Closed Campaigns</h3>
+        <hr />
 
-            </table>
-        </div>
+        <table class="table shadow overflow-auto">
+            <tr class="thead-dark">
+                <th>
+                    <p>Campaign Name</p>
+                </th>
+                <th>
+                    <p>Start Date</p>
+                </th>
+                <th>
+                    <p>End Date</p>
+                </th>
+                <th>
+                    <p>Inventory</p>
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Where(i => i.EndDate < DateTime.Now))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CamName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Inventory)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CamID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CamID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CamID })
+                    </td>
+                </tr>
+            }
+        </table>
+
+
+    </div>
     </div>
