@@ -2,6 +2,7 @@
 @model EruptiousGamesApp.Entities.Customer
 
 @{
+
     ViewBag.Title = "Create";
     <link href="~/Content/form.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -11,14 +12,17 @@
     $(function () {
         $('body').on('click', '#yes-btn', function () {
             $('#info-form').submit();
-            $('#otherCustomer').modal("hide");
+            $('#otherCustomer').modal("toggle");
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
         });
 
-        $('body').on('click', '#no-btn', function () {
+        $('body').on('click', '#no-btn', function (e) {
             var url = '@Url.Action("Create", "Notes")';
             $('#info-form').submit();
-            window.location.href = url;
-            $('#otherCustomer').modal();
+            $('#otherCustomer').modal("toggle");
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
 
         })
     });
