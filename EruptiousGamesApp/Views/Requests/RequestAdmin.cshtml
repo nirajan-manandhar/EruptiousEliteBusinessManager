@@ -33,12 +33,11 @@
         </tr>
 
         @foreach (var item in Model) {
-            @if ((int)(item.RequestStatus) == 1) { 
-        <tr>
+]        <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Campaign.CamName)
             </td>
-            <td>
+            <td>                
                 @Html.DisplayFor(modelItem => item.Employee.EmpName)
             </td>
             <td>
@@ -59,7 +58,6 @@
                 @Html.ActionLink("Delete", "Delete", new { id = item.RequestID })
             </td>
         </tr>
-        }
 }
 
     </table>
