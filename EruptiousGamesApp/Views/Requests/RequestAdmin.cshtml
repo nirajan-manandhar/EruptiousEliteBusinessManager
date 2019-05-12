@@ -7,7 +7,6 @@
 <h2>Index</h2>
 <p>
     @Html.ActionLink("Create New", "Create")
-    
 </p>
 <div class="table-responsive">
     <table class="table">
@@ -34,6 +33,7 @@
         </tr>
 
         @foreach (var item in Model) {
+            @if ((int)(item.RequestStatus) == 1) { 
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Campaign.CamName)
@@ -59,6 +59,7 @@
                 @Html.ActionLink("Delete", "Delete", new { id = item.RequestID })
             </td>
         </tr>
+        }
 }
 
     </table>
