@@ -1,0 +1,80 @@
+﻿@model EruptiousGamesApp.Entities.Request
+
+@{
+    ViewBag.Title = "Change Status";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <h1>Review the @Html.DisplayFor(model => model.Action)</h1>
+
+        <table class="table table-dark table-striped">
+            <tbody>
+                <tr>
+                    <th>Campaign Name</th>
+                    <td>
+                        @Html.DropDownList("CamID", null, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+                        @Html.HiddenFor(model => model.CamID)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Employee Name</th>
+                    <td>@Html.DisplayFor(model => model.Employee.EmpName, new { @class = "form-control", @disabled = "disabled" })
+                        @Html.HiddenFor(model => model.DateTime)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Date and Time</th>
+                    <td>@Html.DisplayFor(model => model.DateTime, new { @class = "form-control", @disabled = "disabled" })
+                        @Html.HiddenFor(model => model.DateTime)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Amount</th>
+                    <td>@Html.DisplayFor(model => model.Amount, new { @class = "form-control", @disabled = "disabled" })
+                        @Html.HiddenFor(model => model.Amount)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Action</th>
+                    <td>@Html.DisplayFor(model => model.Action, new { @class = "form-control", @disabled = "disabled" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>Request Status</th>
+                    <td>@Html.DisplayFor(model => model.RequestStatus)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.RequestID)
+
+        <div class="form-group">
+            <h2>Decision:</h2>
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.RequestStatus, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RequestStatus, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
