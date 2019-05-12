@@ -49,7 +49,6 @@ namespace EruptiousGamesApp.Controllers
 
             ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", customer.CamID);
             ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", customer.EmpID);
-
             return View(customer);
         }
     }

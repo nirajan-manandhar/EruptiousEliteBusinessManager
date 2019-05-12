@@ -156,8 +156,8 @@ namespace EruptiousGamesApp.Controllers
             return View(request);
         }
 
-        // GET: Requests/Acept/5
-        public ActionResult Approve(int? id)
+        // GET: Requests/ChangeStatus/5
+        public ActionResult ChangeStatus(int? id)
         {
             if (id == null)
             {
@@ -168,61 +168,11 @@ namespace EruptiousGamesApp.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
+            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
 
-
-            request.RequestStatus = RequestStatus.APPROVED;
-            if (request.Action == Entities.Action.REQUEST)
-            {
-                request.Employee.DecksOnHand += request.Amount;
-            } else
-            {
-                request.Employee.DecksOnHand -= request.Amount;
-            }
-            
-            string currentUserId = User.Identity.GetUserId();
-            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
-
-            request.EmpID = currentUser.Employee.EmpID;
-
-            if (ModelState.IsValid)
-            {
-                //db.Entry(request).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return RedirectToAction("Index", "Requests");
+            return View(request);
         }
-
-        // GET: Requests/Decline/5
-        public ActionResult Deny(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Request request = db.Requests.Find(id);
-            if (request == null)
-            {
-                return HttpNotFound();
-            }
-
-            request.RequestStatus = RequestStatus.DENIAL;
-
-            string currentUserId = User.Identity.GetUserId();
-            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
-
-            request.EmpID = currentUser.Employee.EmpID;
-
-            if (ModelState.IsValid)
-            {
-                //db.Entry(request).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return RedirectToAction("Index", "Requests");
-        }
-
 
         // POST: Requests/ChangeStatus/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
