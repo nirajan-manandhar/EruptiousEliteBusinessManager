@@ -7,6 +7,7 @@
 <h2>Index</h2>
 <p>
     @Html.ActionLink("Create New", "Create")
+
 </p>
 <div class="table-responsive">
     <table class="table">
@@ -32,33 +33,42 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model) {
-]        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Campaign.CamName)
-            </td>
-            <td>                
-                @Html.DisplayFor(modelItem => item.Employee.EmpName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Action)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RequestStatus)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "ChangeStatus", new { id = item.RequestID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.RequestID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.RequestID })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Campaign.CamName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.EmpName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Action)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestStatus)
+                </td>
+                <td>
+                    @if ((int)(item.RequestStatus) == 0)
+                    {
+                        <button class="btn btn-outline-success btn-sm shadow">
+                            @Html.ActionLink("Approve", "Approve", new { id = item.RequestID })
+                        </button>
+                        <button class="btn btn-outline-danger btn-sm shadow">
+                            @Html.ActionLink("Deny", "Deny", new { id = item.RequestID })
+                        </button>
+                    }
+                </td>
+
+
+            </tr>
+        }
 
     </table>
 </div>
