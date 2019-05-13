@@ -7,8 +7,15 @@
 }
 
 <div style="margin-top:5%">
+
     <img class="mb-4" src='@Url.Content("~/Content/Images/inventoryRequest.png")' style="width:50%; max-width:350px;display: block; margin-left: auto; margin-right: auto;">
     <hr />
+
+    <div class="form-group">
+        <div class="col-md-10">
+            <a href="privacypolicy" data-toggle="modal" data-target="#employeeInventory">Employee Inventory</a>
+        </div>
+    </div>
 
     <a href='@Url.Action("InputRequest", "Requests")'>
         <button class="btn btn-light btn-lg btn-block shadow" style="height:100px">
@@ -168,13 +175,6 @@
     </div>
 </div>
 
-<div class="form-group">
-    <div class="col-md-10">
-        <a href="privacypolicy" data-toggle="modal" data-target="#employeeInventory">Employee Inventory</a>
-        
-    </div>
-</div>
-
 <!-- Employee Inventory Modal -->
 <div class="modal fade" id="employeeInventory" tabindex="-1" role="dialog" aria-labelledby="employeeInventory" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -211,8 +211,6 @@
                             }
                         </table>
                     </div>
-
-
                 </div>
             </div>
             <div class="modal-footer">
