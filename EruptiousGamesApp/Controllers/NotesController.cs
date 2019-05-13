@@ -28,6 +28,15 @@ namespace EruptiousGamesApp.Controllers
             return View(notes.ToList());
         }
 
+        // POST: Notes/index
+        public ActionResult DeleteNote(int id)
+        {
+            Note note = db.Notes.Find(id);
+            db.Notes.Remove(note);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         // GET: Notes/Details/5
         public ActionResult Details(int? id)
         {
