@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using EruptiousGamesApp.Authorization;
 using EruptiousGamesApp.Entities;
 using EruptiousGamesApp.Models;
 using Microsoft.AspNet.Identity;
@@ -20,15 +21,28 @@ namespace EruptiousGamesApp.Controllers
             public Note note;
             public Work work;
         }
+        public class Notes
+        {
+            public IEnumerable<Note> notes;
+            public Employee emp;
+        }
 
         // GET: Notes
+        [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult Index()
         {
             var notes = db.Notes.Include(n => n.Employee);
-            return View(notes.ToList());
+            Notes nn = new Notes();
+            nn.notes = notes;
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
+            nn.emp = currentUser.Employee;
+
+            return View(nn);
         }
 
         // POST: Notes/index
+        [AuthorizeUser(Role = Role.ADMIN)]
         public ActionResult DeleteNote(int id)
         {
             Note note = db.Notes.Find(id);
