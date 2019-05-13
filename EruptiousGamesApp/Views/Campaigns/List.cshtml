@@ -1,0 +1,105 @@
+﻿@model IEnumerable<EruptiousGamesApp.Entities.Campaign>
+
+@{
+    ViewBag.Title = "Index";
+    <link href="~/Content/adminForms.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+}
+
+
+<div class="mainContent">
+    <div class="form-basic">
+
+        <hr />
+        <h3>Open Campaigns</h3>
+        <hr />
+
+        <table class="table shadow overflow-auto">
+            <tr class="thead-dark">
+                <th>
+                    <p>Campaign Name</p>
+                </th>
+                <th>
+                    <p>Start Date</p>
+                </th>
+                <th>
+                    <p>End Date</p>
+                </th>
+                <th>
+                    <p>Inventory</p>
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Where(i => i.EndDate > DateTime.Now))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CamName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Inventory)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CamID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CamID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CamID })
+                    </td>
+                </tr>
+            }
+        </table>
+
+        <hr />
+        <h3>Closed Campaigns</h3>
+        <hr />
+
+        <table class="table shadow overflow-auto">
+            <tr class="thead-dark">
+                <th>
+                    <p>Campaign Name</p>
+                </th>
+                <th>
+                    <p>Start Date</p>
+                </th>
+                <th>
+                    <p>End Date</p>
+                </th>
+                <th>
+                    <p>Inventory</p>
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Where(i => i.EndDate < DateTime.Now))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CamName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Inventory)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CamID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CamID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CamID })
+                    </td>
+                </tr>
+            }
+        </table>
+
+
+    </div>
+</div>
