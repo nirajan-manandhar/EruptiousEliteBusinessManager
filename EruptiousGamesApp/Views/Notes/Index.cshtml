@@ -6,72 +6,75 @@
 
 <style>
     .colored {
-        background-color:lightgrey;
+        background-color: lightgrey;
     }
+
     .left {
-        width:30%
+        width: 30%
     }
+
     table, th, td, tr {
         border: 2px solid grey;
         border-collapse: collapse;
     }
+
     div.scrollable {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: auto;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: auto;
     }
+
     table {
-      table-layout: fixed;
-      height: 50px;
+        table-layout: fixed;
+        height: 50px;
     }
 </style>
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-
-@foreach (var item in Model)
+@foreach (var item in Model.Reverse())
 {
-<table class="table">
-    <tr>
-        <td class="colored left">
-            @Html.DisplayNameFor(model => model.Title):
-        </td>
-        <td rowspan="6">
-            <div class="scrollable">
-                @Html.DisplayFor(modelItem => item.Comment)
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td class="left">
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-    </tr>
-    <tr>
-        <td class="colored left">
-            @Html.DisplayNameFor(model => model.Employee.EmpName):
-        </td>
-    </tr>
-    <tr>
-        <td class="left">
-            @Html.DisplayFor(modelItem => item.Employee.EmpName)
-        </td>
-    </tr>
-    <tr>
-        <td class="colored left">
-            @Html.DisplayNameFor(model => model.DateTime):
-        </td>
+    <table class="table">
+        <tr>
+            <td class="colored left">
+                @Html.DisplayNameFor(model => model.Title):
+            </td>
+            <td rowspan="6">
+                <div class="scrollable">
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </div>
+            </td>
         </tr>
-    <tr>
-        <td class="left">
-            @Html.DisplayFor(modelItem => item.DateTime)
-        </td>
-    </tr>
-</table>
+        <tr>
+            <td class="left">
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+        </tr>
+        <tr>
+            <td class="colored left">
+                @Html.DisplayNameFor(model => model.Employee.EmpName):
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                @Html.DisplayFor(modelItem => item.Employee.EmpName)
+            </td>
+        </tr>
+        <tr>
+            <td class="colored left">
+                @Html.DisplayNameFor(model => model.DateTime):
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                @Html.DisplayFor(modelItem => item.DateTime)
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        @Html.ActionLink("Delete", "Delete")
+    </p>
 }
