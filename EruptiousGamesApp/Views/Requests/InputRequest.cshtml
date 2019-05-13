@@ -46,13 +46,19 @@
                     </div>
                 </div>
             </div>
+
+            if ((int)(Model.employee.Role) != 0)
+            {
+                <div class="card arial" style="margin-top: 10px">
+                    <h5 style="margin-top:10px; margin-left: 10px">Admin Quick Access</h5>
+                    <div style="margin:10px;font-size:medium">
+                        @Html.ActionLink("List of Requests", "RequestAdmin")
+                    </div>
+                </div>   
+            }
         }
-        @if ((int)(Model.employee.Role) != 0)
-        {
-            <div>
-                @Html.ActionLink("Back to List", "Index")
-            </div>
-        }
+
+
 
     </div>
     </div>
