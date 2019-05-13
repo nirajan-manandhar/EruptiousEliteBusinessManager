@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Index";
-    <link href="~/Content/adminForms.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 }
 
@@ -17,8 +16,9 @@
         <h3>Open Campaigns</h3>
         <hr />
 
-        <table class="table shadow overflow-auto">
-            <tr class="thead-dark">
+        <div class="table-responsive">
+        <table class="table table-hover">
+            <tr class="table-primary">
                 <th>
                     <p>Campaign Name</p>
                 </th>
@@ -57,13 +57,14 @@
                 </tr>
             }
         </table>
+        </div>
 
         <hr />
         <h3>Closed Campaigns</h3>
         <hr />
 
-        <table class="table shadow overflow-auto">
-            <tr class="thead-dark">
+        <table class="table table-hover">
+            <tr class="table-primary">
                 <th>
                     <p>Campaign Name</p>
                 </th>
