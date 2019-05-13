@@ -4,17 +4,8 @@
     Download Customer Info
 </h2>
 
-@*
-    DateTime Start = new DateTime(2019, 5, 1);
-    DateTime End = new DateTime(2019, 5, 31);
-    
-    
-    <div>
-        <a href="@Url.Action("DownloadExcel","Account",new { Start = 05/11/2019, End = 05/12/2019 })">Download Excel</a>
-    </div>*@
-
 <div>
-    <a href="@Url.Action("DownloadExcel","Account")">Download Excel</a>
+    @Html.ActionLink("Download Excel","excelCustomer", "Campaigns")
 </div>
 
 
