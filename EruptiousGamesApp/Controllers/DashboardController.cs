@@ -1,4 +1,5 @@
-﻿using EruptiousGamesApp.Models;
+﻿using EruptiousGamesApp.Entities;
+using EruptiousGamesApp.Models;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,12 @@ namespace EruptiousGamesApp.Controllers
             public int campaignInfoColleted { get; set; }
 
             public int totalAccount { get; set; }
+
+            public double closingRatio { get; set; }
+
+            public Employee employee;
+
+            public Campaign campaign;
         }
 
         public ActionResult Index()
@@ -31,8 +38,11 @@ namespace EruptiousGamesApp.Controllers
 
             string currentUserId = User.Identity.GetUserId();
             ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
-
+            
+            
             int empID = currentUser.Employee.EmpID;
+            di.employee = currentUser.Employee;
+
 
             var work = db.Works.Where(s => s.EmpID == empID);
             if (work.Count() > 0)
@@ -54,6 +64,8 @@ namespace EruptiousGamesApp.Controllers
             }
 
             var todayCam = currentUser.GetTodaysCampaign();
+
+            di.campaign = todayCam;
 
             if (todayCam == null)
             {
@@ -82,6 +94,15 @@ namespace EruptiousGamesApp.Controllers
 
             di.totalAccount = db.Employees.Count();
 
+            if (di.personalPlayed == 0)
+            {
+                di.closingRatio = 0;
+            } else
+            {
+                double sale = Convert.ToDouble(di.personalSale);
+                double played = Convert.ToDouble(di.personalPlayed);
+                di.closingRatio = Math.Round(((sale / played) * 100), 2);
+            }
             return View(di);
         }
 
@@ -95,7 +116,6 @@ namespace EruptiousGamesApp.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }
