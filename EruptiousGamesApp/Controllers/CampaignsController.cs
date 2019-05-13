@@ -21,25 +21,10 @@ namespace EruptiousGamesApp.Controllers
             return View(db.Campaigns.ToList());
         }
 
-        // GET: Campaigns/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Campaign campaign = db.Campaigns.Find(id);
-            if (campaign == null)
-            {
-                return HttpNotFound();
-            }
-            return View(campaign);
-        }
-
         // GET: Campaigns/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView("Create", new Campaign());
         }
 
         // POST: Campaigns/Create
@@ -56,6 +41,21 @@ namespace EruptiousGamesApp.Controllers
                 return RedirectToAction("Index");
             }
 
+            return View(campaign);
+        }
+
+        // GET: Campaigns/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Campaign campaign = db.Campaigns.Find(id);
+            if (campaign == null)
+            {
+                return HttpNotFound();
+            }
             return View(campaign);
         }
 
