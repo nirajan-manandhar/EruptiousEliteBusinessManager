@@ -70,3 +70,21 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+
+table {
+    width:100%
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 1em;
+    background: #ddd;
+    border-bottom: 2px solid white;
+    font-family: 'Nunito', sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 26.4px;
+}
