@@ -35,6 +35,8 @@ namespace EruptiousGamesApp.Controllers
         public ActionResult RequestAdmin()
         {
             var requests = db.Requests.Include(r => r.Campaign).Include(r => r.Employee);
+            var employees = db.Employees.ToList();
+            ViewBag.employeeList = employees;
             return View(requests.ToList());
         }
 
@@ -175,10 +177,13 @@ namespace EruptiousGamesApp.Controllers
             if (request.Action == Entities.Action.REQUEST)
             {
                 request.Employee.DecksOnHand += request.Amount;
+                request.Campaign.Inventory -= request.Amount;
             }
             else
             {
                 request.Employee.DecksOnHand -= request.Amount;
+                request.Campaign.Inventory += request.Amount;
+
             }
 
             string currentUserId = User.Identity.GetUserId();

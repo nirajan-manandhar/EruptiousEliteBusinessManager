@@ -160,14 +160,23 @@ namespace EruptiousGamesApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AccountEdit([Bind(Include = "Id,UserName,Employee")] ApplicationUser ApplicationUser)
+        public async Task<ActionResult> AccountEdit([Bind(Include = "Id,UserName,Employee")] ApplicationUser ApplicationUser)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(ApplicationUser).State = EntityState.Modified;
-                db.Entry(ApplicationUser.Employee).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("AccountList");
+                var user = UserManager.FindById(ApplicationUser.Id);
+                user.UserName = ApplicationUser.UserName;
+
+                var result = await UserManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    db.Entry(ApplicationUser.Employee).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("AccountList", "Account");
+                }
+                AddErrors(result);
+
+                return View(ApplicationUser);
             }
 
             return View(ApplicationUser);
