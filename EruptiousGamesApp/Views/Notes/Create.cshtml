@@ -6,6 +6,17 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 }
 
+<script>
+    function ClickOnce(button) {
+        let newbutton = button.cloneNode(true);
+        newbutton.disabled = true;
+
+        button.parentNode.insertBefore(newbutton, button);
+        button.style.display = "none";
+    }
+
+</script>
+
 <div class="mainContent">
     <div class="form-basic">
         <img class="mb-4" src='@Url.Content("~/Content/Images/feedbackButton.png")' style="width:80%;display: block; margin-left: auto; margin-right: auto;">
@@ -52,7 +63,7 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <button type="submit" class="btn btn-light shadow">
+                        <button type="submit" class="btn btn-light shadow" onclick="ClickOnce(this)">
                             <img src="~/Content/Images/submitButton.png" style="max-width:120px" />
                         </button>
                         <br />
@@ -68,10 +79,6 @@
 
     </div>
 </div>
-
-
-
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

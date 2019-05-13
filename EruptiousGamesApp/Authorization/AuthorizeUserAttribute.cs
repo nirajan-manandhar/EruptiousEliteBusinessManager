@@ -27,7 +27,7 @@ namespace EruptiousGamesApp.Authorization
 
             Role CurrentRole = GetUserRole(httpContext.User.Identity.Name.ToString());
 
-            return CurrentRole == this.Role;
+            return CurrentRole >= this.Role;
         }
 
         private Role GetUserRole(string UserName)
