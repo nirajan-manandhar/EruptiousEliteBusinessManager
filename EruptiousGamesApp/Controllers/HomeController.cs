@@ -82,5 +82,11 @@ namespace EruptiousGamesApp.Controllers
 
             return View();
         }
+
+        public ActionResult Unauthorised()
+        {
+            ViewBag.Message = "Sorry, you are not Authorized to access this page.";
+            return View();
+        }
     }
 }
