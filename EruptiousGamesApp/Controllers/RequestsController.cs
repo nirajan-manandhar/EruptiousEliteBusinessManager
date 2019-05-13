@@ -113,12 +113,13 @@ namespace EruptiousGamesApp.Controllers
             {
                 db.Requests.Add(request);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
             ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
-            return View(request);
+            //return View(request);
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Requests/Edit/5
@@ -174,11 +175,12 @@ namespace EruptiousGamesApp.Controllers
             if (request.Action == Entities.Action.REQUEST)
             {
                 request.Employee.DecksOnHand += request.Amount;
-            } else
+            }
+            else
             {
                 request.Employee.DecksOnHand -= request.Amount;
             }
-            
+
             string currentUserId = User.Identity.GetUserId();
             ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
 
@@ -188,10 +190,10 @@ namespace EruptiousGamesApp.Controllers
             {
                 //db.Entry(request).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("RequestAdmin");
             }
 
-            return RedirectToAction("Index", "Requests");
+            return RedirectToAction("RequestAdmin");
         }
 
         // GET: Requests/Decline/5
@@ -218,27 +220,27 @@ namespace EruptiousGamesApp.Controllers
             {
                 //db.Entry(request).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("RequestAdmin");
             }
-            return RedirectToAction("Index", "Requests");
+            return RedirectToAction("RequestAdmin");
         }
 
 
-        // POST: Requests/ChangeStatus/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ChangeStatus([Bind(Include = "RequestID,CamID,EmpID,DateTime,Amount,Action,RequestStatus")] Request request)
+        // GET: Requests/ChangeStatus/5
+        public ActionResult ChangeStatus(int? id)
         {
-            if (ModelState.IsValid)
+            if (id == null)
             {
-                db.Entry(request).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Request request = db.Requests.Find(id);
+            if (request == null)
+            {
+                return HttpNotFound();
             }
             ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
             ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
+
             return View(request);
         }
 

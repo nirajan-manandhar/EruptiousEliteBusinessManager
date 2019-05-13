@@ -16,6 +16,12 @@ namespace EruptiousGamesApp.Controllers
 
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        // GET: Customer/Index
+        public ActionResult Index()
+        {
+            return RedirectToAction("Create", "CustomerInfo");
+        }
+
         // GET: Customers/Create
         public ActionResult Create()
         {
@@ -38,7 +44,7 @@ namespace EruptiousGamesApp.Controllers
             {
                 db.Customers.Add(customer);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
 
             ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", customer.CamID);

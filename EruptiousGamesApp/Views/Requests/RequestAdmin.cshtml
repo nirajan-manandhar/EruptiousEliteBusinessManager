@@ -2,72 +2,168 @@
 
 @{
     ViewBag.Title = "Index";
+    <link href="~/Content/adminForms.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 }
 
-<h2>Index</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-    
-</p>
-<div class="table-responsive">
-    <table class="table">
-        <tr class="thead-dark">
-            <th>
-                Campaign Name
-            </th>
-            <th>
-                Employee Name
-            </th>
-            <th>
-                Date and Time
-            </th>
-            <th>
-                Amount of Decks
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Action)
-            </th>
-            <th>
-                Status
-            </th>
-            <th></th>
-        </tr>
+<div style="margin-top:5%">
+    <img class="mb-4" src='@Url.Content("~/Content/Images/inventoryRequest.png")' style="width:50%; max-width:350px;display: block; margin-left: auto; margin-right: auto;">
+    <hr />
 
-        @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Campaign.CamName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee.EmpName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Action)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RequestStatus)
-            </td>
-            <td>
-                @if ((int)(item.RequestStatus) == 0)
-                {
-                    <button class="btn btn-outline-success btn-sm shadow">
-                        @Html.ActionLink("Approve", "Approve", new { id = item.RequestID })
-                    </button>
-                    <button class="btn btn-outline-danger btn-sm shadow">
-                        @Html.ActionLink("Deny", "Deny", new { id = item.RequestID })
-                    </button>
+    <a href='@Url.Action("InputRequest", "Requests")'>
+        <button class="btn btn-light btn-lg btn-block shadow" style="height:100px">
+            <img class="mb-4" src='@Url.Content("~/Content/Images/addInventory.png")' style="width:30%; max-width:150px;display: block; margin-left: auto; margin-right: auto;">
+        </button>
+    </a>
+    <hr />
+    <div class="card text-center shadow">
+        <div class="card-header">
+            <img src="~/Content/Images/request.png" style="width:20%; max-width:100px" />
+            <h2 class="arial">Requests</h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table-bordered">
+                <table class="table">
+                    <tr class="thead-dark">
+                        <th>
+                            Campaign Name
+                        </th>
+                        <th>
+                            Employee Name
+                        </th>
+                        <th>
+                            Date and Time
+                        </th>
+                        <th>
+                            Amount of Decks
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Action)
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        if ((int)(item.Action) == 0)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Campaign.CamName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Employee.EmpName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateTime)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Amount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Action)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RequestStatus)
+                                </td>
+                                <td>
+                                    @if ((int)(item.RequestStatus) == 0)
+                                    {
+                                        <button class="btn btn-outline-success btn-sm shadow">
+                                            @Html.ActionLink("Approve", "Approve", new { id = item.RequestID })
+                                        </button>
+                                        <button class="btn btn-outline-danger btn-sm shadow">
+                                            @Html.ActionLink("Deny", "Deny", new { id = item.RequestID })
+                                        </button>
+                                    }
+                                </td>
+                            </tr>
+                        }
                     }
-                </td>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <br />
+    <div class="card text-center shadow">
+        <div class="card-header">
+            <img src="~/Content/Images/return.png" style="width:20%; max-width:100px" />
+            <h2 class="arial">Returns</h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table-bordered">
+                <table class="table">
+                    <tr class="thead-dark">
+                        <th>
+                            Campaign Name
+                        </th>
+                        <th>
+                            Employee Name
+                        </th>
+                        <th>
+                            Date and Time
+                        </th>
+                        <th>
+                            Amount of Decks
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Action)
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        if ((int)(item.Action) == 1)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Campaign.CamName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Employee.EmpName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateTime)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Amount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Action)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RequestStatus)
+                                </td>
+                                <td>
+                                    @if ((int)(item.RequestStatus) == 0)
+                                    {
+                                        <button class="btn btn-outline-success btn-sm shadow">
+                                            @Html.ActionLink("Approve", "Approve", new { id = item.RequestID })
+                                        </button>
+                                        <button class="btn btn-outline-danger btn-sm shadow">
+                                            @Html.ActionLink("Deny", "Deny", new { id = item.RequestID })
+                                        </button>
+                                    }
+                                </td>
 
 
-        </tr>
-}
+                            </tr>
+                        }
+                    }
 
-    </table>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
 </div>
