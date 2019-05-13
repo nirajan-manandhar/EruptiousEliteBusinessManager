@@ -351,6 +351,8 @@
     <Content Include="Views\Requests\RequestAdmin.cshtml" />
     <Content Include="Views\Requests\ChangeStatus.cshtml" />
     <Content Include="Views\Home\Unauthorised.cshtml" />
+    <Content Include="Views\Customers\excelCustomer.cshtml" />
+    <Content Include="Views\Campaigns\excelCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
