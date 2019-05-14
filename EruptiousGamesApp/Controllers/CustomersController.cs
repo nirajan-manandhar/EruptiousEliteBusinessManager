@@ -2,18 +2,27 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EruptiousGamesApp.Entities;
 using EruptiousGamesApp.Models;
+using OfficeOpenXml;
 
 namespace EruptiousGamesApp.Controllers
 {
     public class CustomersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        public class CustomerFilter
+        {
+            public DateTime startDate;
+            public DateTime endDate;
+        }
+
 
         // GET: Customers
         public ActionResult Index()
@@ -134,6 +143,61 @@ namespace EruptiousGamesApp.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult excelCustomer()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public void excelCustomer([Bind(Include = "startDate, endDate")] CustomerFilter cf)
+        {
+            Debug.WriteLine(cf.startDate);
+            Debug.WriteLine(cf.endDate);
+
+            var Customers = db.Customers.Include(r => r.Campaign).Include(r => r.Employee).Where(x => x.DateTime >= cf.startDate).Where(x => x.DateTime <= cf.endDate).ToList();
+
+            ExcelPackage Ep = new ExcelPackage();
+            ExcelWorksheet Sheet = Ep.Workbook.Worksheets.Add("Customer");
+            Sheet.Cells["A1"].Value = "ID";
+            Sheet.Cells["B1"].Value = "Campaign Name";
+            Sheet.Cells["C1"].Value = "Employee Name";
+            Sheet.Cells["D1"].Value = "Date Time";
+            Sheet.Cells["E1"].Value = "Name";
+            Sheet.Cells["F1"].Value = "E-mail";
+            Sheet.Cells["G1"].Value = "Phone";
+            Sheet.Cells["H1"].Value = "City";
+            Sheet.Cells["I1"].Value = "Age";
+            Sheet.Cells["J1"].Value = "Gender";
+            Sheet.Cells["K1"].Value = "PTCheck";
+
+            int row = 2;
+            foreach (var item in Customers)
+            {
+
+                Sheet.Cells[string.Format("A{0}", row)].Value = item.CustID;
+                Sheet.Cells[string.Format("B{0}", row)].Value = item.Campaign.CamName;
+                Sheet.Cells[string.Format("C{0}", row)].Value = item.Employee.EmpName;
+                Sheet.Cells[string.Format("D{0}", row)].Value = item.DateTime.ToString("MM/dd/yyyy hh:mm tt");
+                Sheet.Cells[string.Format("E{0}", row)].Value = item.CustName;
+                Sheet.Cells[string.Format("F{0}", row)].Value = item.Email;
+                Sheet.Cells[string.Format("G{0}", row)].Value = item.Phone;
+                Sheet.Cells[string.Format("H{0}", row)].Value = item.City;
+                Sheet.Cells[string.Format("I{0}", row)].Value = item.Age;
+                Sheet.Cells[string.Format("J{0}", row)].Value = item.Gender;
+                Sheet.Cells[string.Format("K{0}", row)].Value = item.PTCheck;
+                row++;
+            }
+
+
+            Sheet.Cells["A:AZ"].AutoFitColumns();
+            Response.Clear();
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment: filename=" + "Report.xlsx");
+            Response.BinaryWrite(Ep.GetAsByteArray());
+            Response.End();
         }
     }
 }
