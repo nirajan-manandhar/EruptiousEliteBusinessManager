@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using WebMatrix.Data;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -11,32 +12,45 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    @{
+        EruptiousGamesApp.Models.ApplicationDbContext db = new EruptiousGamesApp.Models.ApplicationDbContext();
 
+        var database = Database.Open("DefaultConnection");
+        var currentUserId = User.Identity.GetUserId();
+        var employeeID = database.QueryValue("SELECT Employee_EmpID FROM AspNetUsers WHERE Id = '" + currentUserId + "'");
+        EruptiousGamesApp.Entities.Employee employee = db.Employees.Find(employeeID);
+        var employeeRole = employee.Role;
+
+
+    }
 </head>
 <body>
     @if (Request.IsAuthenticated)
     {
-        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-            <!-- Brand -->
-            <a class="navbar-brand" href='@Url.Action("Index", "Home")'>
-                <img src='@Url.Content("~/Content/Images/Logo.png")' style="width:100px; margin:5px; float:left" />
-            </a>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <!-- Brand -->
+        <a class="navbar-brand" href='@Url.Action("Index", "Home")'>
+            <img src='@Url.Content("~/Content/Images/Logo.png")' style="width:100px; margin:5px; float:left" />
+        </a>
 
-            <!-- Toggler/collapsibe Button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <!-- Navbar links -->
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav" style="margin-left:5px">
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav" style="margin-left:5px">
 
-                    <li class="nav-item h6">
-                        @Html.ActionLink("Dashboard", "Index", "Dashboard", null, new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item h6">
-                        @Html.ActionLink("Workspace", "Index", "Home", null, new { @class = "nav-link" })
-                    </li>
+                <li class="nav-item h6">
+                    @Html.ActionLink("Dashboard", "Index", "Dashboard", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item h6">
+                    @Html.ActionLink("Workspace", "Index", "Home", null, new { @class = "nav-link" })
+                </li>
+
+                @if ((int)employeeRole != 0)
+                {
                     <li class="nav-item h6">
                         @Html.ActionLink("Campaigns", "Index", "Campaigns", null, new { @class = "nav-link" })
                     </li>
@@ -46,9 +60,14 @@
                     <li class="nav-item h6">
                         @Html.ActionLink("Inventory", "RequestAdmin", "Requests", null, new { @class = "nav-link" })
                     </li>
-                    <li class="nav-item h6">
-                        @Html.ActionLink("Account", "AccountList", "Account", null, new { @class = "nav-link" })
-                    </li>
+                    if ((int)employeeRole == 2)
+                    {
+                        <li class="nav-item h6">
+                            @Html.ActionLink("Account", "AccountList", "Account", null, new { @class = "nav-link" })
+                        </li>
+                    }
+                }
+
                     <li class="nav-item h6">
                         @if (Request.IsAuthenticated)
                         {
@@ -61,8 +80,8 @@
                     </li>
 
                 </ul>
-            </div>
-        </nav>
+        </div>
+    </nav>
     }
     <div class="container body-content">
         @RenderBody()
@@ -80,15 +99,15 @@
     @RenderSection("scripts", required: false)
     @RenderSection("Footer", false)
 
-<script>
-    $(document).on('click', '.navbar-collapse.in', function (e) {
-    if( $(e.target).is('a') ) {
+    <script>
+        $(document).on('click', '.navbar-collapse.in', function (e) {
+            if ($(e.target).is('a')) {
 
-        $(this).collapse('hide');
-    }
-    });
-</script>
-    
+                $(this).collapse('hide');
+            }
+        });
+    </script>
+
 
 </body>
 </html>

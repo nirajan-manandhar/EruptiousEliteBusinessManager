@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using EruptiousGamesApp.Models;
 using EruptiousGamesApp.Entities;
 using System.Data.Entity;
+using System.Data.Entity;
 using System.Net;
 using EruptiousGamesApp.Authorization;
 using OfficeOpenXml;
@@ -98,7 +99,8 @@ namespace EruptiousGamesApp.Controllers
             }
         }
 
-        // GET: /Account/AccountCreaet
+        // GET: /Account/AccountCreate
+        [AuthorizeUser(Role = Role.ADMIN)]
         public ActionResult AccountCreate()
         {
             return View();
@@ -140,6 +142,7 @@ namespace EruptiousGamesApp.Controllers
         }
 
         // GET: Account/AccountEdit/5
+        [AuthorizeUser(Role = Role.ADMIN)]
         public ActionResult AccountEdit(string id)
         {
             if (id == null)
@@ -183,6 +186,7 @@ namespace EruptiousGamesApp.Controllers
         }
 
         // GET: Account/AccountChangePassword/5
+        [AuthorizeUser(Role = Role.ADMIN)]
         public ActionResult AccountChangePassword(string id)
         {
             if (id == null)

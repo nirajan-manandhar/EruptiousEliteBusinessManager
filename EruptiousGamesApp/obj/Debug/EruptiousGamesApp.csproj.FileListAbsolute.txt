@@ -756,3 +756,5 @@ C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\OfficeOpe
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\System.IO.Packaging.dll
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\OfficeOpenXml.Core.ExcelPackage.pdb
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csprojAssemblyReference.cache
+C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\WebMatrix.Data.dll
+C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\WebMatrix.Data.xml
