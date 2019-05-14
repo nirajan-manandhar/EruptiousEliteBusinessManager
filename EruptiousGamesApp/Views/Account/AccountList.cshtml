@@ -48,7 +48,8 @@
                 @Html.DisplayFor(modelItem => item.Employee.Role)
             </td>
             <td>
-                @Html.ActionLink("Edit", "AccountEdit", new { id = item.Id })
+                @Html.ActionLink("Edit", "AccountEdit", new { id = item.Id }) |
+                @Html.ActionLink("Change Password", "AccountChangePassword", new { id = item.Id })
             </td>
         </tr>
     }
