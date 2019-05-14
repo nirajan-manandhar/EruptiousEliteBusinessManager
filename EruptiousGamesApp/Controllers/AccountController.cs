@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using EruptiousGamesApp.Models;
 using EruptiousGamesApp.Entities;
 using System.Data.Entity;
+using System.Data.Entity;
 using System.Net;
 using EruptiousGamesApp.Authorization;
 using OfficeOpenXml;
@@ -108,7 +109,7 @@ namespace EruptiousGamesApp.Controllers
             }
         }
 
-        // GET: /Account/AccountCreaet
+        // GET: /Account/AccountCreate
         [AuthorizeUser(Role = Role.ADMIN)]
         public ActionResult AccountCreate()
         {
