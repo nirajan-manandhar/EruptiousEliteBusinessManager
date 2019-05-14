@@ -10,12 +10,19 @@ using EruptiousGamesApp.Entities;
 using EruptiousGamesApp.Models;
 
 namespace EruptiousGamesApp.Controllers
+
 {
     public class CampaignsController : Controller
     {
+        public class CampaignEmployee
+        {
+            public Campaign campaign;
+            public IEnumerable<Employee> employeeList;
+        }
+
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Campaigns
+        // GET: Campaigns/ (Default) OR Campaigns/Index 
         public ActionResult Index()
         {
             return View(db.Campaigns.ToList());
@@ -24,7 +31,7 @@ namespace EruptiousGamesApp.Controllers
         // GET: Campaigns/Create
         public ActionResult Create()
         {
-            return PartialView("Create", new Campaign());
+            return View("Create", new Campaign());
         }
 
         // POST: Campaigns/Create
@@ -44,6 +51,52 @@ namespace EruptiousGamesApp.Controllers
             return View(campaign);
         }
 
+        //GET: Campaigns/AssignEmp
+        public ActionResult AssignEmp(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Campaign campaign = db.Campaigns.Find(id);
+            if (campaign == null)
+            {
+                return HttpNotFound();
+            }
+
+            CampaignEmployee ce = new CampaignEmployee
+            {
+                campaign = campaign,
+                employeeList = db.Employees.ToList()
+            };
+            return View(ce);
+
+        }
+
+        // POST: Campaigns/AssignEmp
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AssignEmp(int? camID, int? empID)
+        {
+            Campaign campaign = db.Campaigns.Find(camID);
+            Employee employee = db.Employees.Find(empID);
+
+            bool has = campaign.Employees.Any(cus => cus.EmpID == empID);
+
+            if (has)
+            {
+                campaign.Employees.Remove(employee);
+            } else
+            {
+                campaign.Employees.Add(employee);
+            }
+            
+            db.SaveChanges();
+
+            return View(camID);
+        }
+
         // GET: Campaigns/Details/5
         public ActionResult Details(int? id)
         {
@@ -56,6 +109,7 @@ namespace EruptiousGamesApp.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(campaign);
         }
 

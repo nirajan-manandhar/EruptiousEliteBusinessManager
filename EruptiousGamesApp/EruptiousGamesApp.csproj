@@ -350,6 +350,7 @@
     <Content Include="Views\Requests\RequestAdmin.cshtml" />
     <Content Include="Views\Requests\ChangeStatus.cshtml" />
     <Content Include="Views\Home\Unauthorised.cshtml" />
+    <Content Include="Views\Campaigns\AssignEmp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -629,7 +629,6 @@ D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\Eruptiou
 D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.CopyComplete
 D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.dll
 D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work_new\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.pdb
-C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration41.resources
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csprojAssemblyReference.cache
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\bin\EPPlus.dll
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\bin\EPPlus.xml
@@ -641,3 +640,4 @@ C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\EPPlus.dl
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\EPPlus.xml
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration99.resources
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csprojAssemblyReference.cache
+C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration99.resources
