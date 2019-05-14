@@ -135,7 +135,7 @@ namespace EruptiousGamesApp.Controllers
         [AuthorizeUser(Role = Role.ADMIN)]
         public ActionResult AccountList()
         {
-            var users = db.Users.Include(r => r.Employee);
+            var users = db.Users.Include(r => r.Employee).OrderBy(r => r.Employee.EmpName);
             return View(users.ToList());
         }
 
@@ -180,6 +180,51 @@ namespace EruptiousGamesApp.Controllers
             }
 
             return View(ApplicationUser);
+        }
+
+        // GET: Account/AccountChangePassword/5
+        public ActionResult AccountChangePassword(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ApplicationUser ApplicationUser = db.Users.Include(r => r.Employee).FirstOrDefault(x => x.Id == id);
+            if (ApplicationUser == null)
+            {
+                return HttpNotFound();
+            }
+
+            ChangePasswordModel model = new ChangePasswordModel();
+            model.UserId = ApplicationUser.Id;
+
+            return View(model);
+        }
+
+        // POST: Account/AccountEdit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AccountChangePassword([Bind(Include = "UserId,Password,ConfirmPassword")]ChangePasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = UserManager.RemovePassword(model.UserId);
+                
+                if (result.Succeeded)
+                {
+                    var result2 = await UserManager.AddPasswordAsync(model.UserId, model.Password);
+                    if (result2.Succeeded)
+                    {
+                        return RedirectToAction("AccountList");
+                    }
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
         }
 
         //public void DownloadExcel(DateTime Start, DateTime End)
