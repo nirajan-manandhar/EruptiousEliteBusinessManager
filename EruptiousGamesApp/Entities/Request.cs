@@ -33,6 +33,7 @@ namespace EruptiousGamesApp.Entities
         [Required]
         public DateTime DateTime { get; set; }
         [Required]
+        [Range(1, int.MaxValue)]
         public int Amount { get; set; }
         [Required]
         public Action Action { get; set; }

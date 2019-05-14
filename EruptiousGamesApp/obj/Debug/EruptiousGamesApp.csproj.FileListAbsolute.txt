@@ -640,7 +640,6 @@ D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGam
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\EPPlus.dll
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\EPPlus.xml
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration99.resources
-C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csprojAssemblyReference.cache
 C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\EruptiousGamesApp.dll.config
 C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\EruptiousGamesApp.dll
 C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\EruptiousGamesApp.pdb
@@ -753,3 +752,7 @@ C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\obj\Debu
 D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\OfficeOpenXml.Core.ExcelPackage.dll
 D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\System.IO.Packaging.dll
 D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\OfficeOpenXml.Core.ExcelPackage.pdb
+C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\OfficeOpenXml.Core.ExcelPackage.dll
+C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\System.IO.Packaging.dll
+C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\OfficeOpenXml.Core.ExcelPackage.pdb
+C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csprojAssemblyReference.cache
