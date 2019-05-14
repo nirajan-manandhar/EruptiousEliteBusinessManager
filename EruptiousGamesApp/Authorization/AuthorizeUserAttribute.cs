@@ -27,13 +27,21 @@ namespace EruptiousGamesApp.Authorization
 
             Role CurrentRole = GetUserRole(httpContext.User.Identity.Name.ToString());
 
-            return CurrentRole >= this.Role;
+            EmpStatus CurrentEmpStatus = GetUserEmpStatus(httpContext.User.Identity.Name.ToString());
+
+            return CurrentRole >= this.Role && CurrentEmpStatus == EmpStatus.ACTIVE;
         }
 
         private Role GetUserRole(string UserName)
         {
             ApplicationUser currentUser = db.Users.Include(r => r.Employee).FirstOrDefault(x => x.UserName == UserName);
             return currentUser.Employee.Role;
+        }
+
+        private EmpStatus GetUserEmpStatus(string UserName)
+        {
+            ApplicationUser currentUser = db.Users.Include(r => r.Employee).FirstOrDefault(x => x.UserName == UserName);
+            return currentUser.Employee.EmpStatus;
         }
 
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
