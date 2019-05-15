@@ -11,7 +11,6 @@ using Microsoft.Owin.Security;
 using EruptiousGamesApp.Models;
 using EruptiousGamesApp.Entities;
 using System.Data.Entity;
-using System.Data.Entity;
 using System.Net;
 using EruptiousGamesApp.Authorization;
 using OfficeOpenXml;
