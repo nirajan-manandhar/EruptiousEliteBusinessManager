@@ -6,9 +6,6 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -20,7 +17,7 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model.employeeList.Where(i => i.EmpStatus.ToString() == "ACTIVE"))
+    @foreach (var item in Model.assignedEmployeeList)
     {
         <tr>
             <td>
@@ -30,12 +27,44 @@
                 @Html.DisplayFor(modelItem => item.Role)
             </td>
             <td>
-                @Html.ActionLink("Assign", "AssignEmp", "Assign", new { camID = Model.campaign.CamID, empID = item.EmpID }) |
-                @Html.ActionLink("Remove", "AssignEmp", new { camID = Model.campaign.CamID, empID = item.EmpID})
+                @Html.ActionLink("Remove", "RemoveAction", new { camID = Model.campaign.CamID, empID = item.EmpID }) |
             </td>
         </tr>
     }
 
 </table>
+
+<table class="table">
+    <tr>
+        <th>
+            Employee Name
+        </th>
+        <th>
+            Role
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.unassignedEmployeeList)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @Html.ActionLink("Assign", "AssignAction", new { camID = Model.campaign.CamID, empID = item.EmpID }) |
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+
+
 
 

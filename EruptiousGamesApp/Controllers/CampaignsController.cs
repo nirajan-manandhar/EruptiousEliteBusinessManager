@@ -20,7 +20,8 @@ namespace EruptiousGamesApp.Controllers
         public class CampaignEmployee
         {
             public Campaign campaign;
-            public IEnumerable<Employee> employeeList;
+            public IEnumerable<Employee> assignedEmployeeList;
+            public IEnumerable<Employee> unassignedEmployeeList;
         }
 
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -59,29 +60,67 @@ namespace EruptiousGamesApp.Controllers
         }
 
         //GET: Campaigns/AssignEmp
-        public ActionResult AssignEmp(int? id)
-        {
 
+        public ActionResult AssignEmp(int? id)//This id is CamID
+        {
+       
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Campaign campaign = db.Campaigns.Find(id);
+
+            Campaign campaign = db.Campaigns.Include(c => c.Employees).FirstOrDefault(c => c.CamID == id);
+
             if (campaign == null)
             {
                 return HttpNotFound();
             }
 
+
+            var assignedEmployeeList = campaign.Employees.ToList(); //this is the list of the employees assigned to this Campaign
+            var unassignedEmployeeList = db.Employees.ToList(); //This is the list of all the employees in the company
+
+            foreach (Employee e in assignedEmployeeList.ToList())
+            {
+                unassignedEmployeeList.Remove(e);
+            }
+
             CampaignEmployee ce = new CampaignEmployee
             {
                 campaign = campaign,
-                employeeList = db.Employees.ToList()
+                assignedEmployeeList = assignedEmployeeList,
+                unassignedEmployeeList = unassignedEmployeeList
             };
             return View(ce);
 
         }
 
-        // POST: Campaigns/AssignEmp
+        public ActionResult AssignAction(int CamId, int EmpId)//Assign this EmpId to this CamId
+        {
+            Campaign campaign = db.Campaigns.Include(c => c.Employees).FirstOrDefault(c => c.CamID == CamId);
+            Employee employee = db.Employees.Find(EmpId);
+
+            campaign.Employees.Add(employee);
+
+            db.SaveChanges();
+
+            return RedirectToAction("AssignEmp", new { id = CamId });
+        }
+
+        public ActionResult RemoveAction(int CamId, int EmpId)//Remove this EmpId to this CamId
+        {
+            Campaign campaign = db.Campaigns.Include(c => c.Employees).FirstOrDefault(c => c.CamID == CamId);
+            Employee employee = db.Employees.Find(EmpId);
+
+            campaign.Employees.Remove(employee);
+
+            db.SaveChanges();
+
+            return RedirectToAction("AssignEmp", new { id = CamId });
+        }
+
+        // POST: Campaigns/AssignEmp 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AssignEmp(int? camID, int? empID)

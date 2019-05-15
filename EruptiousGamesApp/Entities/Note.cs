@@ -18,9 +18,7 @@ namespace EruptiousGamesApp.Entities
         public int EmpID { get; set; }
         [Required]
         public DateTime DateTime { get; set; }
-        [Required]
         public string Title { get; set; }
-        [Required]
         public string Comment { get; set; }
 
         public virtual Employee Employee { get; set; }
