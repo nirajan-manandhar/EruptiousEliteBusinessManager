@@ -2,38 +2,44 @@
 @model LoginViewModel
 @{
     ViewBag.Title = "Log in";
-    <link href="~/Content/signin.css" rel="stylesheet" type="text/css" />
 }
-<script type="text/javascript">
-    if (window.performance && window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
-        javascript: document.getElementById('logoutForm').submit();
-    }
-</script>
-<div class="form-signin">
-    <img class="mb-4" src='@Url.Content("~/Content/Images/Logo.png")' style="width:80%;display: block; margin-left: auto; margin-right: auto;">
-    <h1 class="h1 font-weight-bold mb-3 font-weight-normal" style="text-align:center">Log In</h1>
-    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            <h4><label class="control-label">Username</label></h4>
-            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
-        </div>
-        <div class="form-group">
-            <h4>@Html.LabelFor(m => m.Password, new { @class = "control-label" })</h4>
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-        </div>
 
-        <input type="submit" value="Log in" class="btn btn-lg btn-primary btn-block" />
+<br /><br />
+      
+      <div class="card text-center" style="margin:5%;">
+          <img src='@Url.Content("~/Content/Images/Logo.png")' style="width:50%; height:auto; margin:10px" />
+          <div class="card-body" style="margin:10%;">
+              <div class="row">
+                  @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                  {
+                      @Html.AntiForgeryToken()
+                      @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                      <div class="form-group" >
+                          <h4>@Html.LabelFor(m => m.UserName, new { @class = "col-md-3 control-label", @style = "text-align:right" })</h4>
+                          <div class="col-md-9">
+                              @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @style = "margin:auto" })
+                              @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <h4>@Html.LabelFor(m => m.Password, new { @class = "col-md-3 control-label", @style = "text-align:right" })</h4>
+                          <div class="col-md-9">
+                              @Html.PasswordFor(m => m.Password, new { @class = "form-control", @style = "margin:auto" })
+                              @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                          </div>
+                      </div>
 
-        <p class="mt-5 mb-3 text-muted">
-            &copy; @DateTime.Now.Year - Eruptious Games
-        </p>
-    }
-</div>
+                      <div class="form-group">
+                          <div class="col-md-offset-2 col-md-10">
+                              <input type="submit" value="Log in" class="btn btn-default" style="align-items:flex-end"/>
+                          </div>
+                      </div>
+
+                  }
+              </div>
+          </div>
+
+      </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

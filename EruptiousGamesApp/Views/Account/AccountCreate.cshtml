@@ -8,7 +8,8 @@
 @using (Html.BeginForm("AccountCreate", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-
+    <h4>Create a new account.</h4>
+    <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(model => model.Employee.EmpName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -51,7 +52,7 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Create" />
+            <input type="submit" class="btn btn-default" value="AccountCreate" />
         </div>
     </div>
 }

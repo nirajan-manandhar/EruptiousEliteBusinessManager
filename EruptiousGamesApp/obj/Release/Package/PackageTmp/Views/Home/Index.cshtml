@@ -1,62 +1,48 @@
-@{
+﻿@{
     ViewBag.Title = "Home Page";
-    <link href="~/Content/basic.css" rel="stylesheet" type="text/css" />
-
 }
 
-<div class="form-basic">
-    <img class="mb-4" src='@Url.Content("~/Content/Images/workspace.png")' style="width:50%;display: block; margin-left: auto; margin-right: auto;">
-    <h1 class="h1 font-weight-bold font-weight-normal textShadow" style="text-align:center; color: steelblue">Workspace</h1>
+    <div class="jumbotron" style="height:80vh; margin:5%; margin-top:10%; position:relative">
+        
 
-    <div class="row">
-        <div class="col-sm-12" style="margin:10px">
-            <a href='@Url.Action("Create", "CustomerInfo")'>
-                <button class="btn btn-light btn-lg btn-block shadow" style="height:150px">
-                    <img class="center" src='@Url.Content("~/Content/Images/custInfoButton.png")' width:60% />
-                </button>
-            </a>
+        <div class="text-center">
+            <h1>Workspace</h1>
         </div>
-        <div class="col-sm-12" style="margin:10px">
-            <a href='@Url.Action("InputRequest", "Requests")'>
-                <button class="btn btn-light btn-lg btn-block shadow" style="height:150px">
-                    <img class="center" src='@Url.Content("~/Content/Images/inventoryButton.png")' width:60% />
-                </button>
-            </a>
-        </div>
-        <div class="col-sm-12" style="margin:10px">
-            <a href='@Url.Action("Create", "Notes")'>
-                <button class="btn btn-light btn-lg btn-block shadow" style="height:150px">
-                    <img class="center" src='@Url.Content("~/Content/Images/feedbackButton.png")' width:60% />
+        <hr />
 
-                </button>
-            </a>
+        <br />
+        <div class="row" style="margin:3%">
+            <div class="col-md-4">
+                <a href='@Url.Action("Index", "Home")'>
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Customer Information</button>
+                </a>
+                <hr />
+            </div>
+            <div class="col-md-4">
+                <a href='@Url.Action("InputRequest", "Requests")'>
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Inventory</button>
+                </a>
+                <hr />
+            </div>
+            <div class="col-md-4">
+                <a href='@Url.Action("Index", "Home")'>
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Feedback</button>
+                </a>
+                <hr />
+            </div>
         </div>
-
-        <div class="col-sm-12" style="margin:10px">
-            <a href='@Url.Action("Index", "Dashboard")'>
-                <button type="button" class="btn btn-light btn-lg btn-block shadow" style="height:150px">
-                    <img class="center" src='@Url.Content("~/Content/Images/dashboardButton.png")' width:60% />
-                </button>
-            </a>
-        </div>
-
-        <div class="col-sm-12" style="margin:10px">
+        <div class="row" style="margin:7%">
             @if (Request.IsAuthenticated)
             {
                 using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                 {
                     @Html.AntiForgeryToken()
                     <a href="javascript:document.getElementById('logoutForm').submit()">
-                        <button type="button" class="btn btn-light btn-lg btn-block shadow" style="height:150px">
-                            <img class="center" src='@Url.Content("~/Content/Images/logoutButton.png")' style="width:60%" />
-                        </button>
+                        <button type="button" class="btn btn-danger btn-lg btn-block">Log Off</button>
                     </a>
                 }
             }
         </div>
-    </div>
-
-
 
     </div>
 
