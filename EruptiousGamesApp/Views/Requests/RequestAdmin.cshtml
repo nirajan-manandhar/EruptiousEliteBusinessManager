@@ -34,6 +34,7 @@
 
         @foreach (var item in Model) {
 <<<<<<< HEAD
+<<<<<<< HEAD
             @if ((int)(item.RequestStatus) == 1) { 
         <tr>
             <td>
@@ -47,6 +48,14 @@
             </td>
             <td>                
 >>>>>>> parent of ebf3d66... Inventory Functions Added
+=======
+            @if ((int)(item.RequestStatus) == 1) { 
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Campaign.CamName)
+            </td>
+            <td>
+>>>>>>> parent of b8948be... f
                 @Html.DisplayFor(modelItem => item.Employee.EmpName)
             </td>
             <td>
@@ -68,9 +77,13 @@
             </td>
         </tr>
 <<<<<<< HEAD
+<<<<<<< HEAD
         }
 =======
 >>>>>>> parent of ebf3d66... Inventory Functions Added
+=======
+        }
+>>>>>>> parent of b8948be... f
 }
 
     </table>
