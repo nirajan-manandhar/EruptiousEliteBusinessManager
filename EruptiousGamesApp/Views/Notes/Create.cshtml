@@ -6,24 +6,6 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 }
 
-<script>
-    function ClickOnce(button) {
-        let newbutton = button.cloneNode(true);
-        newbutton.disabled = true;
-
-        button.parentNode.insertBefore(newbutton, button);
-        button.style.display = "none";
-    }
-
-</script>
-
-<style>
-    textarea {
-    width : 100%;
-    height : 100px;
-}
-</style>
-
 <div class="mainContent">
     <div class="form-basic">
         <img class="mb-4" src='@Url.Content("~/Content/Images/feedbackButton.png")' style="width:80%;display: block; margin-left: auto; margin-right: auto;">
@@ -34,22 +16,26 @@
 
             <div class="form-horizontal shadow" style="padding:10px;">
 
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
                 <div class="form-group">
                     @Html.LabelFor(model => model.note.Title, htmlAttributes: new { @class = "control-label col-md-2 arial" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.note.Title, new { htmlAttributes = new { @class = "form-control"} })
+                        @Html.EditorFor(model => model.note.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.note.Title, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.note.Comment, htmlAttributes: new { @class = "control-label col-md-2 arial" })
                     <div class="col-md-10">
-                            @Html.TextAreaFor(model => model.note.Comment, new { htmlAttributes = new { @class = "form-control"}})
-                        </div>
+                        @Html.TextAreaFor(model => model.note.Comment, new { htmlAttributes = new { @class = "form-control" }, cols = "40", rows = "5" })
+                        @Html.ValidationMessageFor(model => model.note.Comment, "", new { @class = "text-danger" })
                     </div>
+                </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.work.CustomerPlayWith, "Customers Played With", htmlAttributes: new { @class = "control-label col-md-2 arial" })
+                    @Html.LabelFor(model => model.work.CustomerPlayWith, htmlAttributes: new { @class = "control-label col-md-2 arial" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.work.CustomerPlayWith, new { htmlAttributes = new { @class = "form-control", @Value = 0 } })
                         @Html.ValidationMessageFor(model => model.work.CustomerPlayWith, "", new { @class = "text-danger" })
@@ -66,9 +52,13 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <button type="submit" class="btn btn-light shadow" onclick="ClickOnce(this)">
+                        <button type="submit" class="btn btn-light shadow">
                             <img src="~/Content/Images/submitButton.png" style="max-width:120px" />
                         </button>
+                        <br />
+                        <div>
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
                     </div>
 
                 </div>
@@ -78,6 +68,10 @@
 
     </div>
 </div>
+
+
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

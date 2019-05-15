@@ -33,8 +33,6 @@ namespace EruptiousGamesApp.Entities
         [Required]
         public DateTime DateTime { get; set; }
         [Required]
-        [Range(1, 20)]
-        [RegularExpression("([0-9])", ErrorMessage = "Please enter an integer between 1 and 20")]
         public int Amount { get; set; }
         [Required]
         public Action Action { get; set; }

@@ -1,67 +1,40 @@
 ﻿@using EruptiousGamesApp.Models
 @model LoginViewModel
-
 @{
     ViewBag.Title = "Log in";
-    Layout = null;
     <link href="~/Content/signin.css" rel="stylesheet" type="text/css" />
 }
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - EruptiousElite</title>
-    @Scripts.Render("~/bundles/modernizr")
-    @using Microsoft.AspNet.Identity
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
-
-    <script type="text/javascript">
-        if (window.performance && window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
-            javascript: document.getElementById('logoutForm').submit();
-        }
-    </script>
-
-</head>
-<body>
-    <div class="form-signin">
-        <img class="mb-4" src='@Url.Content("~/Content/Images/Logo.png")' style="width:80%;display: block; margin-left: auto; margin-right: auto;">
-        <h1 class="h1 font-weight-bold mb-3 font-weight-normal" style="text-align:center">Log In</h1>
-        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-        {
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                <h4><label class="control-label">Username</label></h4>
-                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group">
-                <h4>@Html.LabelFor(m => m.Password, new { @class = "control-label" })</h4>
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-            </div>
-
-            <input type="submit" value="Log in" class="btn btn-lg btn-primary btn-block" />
-
-            <p class="mt-5 mb-3 text-muted">
-                &copy; @DateTime.Now.Year - Eruptious Games
-            </p>
-        }
-    </div>
-
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript">
+    if (window.performance && window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
+        javascript: document.getElementById('logoutForm').submit();
     }
+</script>
+<div class="form-signin">
+    <img class="mb-4" src='@Url.Content("~/Content/Images/Logo.png")' style="width:80%;display: block; margin-left: auto; margin-right: auto;">
+    <h1 class="h1 font-weight-bold mb-3 font-weight-normal" style="text-align:center">Log In</h1>
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <h4><label class="control-label">Username</label></h4>
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <h4>@Html.LabelFor(m => m.Password, new { @class = "control-label" })</h4>
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        </div>
 
-    @Scripts.Render("~/bundles/Bootstrap")
+        <input type="submit" value="Log in" class="btn btn-lg btn-primary btn-block" />
 
-</body>
-</html>
+        <p class="mt-5 mb-3 text-muted">
+            &copy; @DateTime.Now.Year - Eruptious Games
+        </p>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

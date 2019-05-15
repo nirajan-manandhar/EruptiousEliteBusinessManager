@@ -82,17 +82,7 @@ namespace EruptiousGamesApp.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-
-            SignInStatus result;
-            var currentUser = db.Users.Include(u => u.Employee).FirstOrDefault(x => x.UserName == model.UserName);
-            if(currentUser.Employee.EmpStatus == EmpStatus.INACTIVE)
-            {
-                result = SignInStatus.LockedOut;
-            } else
-            {
-                result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
-            }
-
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -108,8 +98,7 @@ namespace EruptiousGamesApp.Controllers
             }
         }
 
-        // GET: /Account/AccountCreate
-        [AuthorizeUser(Role = Role.ADMIN)]
+        // GET: /Account/AccountCreaet
         public ActionResult AccountCreate()
         {
             return View();
@@ -119,7 +108,6 @@ namespace EruptiousGamesApp.Controllers
         // POST: /Account/AccountCreaet
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AuthorizeUser(Role = Role.ADMIN)]
         public async Task<ActionResult> AccountCreate(RegisterViewModel model)
         {
             if (ModelState.IsValid)
@@ -147,12 +135,11 @@ namespace EruptiousGamesApp.Controllers
         [AuthorizeUser(Role = Role.ADMIN)]
         public ActionResult AccountList()
         {
-            var users = db.Users.Include(r => r.Employee).OrderBy(r => r.Employee.EmpName);
+            var users = db.Users.Include(r => r.Employee);
             return View(users.ToList());
         }
 
         // GET: Account/AccountEdit/5
-        [AuthorizeUser(Role = Role.ADMIN)]
         public ActionResult AccountEdit(string id)
         {
             if (id == null)
@@ -173,124 +160,67 @@ namespace EruptiousGamesApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AuthorizeUser(Role = Role.ADMIN)]
-        public async Task<ActionResult> AccountEdit([Bind(Include = "Id,UserName,Employee")] ApplicationUser ApplicationUser)
+        public ActionResult AccountEdit([Bind(Include = "Id,UserName,Employee")] ApplicationUser ApplicationUser)
         {
             if (ModelState.IsValid)
             {
-                var user = UserManager.FindById(ApplicationUser.Id);
-                user.UserName = ApplicationUser.UserName;
-
-                var result = await UserManager.UpdateAsync(user);
-                if (result.Succeeded)
-                {
-                    db.Entry(ApplicationUser.Employee).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("AccountList", "Account");
-                }
-                AddErrors(result);
-
-                return View(ApplicationUser);
+                db.Entry(ApplicationUser).State = EntityState.Modified;
+                db.Entry(ApplicationUser.Employee).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("AccountList");
             }
 
             return View(ApplicationUser);
         }
 
-        // GET: Account/AccountChangePassword/5
-        [AuthorizeUser(Role = Role.ADMIN)]
-        public ActionResult AccountChangePassword(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ApplicationUser ApplicationUser = db.Users.Include(r => r.Employee).FirstOrDefault(x => x.Id == id);
-            if (ApplicationUser == null)
-            {
-                return HttpNotFound();
-            }
-
-            ChangePasswordModel model = new ChangePasswordModel();
-            model.UserId = ApplicationUser.Id;
-
-            return View(model);
-        }
-
-        // POST: Account/AccountEdit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [AuthorizeUser(Role = Role.ADMIN)]
-        public async Task<ActionResult> AccountChangePassword([Bind(Include = "UserId,Password,ConfirmPassword")]ChangePasswordModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var result = UserManager.RemovePassword(model.UserId);
-                
-                if (result.Succeeded)
-                {
-                    var result2 = await UserManager.AddPasswordAsync(model.UserId, model.Password);
-                    if (result2.Succeeded)
-                    {
-                        return RedirectToAction("AccountList");
-                    }
-                }
-                AddErrors(result);
-            }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
-
         //public void DownloadExcel(DateTime Start, DateTime End)
-        //public void DownloadExcel()
-        //{
-        //    //var Customers = db.Customers.Include(r => r.Campaign).Include(r => r.Employee).Where(x => x.DateTime >= Start).Where(x => x.DateTime <= End).ToList();
+        public void DownloadExcel()
+        {
+            //var Customers = db.Customers.Include(r => r.Campaign).Include(r => r.Employee).Where(x => x.DateTime >= Start).Where(x => x.DateTime <= End).ToList();
 
-        //    var Customers = db.Customers.Include(r => r.Campaign).Include(r => r.Employee).ToList();
-
-
-        //    ExcelPackage Ep = new ExcelPackage();
-        //    ExcelWorksheet Sheet = Ep.Workbook.Worksheets.Add("Customer");
-        //    Sheet.Cells["A1"].Value = "ID";
-        //    Sheet.Cells["B1"].Value = "Campaign Name";
-        //    Sheet.Cells["C1"].Value = "Employee Name";
-        //    Sheet.Cells["D1"].Value = "Date Time";
-        //    Sheet.Cells["E1"].Value = "Name";
-        //    Sheet.Cells["F1"].Value = "E-mail";
-        //    Sheet.Cells["G1"].Value = "Phone";
-        //    Sheet.Cells["H1"].Value = "City";
-        //    Sheet.Cells["I1"].Value = "Age";
-        //    Sheet.Cells["J1"].Value = "Gender";
-        //    Sheet.Cells["K1"].Value = "PTCheck";
-
-        //    int row = 2;
-        //    foreach (var item in Customers)
-        //    {
-
-        //        Sheet.Cells[string.Format("A{0}", row)].Value = item.CustID;
-        //        Sheet.Cells[string.Format("B{0}", row)].Value = item.Campaign.CamName;
-        //        Sheet.Cells[string.Format("C{0}", row)].Value = item.Employee.EmpName;
-        //        Sheet.Cells[string.Format("D{0}", row)].Value = item.DateTime.ToString("MM/dd/yyyy hh:mm tt");
-        //        Sheet.Cells[string.Format("E{0}", row)].Value = item.CustName;
-        //        Sheet.Cells[string.Format("F{0}", row)].Value = item.Email;
-        //        Sheet.Cells[string.Format("G{0}", row)].Value = item.Phone;
-        //        Sheet.Cells[string.Format("H{0}", row)].Value = item.City;
-        //        Sheet.Cells[string.Format("I{0}", row)].Value = item.Age;
-        //        Sheet.Cells[string.Format("J{0}", row)].Value = item.Gender;
-        //        Sheet.Cells[string.Format("K{0}", row)].Value = item.PTCheck;
-        //        row++;
-        //    }
+            var Customers = db.Customers.Include(r => r.Campaign).Include(r => r.Employee).ToList();
 
 
-        //    Sheet.Cells["A:AZ"].AutoFitColumns();
-        //    Response.Clear();
-        //    Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-        //    Response.AddHeader("content-disposition", "attachment: filename=" + "Report.xlsx");
-        //    Response.BinaryWrite(Ep.GetAsByteArray());
-        //    Response.End();
-        //}
+            ExcelPackage Ep = new ExcelPackage();
+            ExcelWorksheet Sheet = Ep.Workbook.Worksheets.Add("Customer");
+            Sheet.Cells["A1"].Value = "ID";
+            Sheet.Cells["B1"].Value = "Campaign Name";
+            Sheet.Cells["C1"].Value = "Employee Name";
+            Sheet.Cells["D1"].Value = "Date Time";
+            Sheet.Cells["E1"].Value = "Name";
+            Sheet.Cells["F1"].Value = "E-mail";
+            Sheet.Cells["G1"].Value = "Phone";
+            Sheet.Cells["H1"].Value = "City";
+            Sheet.Cells["I1"].Value = "Age";
+            Sheet.Cells["J1"].Value = "Gender";
+            Sheet.Cells["K1"].Value = "PTCheck";
+
+            int row = 2;
+            foreach (var item in Customers)
+            {
+
+                Sheet.Cells[string.Format("A{0}", row)].Value = item.CustID;
+                Sheet.Cells[string.Format("B{0}", row)].Value = item.Campaign.CamName;
+                Sheet.Cells[string.Format("C{0}", row)].Value = item.Employee.EmpName;
+                Sheet.Cells[string.Format("D{0}", row)].Value = item.DateTime.ToString("MM/dd/yyyy hh:mm tt");
+                Sheet.Cells[string.Format("E{0}", row)].Value = item.CustName;
+                Sheet.Cells[string.Format("F{0}", row)].Value = item.Email;
+                Sheet.Cells[string.Format("G{0}", row)].Value = item.Phone;
+                Sheet.Cells[string.Format("H{0}", row)].Value = item.City;
+                Sheet.Cells[string.Format("I{0}", row)].Value = item.Age;
+                Sheet.Cells[string.Format("J{0}", row)].Value = item.Gender;
+                Sheet.Cells[string.Format("K{0}", row)].Value = item.PTCheck;
+                row++;
+            }
+
+
+            Sheet.Cells["A:AZ"].AutoFitColumns();
+            Response.Clear();
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment: filename=" + "Report.xlsx");
+            Response.BinaryWrite(Ep.GetAsByteArray());
+            Response.End();
+        }
 
 
 

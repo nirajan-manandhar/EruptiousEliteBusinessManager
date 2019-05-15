@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using EruptiousGamesApp.Authorization;
 using EruptiousGamesApp.Entities;
 using EruptiousGamesApp.Models;
 using Microsoft.AspNet.Identity;
@@ -21,35 +20,12 @@ namespace EruptiousGamesApp.Controllers
             public Note note;
             public Work work;
         }
-        public class Notes
-        {
-            public IEnumerable<Note> notes;
-            public Employee emp;
-        }
 
         // GET: Notes
-        [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult Index()
         {
             var notes = db.Notes.Include(n => n.Employee);
-            Notes nn = new Notes();
-            nn.notes = notes;
-            string currentUserId = User.Identity.GetUserId();
-            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
-            nn.emp = currentUser.Employee;
-
-            return View(nn);
-        }
-
-        // POST: Notes/index
-        [AuthorizeUser(Role = Role.ADMIN)]
-        [HttpPost, ActionName("Index")]
-        public ActionResult DeleteNote(string noteID)
-        {
-            Note note = db.Notes.Find(Int32.Parse(noteID));
-            db.Notes.Remove(note);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            return View(notes.ToList());
         }
 
         // GET: Notes/Details/5
@@ -119,7 +95,13 @@ namespace EruptiousGamesApp.Controllers
 
             db.SaveChanges();
 
-            return Redirect("/home");
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
+            //ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", note.EmpID);
+            return View(note);
         }
 
         // GET: Notes/Edit/5
@@ -153,6 +135,32 @@ namespace EruptiousGamesApp.Controllers
             }
             //ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", note.EmpID);
             return View(note);
+        }
+
+        // GET: Notes/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Note note = db.Notes.Find(id);
+            if (note == null)
+            {
+                return HttpNotFound();
+            }
+            return View(note);
+        }
+
+        // POST: Notes/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Note note = db.Notes.Find(id);
+            db.Notes.Remove(note);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

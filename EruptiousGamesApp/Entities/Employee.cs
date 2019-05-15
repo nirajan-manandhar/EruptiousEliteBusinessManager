@@ -25,7 +25,6 @@ namespace EruptiousGamesApp.Entities
         [Required]
         public Role Role { get; set; }
         [Required]
-        [InventoryCannotBeZeroForInactivation]
         public EmpStatus EmpStatus { get; set; }
         [Required]
         public int DecksOnHand { get; set; }
