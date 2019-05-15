@@ -75,20 +75,19 @@
         }
 
     </div>
-
     @Scripts.Render("~/bundles/Bootstrap")
     @RenderSection("scripts", required: false)
     @RenderSection("Footer", false)
 
-<script>
-    $(document).on('click', '.navbar-collapse.in', function (e) {
-    if( $(e.target).is('a') ) {
+    <script>
+        $(document).on('click', '.navbar-collapse.in', function (e) {
+            if ($(e.target).is('a')) {
 
-        $(this).collapse('hide');
-    }
-    });
-</script>
-    
+                $(this).collapse('hide');
+            }
+        });
+    </script>
+
 
 </body>
 </html>

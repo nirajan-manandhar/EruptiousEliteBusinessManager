@@ -5,12 +5,8 @@
 }
 
 <script>
-    let noteID = 0;
     function modalClicked(val) {
-        noteID = val;
-    }
-    function post() {
-        window.location.href = "Notes/DeleteNote?id=" + noteID;
+        $('#noteID').val(val);
     }
 </script>
 
@@ -25,20 +21,23 @@
 
     table, th, td, tr {
         border: 2px solid grey;
-        border-collapse: collapse;
+        padding: 5px;
     }
 
-    div.scrollable {
+    .scrollable {
         width: 100%;
         height: 100%;
         margin: 0;
         padding: 0;
-        overflow: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 
-    table {
+    .tableClass {
         table-layout: fixed;
-        height: 50px;
+        width: 100%;
+        height: 100%;
+        margin-bottom:10px;
     }
 
     .hidden {
@@ -52,61 +51,12 @@
 
 <h2>Index</h2>
 
-@foreach (var item in Model.notes.Reverse())
-{
-    <table class="table">
-        <tr>
-            <td class="colored left">
-                @Html.DisplayNameFor(model => item.Title):
-            </td>
-            <td rowspan="6">
-                <div class="scrollable">
-                    @Html.DisplayFor(modelItem => item.Comment)
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td class="left">
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-        </tr>
-        <tr>
-            <td class="colored left">
-                @Html.DisplayNameFor(model => item.Employee.EmpName):
-            </td>
-        </tr>
-        <tr>
-            <td class="left">
-                @Html.DisplayFor(modelItem => item.Employee.EmpName)
-            </td>
-        </tr>
-        <tr>
-            <td class="colored left">
-                @Html.DisplayNameFor(model => item.DateTime):
-            </td>
-        </tr>
-        <tr>
-            <td class="left">
-                @Html.DisplayFor(modelItem => item.DateTime)
-            </td>
-        </tr>
-    </table>
-    if (Model.emp.Role >= EruptiousGamesApp.Entities.Role.ADMIN)
-    {
-        <button value="@item.NoteID" onclick="modalClicked(this.value)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-            Delete
-        </button>
-        <br />
-        <br />
-        <br />
-    }
-}
 
 @if (Model.emp.Role >= EruptiousGamesApp.Entities.Role.ADMIN)
 {
     <!-- The Modal -->
-    <div class="modal" id="myModal">
-        <div class="modal-dialog">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
 
                 <!-- Modal Header -->
@@ -122,7 +72,12 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-light" onclick="post();this.disabled = true;">Confirm</button>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("noteID", 0)
+                        <input type="submit" class="btn btn-light" value="Confirm" />
+                    }
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
 
@@ -130,4 +85,55 @@
         </div>
     </div>
 }
+
+@foreach (var item in Model.notes.Reverse())
+{
+        <table class="tableClass">
+            <tr>
+                <td class="colored left">
+                    @Html.DisplayNameFor(model => item.Title):
+                </td>
+                <td rowspan="6">
+                    <div class="scrollable">
+                        @Html.DisplayFor(modelItem => item.Comment)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="left">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+            </tr>
+            <tr>
+                <td class="colored left">
+                    @Html.DisplayNameFor(model => item.Employee.EmpName):
+                </td>
+            </tr>
+            <tr>
+                <td class="left">
+                    @Html.DisplayFor(modelItem => item.Employee.EmpName)
+                </td>
+            </tr>
+            <tr>
+                <td class="colored left">
+                    @Html.DisplayNameFor(model => item.DateTime):
+                </td>
+            </tr>
+            <tr>
+                <td class="left">
+                    @Html.DisplayFor(modelItem => item.DateTime)
+                </td>
+            </tr>
+        </table>
+        if (Model.emp.Role >= EruptiousGamesApp.Entities.Role.ADMIN)
+        {
+        <button value="@item.NoteID" onclick="modalClicked(this.value)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Delete
+        </button>
+        <br />
+        <br />
+        <br />
+        }
+        }
+
 

@@ -18,6 +18,37 @@
         }
 </style>
 
+<script>
+    $(document).ready(function () {
+
+        //hides dropdown content
+        $(".search_field_amb").hide();
+
+        //unhides first option content
+        $("#day_amb").show();
+
+        //listen to dropdown for change
+        $("#search_select_amb").change(function () {
+            //rehide content on change
+            $('.search_field_amb').hide();
+            //unhides current item
+            $('#' + $(this).val()).show();
+        });
+        $("#search_select_man").change(function () {
+            //rehide content on change
+            $('.search_field_man').hide();
+            //unhides current item
+            $('#' + $(this).val()).show();
+        });
+        $("#search_select_adm").change(function () {
+            //rehide content on change
+            $('.search_field_adm').hide();
+            //unhides current item
+            $('#' + $(this).val()).show();
+        });
+    });
+</script>
+
 
 <br /><br />
 
@@ -36,106 +67,95 @@
 
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
-                            <h4>
-                                Status:
-                                <span class="badge badge-info">
-                                    @Html.DisplayFor(m => Model.employee.Role)
-                                </span>
-                            </h4>
+                            <select id="search_select_amb">
+                                <option value="day_amb">Day</option>
+                                <option value="cam_amb">Current campaign</option>
+                            </select>
                             <h4>
                                 Decks On Hand:
                                 <span class="badge badge-info">
                                     @Html.DisplayFor(m => Model.employee.DecksOnHand)
                                 </span>
                             </h4>
-                            <h4>
-                                Customers:
-                                <span class="badge badge-info">
-                                    @Html.DisplayFor(m => Model.personalPlayed)
-                                </span>
-                            </h4>
-                            <h4>
-                                Feedback:
-                                <span class="badge badge-info">
-                                    @Html.DisplayFor(m => Model.personalInfoCollected)
-                                </span>
-                            </h4>
-                            <h4>
-                                Decks Sold:
-                                <span class="badge badge-info">
-                                    @Html.DisplayFor(m => Model.personalSale)
-                                </span>
-                            </h4>
-                            <h4>
-                                Closing Ratio:
-                                <span class="badge badge-info">
-                                    @Html.DisplayFor(m => Model.closingRatio)%
-                                </span>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-                @if((int)Model.employee.Role != 0) { 
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                <h2>Manager</h2>
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                        <div class="card-body">
-                            <h4>
-                                Current Campaign:
-                                <span class="badge badge-info">
-                                    @Html.DisplayFor(m => Model.campaign.CamName)
-                                </span>
-                            </h4>
-                            <h4>
-                                Total Customers:
-                                <span class="badge badge-info">
-                                    @Html.DisplayFor(m => Model.campaignPlayed)
-                                </span>
-                            </h4>
-                            <h4>
-                                Total Customer Information:
-                                <span class="badge badge-info">
-                                    @Html.DisplayFor(m => Model.campaignInfoColleted)
+                            <div id="day_amb" class="search_field_amb">
+                                <h4>
+                                    Closing Ratio:
+                                    <span class="badge badge-info">
+                                        @Html.DisplayFor(m => Model.personalClosingRatioPerDay)
+                                    </span>
 
-                                </span>
-                            </h4>
-                            <h4>
-                                Total Sales:
-                                <span class="badge badge-info">
-                                    @Html.DisplayFor(m => Model.campaignSale)
-                                </span>
-                            </h4>
+                                </h4>
+                            </div>
+                            <div id="cam_amb" class="search_field_amb">
+                                @if (Model.assignedToCampaign == true)
+                                {
+                                <h4>
+                                    Customers played with:
+                                    <span class="badge badge-info">
+                                        @Html.DisplayFor(m => Model.personalPlayedPerCampaign)
+                                    </span>
+                                    Sales:
+                                    <span class="badge badge-info">
+                                        @Html.DisplayFor(m => Model.personalSalePerCampaign)
+                                    </span>
+                                    Closing Ratio:
+                                    <span class="badge badge-info">
+                                        @Html.DisplayFor(m => Model.personalClosingRatioPerCampaign)
+                                    </span>
+
+
+                                </h4>
+                                }
+                                else {
+                                    <h4>You are not assigned to any active campaign</h4>
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
+                @if ((int)Model.employee.Role != 0)
+                {
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <h2>Manager</h2>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                <h4>
+                                    Overall sale
+                                    <span class="badge badge-info">
+                                        @Html.DisplayFor(m => Model.overallSale)
+                                    </span>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
                 }
                 @if ((int)Model.employee.Role == 2)
                 {
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                <h2>Admin</h2>
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                        <div class="card-body">
-                            <h4>
-                                Total Accounts:
-                                <span class="badge badge-info">
-                                    @Html.DisplayFor(m => Model.totalAccount)
-                                </span>
-                            </h4> 
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <h2>Admin</h2>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                            <div class="card-body">
+                                <h4>
+                                    Total Accounts:
+                                    <span class="badge badge-info">
+                                        @Html.DisplayFor(m => Model.overallPlayed)
+                                    </span>
+                                </h4>
+                            </div>
                         </div>
                     </div>
-                </div>
                 }
             </div>
         </div>

@@ -23,6 +23,8 @@ namespace EruptiousGamesApp.Controllers
             public int personalPlayedPerCampaign { get; set; }
             public double personalClosingRatioPerCampaign { get; set; }
 
+            public Boolean assignedToCampaign { get; set; }
+
             public int overallSale { get; set; }
             public int overallPlayed { get; set; }
             public double overallClosingRatio { get; set; }
@@ -41,8 +43,8 @@ namespace EruptiousGamesApp.Controllers
 
             string currentUserId = User.Identity.GetUserId();
             ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
-            
-            
+
+
             int empID = currentUser.Employee.EmpID;
             di.employee = currentUser.Employee;
 
@@ -63,15 +65,25 @@ namespace EruptiousGamesApp.Controllers
 
             //Ambassdor per campaign
             var todayCam = currentUser.GetTodaysCampaign();
-            work = db.Works.Where(s => s.EmpID == empID && s.CamID == todayCam.CamID);
-            if (work.Count() > 0)
-            {
-                di.personalPlayedPerCampaign = work.Sum(s => s.CustomerPlayWith);
-                di.personalSalePerCampaign = work.Sum(s => s.Sold);
-                di.personalClosingRatioPerCampaign = getClosingRatio(di.personalSalePerCampaign, di.personalPlayedPerCampaign);
+            if (todayCam != null) {
+                di.assignedToCampaign = true;
+                work = db.Works.Where(s => s.EmpID == empID && s.CamID == todayCam.CamID);
+                if (work.Count() > 0)
+                {
+                    di.personalPlayedPerCampaign = work.Sum(s => s.CustomerPlayWith);
+                    di.personalSalePerCampaign = work.Sum(s => s.Sold);
+                    di.personalClosingRatioPerCampaign = getClosingRatio(di.personalSalePerCampaign, di.personalPlayedPerCampaign);
+                }
+                else
+                {
+                    di.personalPlayedPerCampaign = 0;
+                    di.personalSalePerCampaign = 0;
+                    di.personalClosingRatioPerCampaign = 0;
+                }
             }
             else
             {
+                di.assignedToCampaign = false;
                 di.personalPlayedPerCampaign = 0;
                 di.personalSalePerCampaign = 0;
                 di.personalClosingRatioPerCampaign = 0;
@@ -93,7 +105,7 @@ namespace EruptiousGamesApp.Controllers
             }
 
             //Manager list of campaigns
-            var campaigns = db.Campaigns;
+            var campaigns = db.Campaigns.ToList();
 
             List<string> campaignNames = new List<string>();
             List<int> campaignSales = new List<int>();
@@ -122,19 +134,6 @@ namespace EruptiousGamesApp.Controllers
             di.campaignClosingRatioes = campaignClosingRatioes;
 
             return View(di);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-            return View();
         }
 
         private double getClosingRatio(int sale, int played) {
