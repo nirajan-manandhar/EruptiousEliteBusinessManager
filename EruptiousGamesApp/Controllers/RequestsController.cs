@@ -113,13 +113,12 @@ namespace EruptiousGamesApp.Controllers
             {
                 db.Requests.Add(request);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index");
             }
 
             ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
             ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
-            //return View(request);
-            return RedirectToAction("Index", "Home");
+            return View(request);
         }
 
         // GET: Requests/Edit/5
@@ -190,10 +189,10 @@ namespace EruptiousGamesApp.Controllers
             {
                 //db.Entry(request).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("RequestAdmin");
+                return RedirectToAction("Index");
             }
 
-            return RedirectToAction("RequestAdmin");
+            return RedirectToAction("Index", "Requests");
         }
 
         // GET: Requests/Decline/5
@@ -220,9 +219,9 @@ namespace EruptiousGamesApp.Controllers
             {
                 //db.Entry(request).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("RequestAdmin");
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("RequestAdmin");
+            return RedirectToAction("Index", "Requests");
         }
 
 
