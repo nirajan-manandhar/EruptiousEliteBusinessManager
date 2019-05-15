@@ -759,3 +759,9 @@ C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\Eruptio
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\bin\OfficeOpenXml.Core.ExcelPackage.dll
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\bin\System.IO.Packaging.dll
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\bin\OfficeOpenXml.Core.ExcelPackage.pdb
+C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\bin\System.Net.Http.Formatting.dll
+C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Http.dll
+C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Http.WebHost.dll
+C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\bin\System.Net.Http.Formatting.xml
+C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Http.xml
+C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Http.WebHost.xml
