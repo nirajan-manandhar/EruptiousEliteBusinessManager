@@ -1,0 +1,70 @@
+﻿@model EruptiousGamesApp.Controllers.CampaignsController.CampaignEmployee
+
+@{
+    ViewBag.Title = "Assign Employee";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Employee Name
+        </th>
+        <th>
+            Role
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.assignedEmployeeList)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @Html.ActionLink("Remove", "RemoveAction", new { camID = Model.campaign.CamID, empID = item.EmpID }) |
+            </td>
+        </tr>
+    }
+
+</table>
+
+<table class="table">
+    <tr>
+        <th>
+            Employee Name
+        </th>
+        <th>
+            Role
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.unassignedEmployeeList)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @Html.ActionLink("Assign", "AssignAction", new { camID = Model.campaign.CamID, empID = item.EmpID }) |
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+
+
+
+
