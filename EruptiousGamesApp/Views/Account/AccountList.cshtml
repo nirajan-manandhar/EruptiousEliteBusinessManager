@@ -1,60 +1,194 @@
 ﻿@model IEnumerable<EruptiousGamesApp.Models.ApplicationUser>
 
-<h2>
-    Download Customer Info
-</h2>
+@{
+    <link href="~/Content/adminForms.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-@*<div>
-        <a href="@Url.Action("DownloadExcel","Account",new { Start = 05/11/2019, End = 05/12/2019 })">Download Excel</a>
-    </div>*@
+}
 
-<div>
-    <a href="@Url.Action("DownloadExcel","Account")">Download Excel</a>
+<div style="margin-top:5%">
+
+    <div class="card text-center shadow">
+        <div class="card-header">
+            <img src="~/Content/Images/account.png" style="width:20%; max-width:80px" />
+            <h2 class="arial">Accounts</h2>
+        </div>
+        <div class="card-body arial">
+            <h2>Download Customer Info</h2>
+            <div class="form-group">
+                @Html.ActionLink("Download Excel", "excelCustomer", "Campaigns", null, new { @class = "btn btn-info btn-md shadow" })
+                @Html.ActionLink("Create Account", "AccountCreate", "Account", null, new { @class = "btn btn-success btn-md shadow" })
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="card text-center shadow">
+        <div class="card-header">
+            <img src="~/Content/Images/accountList.png" style="width:20%; max-width:80px" />
+            <h2 class="arial">Accounts List</h2>
+        </div>
+        <div class="card-body">
+
+            <div id="accordion">
+                <div class="card shadow">
+                    <div class="card-header btn btn-link" style="text-decoration:none" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="headingOne">
+                        <h5 class="mb-0">
+                            <h4>Administrators</h4>
+                            <div>&#11088; 	&#11088; 	&#11088;</div>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
+                        <div class="card-body">
+                            <div class="table-responsive table-bordered">
+                                <table class="table">
+                                    <tr class="thead-dark">
+                                        <th> Employee Name </th>
+                                        <th> Username </th>
+                                        <th> Role </th>
+                                        <th> Status </th>
+                                        <th> Action </th>
+                                    </tr>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        if ((int)item.Employee.Role == 2)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Employee.EmpName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.UserName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Employee.Role)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Employee.EmpStatus)
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Edit", "AccountEdit", new { id = item.Id }) |
+                                                    @Html.ActionLink("Change Password", "AccountChangePassword", new { id = item.Id })
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="card shadow">
+                    <div class="card-header btn btn-link collapsed" style="text-decoration:none" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" id="headingTwo">
+                        <h5 class="mb-0">
+                            <h4>Managers</h4>
+                            <div>&#11088; 	&#11088;</div>
+                        </h5>
+                    </div>
+
+                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo">
+                        <div class="card-body">
+                            <div class="table-responsive table-bordered">
+                                <table class="table">
+                                    <tr class="thead-dark">
+                                        <th> Employee Name </th>
+                                        <th> Username </th>
+                                        <th> Role </th>
+                                        <th> Status </th>
+                                        <th> Action </th>
+                                    </tr>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        if ((int)item.Employee.Role == 1)
+                                        {
+                                            <tr>
+
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Employee.EmpName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.UserName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Employee.Role)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Employee.EmpStatus)
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Edit", "AccountEdit", new { id = item.Id }) |
+                                                    @Html.ActionLink("Change Password", "AccountChangePassword", new { id = item.Id })
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="card shadow">
+                    <div class="card-header btn btn-link collapsed" style="text-decoration:none" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" id="headingThree">
+                        <h5 class="mb-0">
+                            <h4>Ambassadors</h4>
+                            <div>&#11088;</div>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree">
+                        <div class="card-body">
+                            <div class="table-responsive table-bordered">
+                                <table class="table">
+                                    <tr class="thead-dark">
+                                        <th> Employee Name </th>
+                                        <th> Username </th>
+                                        <th> Role </th>
+                                        <th> Status </th>
+                                        <th> Action </th>
+                                    </tr>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        if ((int)item.Employee.Role == 0)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Employee.EmpName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.UserName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Employee.Role)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Employee.EmpStatus)
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Edit", "AccountEdit", new { id = item.Id }) |
+                                                    @Html.ActionLink("Change Password", "AccountChangePassword", new { id = item.Id })
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-<h2>
-    Account List
-</h2>
-<p>
-    @Html.ActionLink("Create New", "AccountCreate")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Employee.EmpID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Employee.EmpName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Employee.Role)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee.EmpID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee.EmpName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee.Role)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "AccountEdit", new { id = item.Id })
-            </td>
-        </tr>
-    }
 
-</table>
+
+
+

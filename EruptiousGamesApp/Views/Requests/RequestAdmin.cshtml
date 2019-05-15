@@ -2,96 +2,220 @@
 
 @{
     ViewBag.Title = "Index";
+    <link href="~/Content/adminForms.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 }
 
-<h2>Index</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-    
-</p>
-<div class="table-responsive">
-    <table class="table">
-        <tr class="thead-dark">
-            <th>
-                Campaign Name
-            </th>
-            <th>
-                Employee Name
-            </th>
-            <th>
-                Date and Time
-            </th>
-            <th>
-                Amount of Decks
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Action)
-            </th>
-            <th>
-                Status
-            </th>
-            <th></th>
-        </tr>
+<div style="margin-top:5%">
 
-        @foreach (var item in Model) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-            @if ((int)(item.RequestStatus) == 1) { 
-=======
->>>>>>> parent of 8512331... f
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Campaign.CamName)
-            </td>
-            <td>
-=======
-]        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Campaign.CamName)
-            </td>
-            <td>                
->>>>>>> parent of ebf3d66... Inventory Functions Added
-=======
-            @if ((int)(item.RequestStatus) == 1) { 
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Campaign.CamName)
-            </td>
-            <td>
->>>>>>> parent of b8948be... f
-                @Html.DisplayFor(modelItem => item.Employee.EmpName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Action)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RequestStatus)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "ChangeStatus", new { id = item.RequestID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.RequestID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.RequestID })
-            </td>
-        </tr>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        }
-=======
->>>>>>> parent of ebf3d66... Inventory Functions Added
-=======
-        }
->>>>>>> parent of b8948be... f
-=======
->>>>>>> parent of 8512331... f
-}
+    <img class="mb-4" src='@Url.Content("~/Content/Images/inventoryRequest.png")' style="width:50%; max-width:350px;display: block; margin-left: auto; margin-right: auto;">
+    <hr />
 
-    </table>
+    <div class="form-group">
+        <div class="col-md-10">
+            <a href="privacypolicy" data-toggle="modal" data-target="#employeeInventory">Employee Inventory</a>
+        </div>
+    </div>
+
+    <a href='@Url.Action("InputRequest", "Requests")'>
+        <button class="btn btn-light btn-lg btn-block shadow" style="height:100px">
+            <img class="mb-4" src='@Url.Content("~/Content/Images/addInventory.png")' style="width:30%; max-width:150px;display: block; margin-left: auto; margin-right: auto;">
+        </button>
+    </a>
+    <hr />
+    <div class="card text-center shadow">
+        <div class="card-header">
+            <img src="~/Content/Images/request.png" style="width:20%; max-width:100px" />
+            <h2 class="arial">Requests</h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table-bordered">
+                <table class="table">
+                    <tr class="thead-dark">
+                        <th>
+                            Campaign Name
+                        </th>
+                        <th>
+                            Employee Name
+                        </th>
+                        <th>
+                            Date and Time
+                        </th>
+                        <th>
+                            Amount of Decks
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Action)
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        if ((int)(item.Action) == 0)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Campaign.CamName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Employee.EmpName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateTime)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Amount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Action)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RequestStatus)
+                                </td>
+                                <td>
+                                    @if ((int)(item.RequestStatus) == 0)
+                                    {
+                                        <button class="btn btn-outline-success btn-sm shadow">
+                                            @Html.ActionLink("Approve", "Approve", new { id = item.RequestID })
+                                        </button>
+                                        <button class="btn btn-outline-danger btn-sm shadow">
+                                            @Html.ActionLink("Deny", "Deny", new { id = item.RequestID })
+                                        </button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <br />
+    <div class="card text-center shadow">
+        <div class="card-header">
+            <img src="~/Content/Images/return.png" style="width:20%; max-width:100px" />
+            <h2 class="arial">Returns</h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table-bordered">
+                <table class="table">
+                    <tr class="thead-dark">
+                        <th>
+                            Campaign Name
+                        </th>
+                        <th>
+                            Employee Name
+                        </th>
+                        <th>
+                            Date and Time
+                        </th>
+                        <th>
+                            Amount of Decks
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Action)
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        if ((int)(item.Action) == 1)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Campaign.CamName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Employee.EmpName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateTime)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Amount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Action)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RequestStatus)
+                                </td>
+                                <td>
+                                    @if ((int)(item.RequestStatus) == 0)
+                                    {
+                                        <button class="btn btn-outline-success btn-sm shadow">
+                                            @Html.ActionLink("Approve", "Approve", new { id = item.RequestID })
+                                        </button>
+                                        <button class="btn btn-outline-danger btn-sm shadow">
+                                            @Html.ActionLink("Deny", "Deny", new { id = item.RequestID })
+                                        </button>
+                                    }
+                                </td>
+
+
+                            </tr>
+                        }
+                    }
+
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Employee Inventory Modal -->
+<div class="modal fade" id="employeeInventory" tabindex="-1" role="dialog" aria-labelledby="employeeInventory" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="privacypolicyLabel">Employee Inventory</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <div class="table-responsive table-bordered">
+                        <table class="table">
+                            <tr class="thead-dark">
+                                <th>
+                                    Employee Name
+                                </th>
+                                <th>
+                                    Inventory
+                                </th>  
+                            </tr>
+
+                            @foreach (var item in ViewBag.employeeList)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.EmpName
+                                    </td>
+                                    <td>
+                                        @item.DecksOnHand
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
