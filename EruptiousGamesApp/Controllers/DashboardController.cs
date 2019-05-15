@@ -15,21 +15,26 @@ namespace EruptiousGamesApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         public class DashBoardItem{
-            public int personalSale { get; set; }
-            public int personalPlayed { get; set; }
-            public int personalInfoCollected { get; set; }
+            public int personalSalePerDay { get; set; }
+            public int personalPlayedPerDay { get; set; }
+            public double personalClosingRatioPerDay { get; set; }
 
-            public int campaignSale { get; set; }
-            public int campaignPlayed { get; set; }
-            public int campaignInfoColleted { get; set; }
+            public int personalSalePerCampaign { get; set; }
+            public int personalPlayedPerCampaign { get; set; }
+            public double personalClosingRatioPerCampaign { get; set; }
 
-            public int totalAccount { get; set; }
+            public Boolean assignedToCampaign { get; set; }
 
-            public double closingRatio { get; set; }
+            public int overallSale { get; set; }
+            public int overallPlayed { get; set; }
+            public double overallClosingRatio { get; set; }
+
+            public IEnumerable<string> campaignNames { get; set; }
+            public IEnumerable<int> campaignSales { get; set; }
+            public IEnumerable<int> campaignPlayeds { get; set; }
+            public IEnumerable<double> campaignClosingRatioes { get; set; }
 
             public Employee employee;
-
-            public Campaign campaign;
         }
 
         public ActionResult Index()
@@ -38,85 +43,101 @@ namespace EruptiousGamesApp.Controllers
 
             string currentUserId = User.Identity.GetUserId();
             ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
-            
-            
+
+
             int empID = currentUser.Employee.EmpID;
             di.employee = currentUser.Employee;
 
 
-            var work = db.Works.Where(s => s.EmpID == empID);
+            //Ambassdor per day
+            var work = db.Works.Where(s => s.EmpID == empID && s.Date == DateTime.Today);
             if (work.Count() > 0)
             {
-                di.personalPlayed = work.Sum(s => s.CustomerPlayWith);
-                di.personalSale = work.Sum(s => s.Sold);
+                di.personalPlayedPerDay = work.Sum(s => s.CustomerPlayWith);
+                di.personalSalePerDay = work.Sum(s => s.Sold);
+                di.personalClosingRatioPerDay = getClosingRatio(di.personalSalePerDay, di.personalPlayedPerDay);
             }
             else {
-                di.personalPlayed = 0;
-                di.personalSale = 0;
-            }
-            var customer = db.Customers.Where(s => s.EmpID == empID);
-            if (customer.Count() > 0)
-            {
-                di.personalInfoCollected = customer.Count();
-            }
-            else {
-                di.personalInfoCollected = 0;
+                di.personalPlayedPerDay = 0;
+                di.personalSalePerDay = 0;
+                di.personalClosingRatioPerCampaign = 0;
             }
 
+            //Ambassdor per campaign
             var todayCam = currentUser.GetTodaysCampaign();
-
-            di.campaign = todayCam;
-
-            if (todayCam == null)
-            {
-                di.campaignPlayed = 0;
-                di.campaignSale = 0;
-                di.campaignInfoColleted = 0;
-            }
-            else {
-                int campaignId = todayCam.CamID;
-                var campaign = db.Works.Where(s => s.CamID == campaignId);
-                if (campaign.Count() > 0)
+            if (todayCam != null) {
+                di.assignedToCampaign = true;
+                work = db.Works.Where(s => s.EmpID == empID && s.CamID == todayCam.CamID);
+                if (work.Count() > 0)
                 {
-                    di.campaignPlayed = campaign.Sum(s => s.CustomerPlayWith);
-                    di.campaignSale = campaign.Sum(s => s.Sold);
-                }
-                customer = db.Customers.Where(s => s.CamID == campaignId);
-                if (customer.Count() > 0)
-                {
-                    di.campaignInfoColleted = customer.Count();
+                    di.personalPlayedPerCampaign = work.Sum(s => s.CustomerPlayWith);
+                    di.personalSalePerCampaign = work.Sum(s => s.Sold);
+                    di.personalClosingRatioPerCampaign = getClosingRatio(di.personalSalePerCampaign, di.personalPlayedPerCampaign);
                 }
                 else
                 {
-                    di.campaignInfoColleted = 0;
+                    di.personalPlayedPerCampaign = 0;
+                    di.personalSalePerCampaign = 0;
+                    di.personalClosingRatioPerCampaign = 0;
                 }
             }
-
-            di.totalAccount = db.Employees.Count();
-
-            if (di.personalPlayed == 0)
+            else
             {
-                di.closingRatio = 0;
-            } else
-            {
-                double sale = Convert.ToDouble(di.personalSale);
-                double played = Convert.ToDouble(di.personalPlayed);
-                di.closingRatio = Math.Round(((sale / played) * 100), 2);
+                di.assignedToCampaign = false;
+                di.personalPlayedPerCampaign = 0;
+                di.personalSalePerCampaign = 0;
+                di.personalClosingRatioPerCampaign = 0;
             }
+
+            //Manager Overall
+            var list = db.Works.ToList();
+            if (list.Count() > 0)
+            {
+                di.overallPlayed = list.Sum(s => s.CustomerPlayWith);
+                di.overallSale = list.Sum(s => s.Sold);
+                di.overallClosingRatio = getClosingRatio(di.overallSale, di.overallPlayed);
+            }
+            else
+            {
+                di.overallPlayed = 0;
+                di.overallSale = 0;
+                di.overallClosingRatio = 0;
+            }
+
+            //Manager list of campaigns
+            var campaigns = db.Campaigns.ToList();
+
+            List<string> campaignNames = new List<string>();
+            List<int> campaignSales = new List<int>();
+            List<int> campaignPlayeds = new List<int>();
+            List<double> campaignClosingRatioes = new List<double>();
+
+            foreach (var c in campaigns) {
+                campaignNames.Add(c.CamName);
+
+                var cam = db.Works.Where(s =>  s.CamID == c.CamID).ToList();
+                if (cam.Count() > 0)
+                {
+                    campaignPlayeds.Add(cam.Sum(s => s.CustomerPlayWith));
+                    campaignSales.Add(cam.Sum(s => s.Sold));
+                    campaignClosingRatioes.Add(getClosingRatio(campaignSales.Last(), campaignPlayeds.Last()));
+                }
+                else {
+                    campaignPlayeds.Add(0);
+                    campaignSales.Add(0);
+                    campaignClosingRatioes.Add(0);
+                }
+            }
+            di.campaignNames = campaignNames;
+            di.campaignSales = campaignSales;
+            di.campaignPlayeds = campaignPlayeds;
+            di.campaignClosingRatioes = campaignClosingRatioes;
+
             return View(di);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-            return View();
+        private double getClosingRatio(int sale, int played) {
+            return Math.Round(((Convert.ToDouble(sale) / Convert.ToDouble(played)) * 100), 2);
         }
     }
 }

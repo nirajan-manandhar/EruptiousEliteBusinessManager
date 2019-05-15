@@ -43,9 +43,10 @@ namespace EruptiousGamesApp.Controllers
 
         // POST: Notes/index
         [AuthorizeUser(Role = Role.ADMIN)]
-        public ActionResult DeleteNote(int id)
+        [HttpPost, ActionName("Index")]
+        public ActionResult DeleteNote(string noteID)
         {
-            Note note = db.Notes.Find(id);
+            Note note = db.Notes.Find(Int32.Parse(noteID));
             db.Notes.Remove(note);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -118,13 +119,7 @@ namespace EruptiousGamesApp.Controllers
 
             db.SaveChanges();
 
-            if (ModelState.IsValid)
-            {
-                return RedirectToAction("Index");
-            }
-
-            //ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", note.EmpID);
-            return View(note);
+            return Redirect("/home");
         }
 
         // GET: Notes/Edit/5
@@ -158,32 +153,6 @@ namespace EruptiousGamesApp.Controllers
             }
             //ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", note.EmpID);
             return View(note);
-        }
-
-        // GET: Notes/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Note note = db.Notes.Find(id);
-            if (note == null)
-            {
-                return HttpNotFound();
-            }
-            return View(note);
-        }
-
-        // POST: Notes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Note note = db.Notes.Find(id);
-            db.Notes.Remove(note);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

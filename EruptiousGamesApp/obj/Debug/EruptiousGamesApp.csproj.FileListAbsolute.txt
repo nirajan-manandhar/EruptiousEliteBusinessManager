@@ -777,3 +777,18 @@ D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGam
 D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\bin\WebMatrix.WebData.xml
 D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration101.resources
 D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration102.resources
+C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\OfficeOpenXml.Core.ExcelPackage.dll
+C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\System.IO.Packaging.dll
+C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\System.Net.Http.Formatting.dll
+C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Http.dll
+C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Http.WebHost.dll
+C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\WebMatrix.Data.dll
+C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\WebMatrix.WebData.dll
+C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\OfficeOpenXml.Core.ExcelPackage.pdb
+C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\System.Net.Http.Formatting.xml
+C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Http.xml
+C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Http.WebHost.xml
+C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\WebMatrix.Data.xml
+C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\WebMatrix.WebData.xml
+C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration101.resources
+C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration102.resources
