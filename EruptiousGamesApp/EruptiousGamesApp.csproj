@@ -227,6 +227,14 @@
     <Compile Include="Migrations\201905121142139_Migration9.9.Designer.cs">
       <DependentUpon>201905121142139_Migration9.9.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905150240065_Migration10.1.cs" />
+    <Compile Include="Migrations\201905150240065_Migration10.1.Designer.cs">
+      <DependentUpon>201905150240065_Migration10.1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905150246231_Migration10.2.cs" />
+    <Compile Include="Migrations\201905150246231_Migration10.2.Designer.cs">
+      <DependentUpon>201905150246231_Migration10.2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -401,6 +409,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905121142139_Migration9.9.resx">
       <DependentUpon>201905121142139_Migration9.9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905150240065_Migration10.1.resx">
+      <DependentUpon>201905150240065_Migration10.1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905150246231_Migration10.2.resx">
+      <DependentUpon>201905150246231_Migration10.2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
