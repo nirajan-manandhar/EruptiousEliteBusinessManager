@@ -23,8 +23,12 @@ namespace EruptiousGamesApp.Entities
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set;}
         [Required]
+        [Range(0, int.MaxValue)]
+        [RegularExpression("([0-9])", ErrorMessage = "Please enter 0 or an positive integer")]
         public int Sold { get; set; }
         [Required]
+        [Range(0, int.MaxValue)]
+        [RegularExpression("([0-9])", ErrorMessage = "Please enter 0 or an positive integer")]
         public int CustomerPlayWith { get; set; }
 
         public virtual Campaign Campaign { get; set; }
