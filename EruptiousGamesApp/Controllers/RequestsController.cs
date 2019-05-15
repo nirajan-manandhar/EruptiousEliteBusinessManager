@@ -156,6 +156,75 @@ namespace EruptiousGamesApp.Controllers
             return View(request);
         }
 
+        // GET: Requests/Acept/5
+        public ActionResult Approve(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Request request = db.Requests.Find(id);
+            if (request == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            request.RequestStatus = RequestStatus.APPROVED;
+            if (request.Action == Entities.Action.REQUEST)
+            {
+                request.Employee.DecksOnHand += request.Amount;
+            }
+            else
+            {
+                request.Employee.DecksOnHand -= request.Amount;
+            }
+
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
+
+            request.EmpID = currentUser.Employee.EmpID;
+
+            if (ModelState.IsValid)
+            {
+                //db.Entry(request).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index", "Requests");
+        }
+
+        // GET: Requests/Decline/5
+        public ActionResult Deny(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Request request = db.Requests.Find(id);
+            if (request == null)
+            {
+                return HttpNotFound();
+            }
+
+            request.RequestStatus = RequestStatus.DENIAL;
+
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
+
+            request.EmpID = currentUser.Employee.EmpID;
+
+            if (ModelState.IsValid)
+            {
+                //db.Entry(request).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index", "Requests");
+        }
+
+
         // GET: Requests/ChangeStatus/5
         public ActionResult ChangeStatus(int? id)
         {
@@ -171,24 +240,6 @@ namespace EruptiousGamesApp.Controllers
             ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
             ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
 
-            return View(request);
-        }
-
-        // POST: Requests/ChangeStatus/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ChangeStatus([Bind(Include = "RequestID,CamID,EmpID,DateTime,Amount,Action,RequestStatus")] Request request)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(request).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
-            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
             return View(request);
         }
 
