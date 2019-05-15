@@ -33,20 +33,12 @@
         </tr>
 
         @foreach (var item in Model) {
-<<<<<<< HEAD
             @if ((int)(item.RequestStatus) == 1) { 
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Campaign.CamName)
             </td>
             <td>
-=======
-]        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Campaign.CamName)
-            </td>
-            <td>                
->>>>>>> parent of ebf3d66... Inventory Functions Added
                 @Html.DisplayFor(modelItem => item.Employee.EmpName)
             </td>
             <td>
@@ -67,10 +59,7 @@
                 @Html.ActionLink("Delete", "Delete", new { id = item.RequestID })
             </td>
         </tr>
-<<<<<<< HEAD
         }
-=======
->>>>>>> parent of ebf3d66... Inventory Functions Added
 }
 
     </table>
