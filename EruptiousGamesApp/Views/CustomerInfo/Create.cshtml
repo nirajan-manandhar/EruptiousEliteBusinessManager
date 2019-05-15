@@ -2,35 +2,57 @@
 @model EruptiousGamesApp.Entities.Customer
 
 @{
+
     ViewBag.Title = "Create";
     <link href="~/Content/form.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 }
+
+<script>
+    $(function () {
+        $('body').on('click', '#yes-btn', function () {
+            $('#info-form').submit();
+            $('#otherCustomer').modal("toggle");
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
+        });
+
+        $('body').on('click', '#no-btn', function (e) {
+            var url = '@Url.Action("Create", "Notes")';
+            $('#info-form').submit();
+            $('#otherCustomer').modal("toggle");
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
+
+        })
+    });
+</script>
 
 <div class="mainContent">
     <div class="form-basic">
 
         <img class="mb-4" src='@Url.Content("~/Content/Images/custInfoButton.png")' style="width:80%;display: block; margin-left: auto; margin-right: auto;">
 
-        <!-- Privacy Policy Modal -->
-        <div class="modal fade" id="moreUserCheck" tabindex="-1" role="dialog" aria-labelledby="moreUserCheck" aria-hidden="true">
+        <!-- More User Modal -->
+        <div class="modal fade" id="otherCustomer" tabindex="-1" role="dialog" aria-labelledby="otherCustomer" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="moreUserCheckLabel">More People?</h5>
+                        <h5 class="modal-title" id="otherCustomerLabel">More People?</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h3>More People?</h3>
+                        <p>
+                            If there are more people who want to input information, please tap 'Yes' and pass the device along.
+                            <br />
+                            Otherwise, hand back the device.
+                        </p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Yes</button>
-
-                        <button type="button" class="btn btn-outline-danger">No</button>
-                        <input type="submit" value="No" class="btn btn-outline-danger" />
-                        @Html.ActionLink("No", "Create", "Notes", new { @class = "btn btn-outline-danger" })
+                        <button id="yes-btn" class="btn btn-outline-success">Yes</button>
+                        <button id="no-btn" class="btn btn-outline-primary">No</button>
                     </div>
                 </div>
             </div>
@@ -170,7 +192,7 @@
             </div>
         </div>
 
-        @using (Html.BeginForm())
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "info-form" }))
         {
             @Html.AntiForgeryToken()
 
@@ -254,23 +276,23 @@
                 <div class="form-group">
 
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Submit" class="btn btn-success" />
+                        <input data-toggle="modal" data-target="#otherCustomer" class="btn btn-success" value="Submit" />
                     </div>
 
                 </div>
 
-                <div>
-                    @Html.ActionLink("Back to Workspace", "Index", "Home")
-                </div>
             </div>
+
 
         }
 
 
     </div>
- </div>
+</div>
+
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    @*Scripts.Render("~/Scripts/modal.js")*@
 }
