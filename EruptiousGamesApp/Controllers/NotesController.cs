@@ -119,7 +119,7 @@ namespace EruptiousGamesApp.Controllers
 
             db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return Redirect("/home");
         }
 
         // GET: Notes/Edit/5

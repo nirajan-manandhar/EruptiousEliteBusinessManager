@@ -90,11 +90,11 @@ namespace EruptiousGamesApp.Controllers
             }
 
             //Manager Overall
-            work = db.Works;
-            if (work.Count() > 0)
+            var list = db.Works.ToList();
+            if (list.Count() > 0)
             {
-                di.overallPlayed = work.Sum(s => s.CustomerPlayWith);
-                di.overallSale = work.Sum(s => s.Sold);
+                di.overallPlayed = list.Sum(s => s.CustomerPlayWith);
+                di.overallSale = list.Sum(s => s.Sold);
                 di.overallClosingRatio = getClosingRatio(di.overallSale, di.overallPlayed);
             }
             else
@@ -115,7 +115,7 @@ namespace EruptiousGamesApp.Controllers
             foreach (var c in campaigns) {
                 campaignNames.Add(c.CamName);
 
-                var cam = db.Works.Where(s => s.CamID == c.CamID);
+                var cam = db.Works.Where(s =>  s.CamID == c.CamID).ToList();
                 if (cam.Count() > 0)
                 {
                     campaignPlayeds.Add(cam.Sum(s => s.CustomerPlayWith));
