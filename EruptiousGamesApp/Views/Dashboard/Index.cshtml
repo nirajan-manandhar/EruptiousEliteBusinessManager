@@ -7,15 +7,10 @@
 }
 
 <style>
-    a {
-        color: inherit;
-        text-decoration: inherit;
+    .filter {
+        padding: 5px;
+        margin: 5px;
     }
-
-        a:hover, a:focus {
-            color: inherit;
-            text-decoration: inherit;
-        }
 </style>
 
 <script>
@@ -24,10 +19,14 @@
         //hides dropdown content
         $(".search_field_amb").hide();
         $(".search_field_man").hide();
+        $(".search_field_adm").hide();
+        $(".search_field_emp").hide();
 
         //unhides first option content
         $("#day_amb").show();
         $("#overall_man").show();
+        $(".day_adm").show();
+        $("#emp_0").show();
 
         //listen to dropdown for change
         $("#search_select_amb").change(function () {
@@ -36,6 +35,7 @@
             //unhides current item
             $('#' + $(this).val()).show();
         });
+
         $("#search_select_man").change(function () {
             //rehide content on change
             $('.search_field_man').hide();
@@ -46,8 +46,15 @@
             //rehide content on change
             $('.search_field_adm').hide();
             //unhides current item
+            $('.' + $(this).val()).show();
+        });
+        $("#search_select_emp").change(function () {
+            //rehide content on change
+            $('.search_field_emp').hide();
+            //unhides current item
             $('#' + $(this).val()).show();
         });
+
     });
 </script>
 
@@ -62,7 +69,7 @@
                     <div class="card-header" id="headingOne">
                         <h5 class="mb-0">
                             <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <h2>Welcome @Html.DisplayFor(m => Model.employee.EmpName)!</h2>
+                                <h2>Welcome @Html.DisplayFor(m => Model.personalStat.name)!</h2>
                             </button>
                         </h5>
                     </div>
@@ -70,7 +77,8 @@
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
                             <select id="search_select_amb" class="filter">
-                                <option value="day_amb">Day</option>
+                                <option value="day_amb">Today</option>
+                                <option value="all_amb">Overall</option>
                                 <option value="cam_amb">Current campaign</option>
                             </select>
                             <br />
@@ -78,50 +86,70 @@
                             <h4>
                                 Decks On Hand:
                                 <span class="badge badge-info">
-                                    @Html.DisplayFor(m => Model.employee.DecksOnHand)
+                                    @Html.DisplayFor(m => Model.personalStat.decks)
                                 </span>
                             </h4>
                             <div id="day_amb" class="search_field_amb">
                                 <h4>
                                     Customers Played With:
                                     <span class="badge badge-info">
-                                        @Html.DisplayFor(m => Model.personalPlayedPerDay)
+                                        @Html.DisplayFor(m => Model.personalStat.playedPerDay)
                                     </span>
                                 </h4>
                                 <h4>
                                     Sales:
                                     <span class="badge badge-info">
-                                        @Html.DisplayFor(m => Model.personalSalePerDay)
+                                        @Html.DisplayFor(m => Model.personalStat.salePerDay)
                                     </span>
                                 </h4>
                                 <h4>
                                     Closing Ratio:
                                     <span class="badge badge-info">
-                                        @Html.DisplayFor(m => Model.personalClosingRatioPerDay)%
+                                        @Html.DisplayFor(m => Model.personalStat.closingRatioPerDay)%
+                                    </span>
+                                </h4>
+                            </div>
+                            <div id="all_amb" class="search_field_amb">
+                                <h4>
+                                    Customers Played With:
+                                    <span class="badge badge-info">
+                                        @Html.DisplayFor(m => Model.personalStat.playedOverall)
+                                    </span>
+                                </h4>
+                                <h4>
+                                    Sales:
+                                    <span class="badge badge-info">
+                                        @Html.DisplayFor(m => Model.personalStat.saleOverall)
+                                    </span>
+                                </h4>
+                                <h4>
+                                    Closing Ratio:
+                                    <span class="badge badge-info">
+                                        @Html.DisplayFor(m => Model.personalStat.closingRatioOverall)%
                                     </span>
                                 </h4>
                             </div>
                             <div id="cam_amb" class="search_field_amb">
-                                @if (Model.assignedToCampaign == true)
+                                @if (Model.personalStat.assignedToCampaign == true)
                                 {
                                     <h4>
                                         Customers Played With:
                                         <span class="badge badge-info">
-                                            @Html.DisplayFor(m => Model.personalPlayedPerCampaign)
+                                            @Html.DisplayFor(m => Model.personalStat.playedPerCampaign)
                                         </span>
                                     </h4>
                                     <h4>
 
                                         Sales:
                                         <span class="badge badge-info">
-                                            @Html.DisplayFor(m => Model.personalSalePerCampaign)
+                                            @Html.DisplayFor(m => Model.personalStat.salePerCampaign)
                                         </span>
                                     </h4>
                                     <h4>
 
                                         Closing Ratio:
                                         <span class="badge badge-info">
-                                            @Html.DisplayFor(m => Model.personalClosingRatioPerCampaign)%
+                                            @Html.DisplayFor(m => Model.personalStat.closingRatioPerCampaign)%
                                         </span>
                                     </h4>
                                 }
@@ -133,7 +161,7 @@
                         </div>
                     </div>
                 </div>
-                @if ((int)Model.employee.Role != 0)
+                @if ((int)Model.personalStat.role != 0)
                 {
                     <div class="card">
                         <div class="card-header" id="headingTwo">
@@ -145,7 +173,7 @@
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
-                                <select id="search_select_man">
+                                <select id="search_select_man" size="3" class="filter">
                                     <option value="overall_man">Overall</option>
                                     @{
                                         int i = 0;
@@ -184,8 +212,8 @@
                                     var reversePlayed = Model.campaignPlayeds.Reverse();
                                     var reverseSale = Model.campaignSales.Reverse();
                                     var reverseRatio = Model.campaignClosingRatioes.Reverse();
-                                        foreach (var c in Model.campaignNames.Reverse())
-                                        {
+                                    foreach (var c in Model.campaignNames.Reverse())
+                                    {
                                         <div id="cam_@j" class="search_field_man">
                                             <h4>
                                                 Customers Played:
@@ -213,7 +241,7 @@
                         </div>
                     </div>
                 }
-                @if ((int)Model.employee.Role == 3)
+                @if ((int)Model.personalStat.role == 2)
                 {
                     <div class="card">
                         <div class="card-header" id="headingThree">
@@ -225,12 +253,113 @@
                         </div>
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                             <div class="card-body">
-                                <h4>
-                                    Total Accounts:
-                                    <span class="badge badge-info">
-                                        @Html.DisplayFor(m => Model.overallPlayed)
-                                    </span>
-                                </h4>
+
+                                <select id="search_select_emp" size="3" class="filter">
+                                    @{
+                                        int i = 0;
+                                        foreach (var c in Model.employeeStats.OrderBy(s => s.name))
+                                        {
+                                            <option value="emp_@i">@c.name</option>
+                                            i += 1;
+                                        }
+                                    }
+                                </select>
+                                <br />
+                                <select id="search_select_adm" class="filter">
+                                    <option value="day_adm">Today</option>
+                                    <option value="all_adm">Overall</option>
+                                    <option value="cam_adm">Current campaign</option>
+                                </select>
+                                <br />
+                                <br />
+                                @{
+                                    int j = 0;
+                                    foreach (var c in Model.employeeStats.OrderBy(s => s.name))
+                                    {
+                                        <div id="emp_@j" class="search_field_emp">
+                                            <h4>
+                                                Name:
+                                                <span class="badge badge-info">
+                                                    @c.name
+                                                </span>
+                                            </h4>
+                                            <h4>
+                                                Decks On Hand:
+                                                <span class="badge badge-info">
+                                                    @c.decks
+                                                </span>
+                                            </h4>
+                                            <div class="search_field_adm day_adm">
+                                                <h4>
+                                                    Customers Played With:
+                                                    <span class="badge badge-info">
+                                                        @c.playedPerDay
+                                                    </span>
+                                                </h4>
+                                                <h4>
+                                                    Sales:
+                                                    <span class="badge badge-info">
+                                                        @c.salePerDay
+                                                    </span>
+                                                </h4>
+                                                <h4>
+                                                    Closing Ratio:
+                                                    <span class="badge badge-info">
+                                                        @c.closingRatioPerDay%
+                                                    </span>
+                                                </h4>
+                                            </div>
+                                            <div class="search_field_adm all_adm">
+                                                <h4>
+                                                    Customers Played With:
+                                                    <span class="badge badge-info">
+                                                        @c.playedOverall
+                                                    </span>
+                                                </h4>
+                                                <h4>
+                                                    Sales:
+                                                    <span class="badge badge-info">
+                                                        @c.saleOverall
+                                                    </span>
+                                                </h4>
+                                                <h4>
+                                                    Closing Ratio:
+                                                    <span class="badge badge-info">
+                                                        @c.closingRatioOverall%
+                                                    </span>
+                                                </h4>
+                                            </div>
+                                            <div class="search_field_adm cam_adm">
+                                                @if (c.assignedToCampaign == true)
+                                                {
+                                                    <h4>
+                                                        Customers Played With:
+                                                        <span class="badge badge-info">
+                                                            @c.playedPerCampaign
+                                                        </span>
+                                                    </h4>
+                                                    <h4>
+                                                        Sales:
+                                                        <span class="badge badge-info">
+                                                            @c.salePerCampaign
+                                                        </span>
+                                                    </h4>
+                                                    <h4>
+                                                        Closing Ratio:
+                                                        <span class="badge badge-info">
+                                                            @c.closingRatioPerCampaign%
+                                                        </span>
+                                                    </h4>
+                                                }
+                                                else
+                                                {
+                                                    <h4>This employee is not assigned to any active campaign</h4>
+                                                }
+                                            </div>
+                                        </div>
+                                        j += 1;
+                                    }
+                                }
                             </div>
                         </div>
                     </div>
