@@ -219,6 +219,7 @@
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Note.cs" />
     <Compile Include="Entities\Request.cs" />
+    <Compile Include="Entities\StartEndDateValidation.cs" />
     <Compile Include="Entities\Work.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
