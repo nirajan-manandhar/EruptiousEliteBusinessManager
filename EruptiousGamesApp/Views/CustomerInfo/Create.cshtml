@@ -2,7 +2,6 @@
 @model EruptiousGamesApp.Entities.Customer
 
 @{
-
     ViewBag.Title = "Create";
     <link href="~/Content/form.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -56,6 +55,15 @@
     });
 
 </script>
+
+@section crumbContent{
+    <span>
+        <img class="mb-4" src='@Url.Content("~/Content/Images/workspace.png")' style="width:20%; max-width:40px; margin:5px;">
+        @Html.ActionLink("Workspace", "Index", "Home", null, new { @class = "h5", @style = "display: inline-block" })
+        ⮞
+        @Html.ActionLink("Customer Information Input", "Create", "CustomerInfo", null, new { @class = "h5", @style = "display: inline-block" })
+    </span>
+}
 
 <div class="mainContent">
     <div class="form-basic">
