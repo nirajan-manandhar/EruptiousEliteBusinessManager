@@ -13,16 +13,14 @@
         $('body').on('click', '#yes-btn', function () {
             $('#info-form').submit();
             $('#otherCustomer').modal("toggle");
-            $('body').removeClass('modal-open');
-            $('.modal-backdrop').remove();
+
         });
 
         $('body').on('click', '#no-btn', function (e) {
             var url = '@Url.Action("Create", "Notes")';
             $('#info-form').submit();
             $('#otherCustomer').modal("toggle");
-            $('body').removeClass('modal-open');
-            $('.modal-backdrop').remove();
+
             //window.location.href = url;
         })
     });
