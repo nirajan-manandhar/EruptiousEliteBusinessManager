@@ -6,6 +6,14 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 }
 
+@section crumbContent{
+    <span>
+        <img class="mb-4" src='@Url.Content("~/Content/Images/workspace.png")' style="width:20%; max-width:40px; margin:5px;">
+        @Html.ActionLink("Workspace", "Index", "Home", null, new { @class = "h5", @style = "display: inline-block" })
+        ⮞
+        @Html.ActionLink("Inventory Requests", "InputRequest", "Requests", null, new { @class = "h5", @style = "display: inline-block" })
+    </span>
+}
 
 <div class="mainContent">
     <div class="form-basic">
@@ -54,14 +62,14 @@
                     <div style="margin:10px;font-size:medium">
                         @Html.ActionLink("List of Requests", "RequestAdmin")
                     </div>
-                </div>   
+                </div>
             }
         }
 
 
 
     </div>
-    </div>
-        @section Scripts {
-            @Scripts.Render("~/bundles/jqueryval")
-        }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
