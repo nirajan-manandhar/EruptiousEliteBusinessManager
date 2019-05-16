@@ -43,12 +43,16 @@ namespace EruptiousGamesApp.Migrations
             var Aska = new ApplicationUser { UserName = "aska", Employee = new Employee { EmpName = "Aska", Role = Role.AMBASSADOR, EmpStatus = EmpStatus.ACTIVE, DecksOnHand = 0 } };
             UserManager.Create(Aska, "123456");
 
+            context.Configuration.ValidateOnSaveEnabled = false;
+
             var campaigns = new List<Campaign>
             {
                 new Campaign { CamName = "Campaign1", StartDate = DateTime.Parse("2019-05-01"), EndDate=DateTime.Parse("2019-05-31"), Inventory=100 }
             };
             campaigns.ForEach(c => context.Campaigns.AddOrUpdate(p => p.CamName, c));
             context.SaveChanges();
+
+            context.Configuration.ValidateOnSaveEnabled = true;
 
             context = new ApplicationDbContext();
             AssignEmployeeToCampaign(context, 4, 1);
