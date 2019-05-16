@@ -15,44 +15,52 @@
         {
             @Html.AntiForgeryToken()
 
-    <div class="form-horizontal shadow" style="padding:10px; padding-top:25px;">
+            <div class="form-horizontal shadow" style="padding:10px; padding-top:25px;">
 
-        <h2 class="control-label col-md-12 arial font-weight-bold">
-            Decks on Hand: <span class="badge badge-info">@Html.DisplayFor(model => model.employee.DecksOnHand)</span>
-        </h2>
+                <h2 class="control-label col-md-12 arial font-weight-bold">
+                    Decks on Hand: <span class="badge badge-info">@Html.DisplayFor(model => model.employee.DecksOnHand)</span>
+                </h2>
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.request.Action, htmlAttributes: new { @class = "control-label col-md-2 arial" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.request.Action, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.request.Action, "", new { @class = "text-danger" })
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.request.Action, htmlAttributes: new { @class = "control-label col-md-2 arial" })
+                    <div class="col-md-10">
+                        @Html.EnumDropDownListFor(model => model.request.Action, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.request.Action, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.request.Amount, htmlAttributes: new { @class = "control-label col-md-2 arial" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.request.Amount, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                        @Html.ValidationMessageFor(model => model.request.Amount, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="submit" class="btn btn-light shadow">
+                            <img src="~/Content/Images/submitButton.png" style="max-width:120px" />
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.request.Amount, htmlAttributes: new { @class = "control-label col-md-2 arial" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.request.Amount, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
-                @Html.ValidationMessageFor(model => model.request.Amount, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <button type="submit" class="btn btn-light shadow">
-                    <img src="~/Content/Images/submitButton.png" style="max-width:120px" />
-                </button>
-            </div>
-        </div>
-    </div>
+            if ((int)(Model.employee.Role) != 0)
+            {
+                <div class="card arial" style="margin-top: 10px">
+                    <h5 style="margin-top:10px; margin-left: 10px">Admin Quick Access</h5>
+                    <div style="margin:10px;font-size:medium">
+                        @Html.ActionLink("List of Requests", "RequestAdmin")
+                    </div>
+                </div>   
+            }
         }
 
-        <div>
-            @Html.ActionLink("Back to List", "Index")
-        </div>
 
-        </div>
+
+    </div>
     </div>
         @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")

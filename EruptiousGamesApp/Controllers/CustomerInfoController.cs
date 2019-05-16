@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using EruptiousGamesApp.Entities;
 using EruptiousGamesApp.Models;
+using Microsoft.AspNet.Identity;
 
 namespace EruptiousGamesApp.Controllers
 {
@@ -35,9 +36,11 @@ namespace EruptiousGamesApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CustID,CamID,EmpID,DateTime,CustName,Email,Phone,City,Age,Gender,PTCheck")] Customer customer)
         {
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
 
-            customer.CamID = 1;
-            customer.EmpID = 1;
+            customer.CamID = currentUser.GetTodaysCampaign().CamID;
+            customer.EmpID = currentUser.Employee.EmpID;
             customer.DateTime = DateTime.Now;
 
             if (ModelState.IsValid)

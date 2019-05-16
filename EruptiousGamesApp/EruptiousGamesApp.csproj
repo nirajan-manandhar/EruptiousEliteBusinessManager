@@ -219,21 +219,14 @@
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Note.cs" />
     <Compile Include="Entities\Request.cs" />
+    <Compile Include="Entities\StartEndDateValidation.cs" />
     <Compile Include="Entities\Work.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905121142139_Migration9.9.cs" />
-    <Compile Include="Migrations\201905121142139_Migration9.9.Designer.cs">
-      <DependentUpon>201905121142139_Migration9.9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905150240065_Migration10.1.cs" />
-    <Compile Include="Migrations\201905150240065_Migration10.1.Designer.cs">
-      <DependentUpon>201905150240065_Migration10.1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905150246231_Migration10.2.cs" />
-    <Compile Include="Migrations\201905150246231_Migration10.2.Designer.cs">
-      <DependentUpon>201905150246231_Migration10.2.cs</DependentUpon>
+    <Compile Include="Migrations\201905151040400_Migration11.4.cs" />
+    <Compile Include="Migrations\201905151040400_Migration11.4.Designer.cs">
+      <DependentUpon>201905151040400_Migration11.4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -408,14 +401,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905121142139_Migration9.9.resx">
-      <DependentUpon>201905121142139_Migration9.9.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905150240065_Migration10.1.resx">
-      <DependentUpon>201905150240065_Migration10.1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905150246231_Migration10.2.resx">
-      <DependentUpon>201905150246231_Migration10.2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905151040400_Migration11.4.resx">
+      <DependentUpon>201905151040400_Migration11.4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -47,7 +47,9 @@
                                         <th> Username </th>
                                         <th> Role </th>
                                         <th> Status </th>
-                                        <th> Number Sold</th>
+                                        <th> Customer Play With </th>
+                                        <th> Sold </th>
+                                        <th> Action </th>
                                     </tr>
 
                                     @foreach (var item in Model)
@@ -66,6 +68,12 @@
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Employee.EmpStatus)
+                                                </td>
+                                                <td>
+                                                    @item.Employee.Workings.Sum(w =>w.CustomerPlayWith)
+                                                </td>
+                                                <td>
+                                                    @item.Employee.Workings.Sum(w =>w.Sold)
                                                 </td>
                                                 <td>
                                                     @Html.ActionLink("Edit", "AccountEdit", new { id = item.Id }) |
@@ -97,7 +105,9 @@
                                         <th> Username </th>
                                         <th> Role </th>
                                         <th> Status </th>
-                                        <th></th>
+                                        <th> Customer Play With </th>
+                                        <th> Sold </th>
+                                        <th> Action </th>
                                     </tr>
 
                                     @foreach (var item in Model)
@@ -117,6 +127,12 @@
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Employee.EmpStatus)
+                                                </td>
+                                                <td>
+                                                    @item.Employee.Workings.Sum(w =>w.CustomerPlayWith)
+                                                </td>
+                                                <td>
+                                                    @item.Employee.Workings.Sum(w =>w.Sold)
                                                 </td>
                                                 <td>
                                                     @Html.ActionLink("Edit", "AccountEdit", new { id = item.Id }) |
@@ -147,7 +163,7 @@
                                         <th> Username </th>
                                         <th> Role </th>
                                         <th> Status </th>
-                                        <th></th>
+                                        <th> Action </th>
                                     </tr>
 
                                     @foreach (var item in Model)

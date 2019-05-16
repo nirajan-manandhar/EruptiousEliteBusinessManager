@@ -147,7 +147,7 @@ namespace EruptiousGamesApp.Controllers
         [AuthorizeUser(Role = Role.ADMIN)]
         public ActionResult AccountList()
         {
-            var users = db.Users.Include(r => r.Employee).OrderBy(r => r.Employee.EmpName);
+            var users = db.Users.Include(r => r.Employee).Include(r => r.Employee.Workings).OrderBy(r => r.Employee.EmpName);
             return View(users.ToList());
         }
 

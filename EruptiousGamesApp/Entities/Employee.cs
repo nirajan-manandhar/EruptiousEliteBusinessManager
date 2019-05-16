@@ -28,6 +28,8 @@ namespace EruptiousGamesApp.Entities
         [InventoryCannotBeZeroForInactivation]
         public EmpStatus EmpStatus { get; set; }
         [Required]
+        [Range(0, int.MaxValue)]
+        [RegularExpression("[0-9]{1,}", ErrorMessage = "Please enter 0 or an positive integer")]
         public int DecksOnHand { get; set; }
 
 

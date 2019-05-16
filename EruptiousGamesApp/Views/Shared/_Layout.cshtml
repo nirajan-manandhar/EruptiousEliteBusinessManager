@@ -20,8 +20,6 @@
         var employeeID = database.QueryValue("SELECT Employee_EmpID FROM AspNetUsers WHERE Id = '" + currentUserId + "'");
         EruptiousGamesApp.Entities.Employee employee = db.Employees.Find(employeeID);
         var employeeRole = employee.Role;
-
-
     }
 </head>
 <body>

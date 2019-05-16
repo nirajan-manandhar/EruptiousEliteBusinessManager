@@ -1,62 +1,92 @@
+@using Microsoft.AspNet.Identity;
+@using System.Linq;
+@using System.Collections.Generic;
+@using System.Data.Entity;
+
 @{
     ViewBag.Title = "Home Page";
     <link href="~/Content/basic.css" rel="stylesheet" type="text/css" />
 
+    EruptiousGamesApp.Models.ApplicationDbContext db = new EruptiousGamesApp.Models.ApplicationDbContext();
+
+    string currentUserId = User.Identity.GetUserId();
+    EruptiousGamesApp.Models.ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
+    var todayCam = currentUser.GetTodaysCampaign();
+    bool display = false;
+    if (todayCam != null)
+    {
+        display = true;
+    }
 }
 
-<div class="form-basic">
-    <img class="mb-4" src='@Url.Content("~/Content/Images/workspace.png")' style="width:50%;display: block; margin-left: auto; margin-right: auto;">
-    <h1 class="h1 font-weight-bold font-weight-normal textShadow" style="text-align:center; color: steelblue">Workspace</h1>
 
-    <div class="row">
-        <div class="col-sm-12" style="margin:10px">
-            <a href='@Url.Action("Create", "CustomerInfo")'>
-                <button class="btn btn-light btn-lg btn-block shadow" style="height:150px">
-                    <img class="center" src='@Url.Content("~/Content/Images/custInfoButton.png")' width:60% />
-                </button>
-            </a>
-        </div>
-        <div class="col-sm-12" style="margin:10px">
-            <a href='@Url.Action("InputRequest", "Requests")'>
-                <button class="btn btn-light btn-lg btn-block shadow" style="height:150px">
-                    <img class="center" src='@Url.Content("~/Content/Images/inventoryButton.png")' width:60% />
-                </button>
-            </a>
-        </div>
-        <div class="col-sm-12" style="margin:10px">
-            <a href='@Url.Action("Create", "Notes")'>
-                <button class="btn btn-light btn-lg btn-block shadow" style="height:150px">
-                    <img class="center" src='@Url.Content("~/Content/Images/feedbackButton.png")' width:60% />
 
-                </button>
-            </a>
-        </div>
+@if (display == true)
+{
+    <div class="form-basic">
+        <img class="mb-4" src='@Url.Content("~/Content/Images/workspace.png")' style="width:50%;display: block; margin-left: auto; margin-right: auto;">
+        <h1 class="h1 font-weight-bold font-weight-normal textShadow" style="text-align:center; color: steelblue">Workspace</h1>
 
-        <div class="col-sm-12" style="margin:10px">
-            <a href='@Url.Action("Index", "Dashboard")'>
-                <button type="button" class="btn btn-light btn-lg btn-block shadow" style="height:150px">
-                    <img class="center" src='@Url.Content("~/Content/Images/dashboardButton.png")' width:60% />
-                </button>
-            </a>
-        </div>
+        <div class="row">
+            <div class="col-sm-12" style="margin:10px">
+                <a href='@Url.Action("Create", "CustomerInfo")'>
+                    <button class="btn btn-light btn-lg btn-block shadow" style="height:150px">
+                        <img class="center" src='@Url.Content("~/Content/Images/custInfoButton.png")' width:60% />
+                    </button>
+                </a>
+            </div>
+            <div class="col-sm-12" style="margin:10px">
+                <a href='@Url.Action("InputRequest", "Requests")'>
+                    <button class="btn btn-light btn-lg btn-block shadow" style="height:150px">
+                        <img class="center" src='@Url.Content("~/Content/Images/inventoryButton.png")' width:60% />
+                    </button>
+                </a>
+            </div>
+            <div class="col-sm-12" style="margin:10px">
+                <a href='@Url.Action("Create", "Notes")'>
+                    <button class="btn btn-light btn-lg btn-block shadow" style="height:150px">
+                        <img class="center" src='@Url.Content("~/Content/Images/feedbackButton.png")' width:60% />
 
-        <div class="col-sm-12" style="margin:10px">
-            @if (Request.IsAuthenticated)
-            {
-                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                    </button>
+                </a>
+            </div>
+
+            <div class="col-sm-12" style="margin:10px">
+                <a href='@Url.Action("Index", "Dashboard")'>
+                    <button type="button" class="btn btn-light btn-lg btn-block shadow" style="height:150px">
+                        <img class="center" src='@Url.Content("~/Content/Images/dashboardButton.png")' width:60% />
+                    </button>
+                </a>
+            </div>
+
+            <div class="col-sm-12" style="margin:10px">
+                @if (Request.IsAuthenticated)
                 {
-                    @Html.AntiForgeryToken()
-                    <a href="javascript:document.getElementById('logoutForm').submit()">
-                        <button type="button" class="btn btn-light btn-lg btn-block shadow" style="height:150px">
-                            <img class="center" src='@Url.Content("~/Content/Images/logoutButton.png")' style="width:60%" />
-                        </button>
-                    </a>
+                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <a href="javascript:document.getElementById('logoutForm').submit()">
+                            <button type="button" class="btn btn-light btn-lg btn-block shadow" style="height:150px">
+                                <img class="center" src='@Url.Content("~/Content/Images/logoutButton.png")' style="width:60%" />
+                            </button>
+                        </a>
+                    }
                 }
-            }
+            </div>
         </div>
-    </div>
-
-
-
-    </div>
+        </div>
+        } else {
+        
+            <div class="card mx-auto" style="width:90%; margin-top:50px">
+         
+                <div class="card-body">
+                    <img src="~/Content/Images/error.png" style="max-width:100px; margin:10px" alt="Card image cap">
+                    <h4 class="card-title">You are not assigned to a campaign today.</h4>
+                    <p class="card-text">
+                        <h6>Workspace functions cannot be accessed</h6>
+                        <h6>Contact manager or administrator for assignment to a campaign.</h6>
+                    </p>
+                </div>
+            </div>
+        }
 
