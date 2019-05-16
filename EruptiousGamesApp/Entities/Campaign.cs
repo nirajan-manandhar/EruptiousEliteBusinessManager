@@ -21,6 +21,8 @@ namespace EruptiousGamesApp.Entities
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime EndDate { get; set; }
         [Required]
+        [Range(0, int.MaxValue)]
+        [RegularExpression("[0-9]{1,}", ErrorMessage = "Please enter 0 or an positive integer")]
         public int Inventory { get; set; }
 
         public virtual ICollection<Employee> Employees { get; set; }
