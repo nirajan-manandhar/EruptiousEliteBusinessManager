@@ -78,7 +78,7 @@ namespace EruptiousGamesApp.Controllers
 
 
             var assignedEmployeeList = campaign.Employees.ToList(); //this is the list of the employees assigned to this Campaign
-            var unassignedEmployeeList = db.Employees.ToList(); //This is the list of all the employees in the company
+            var unassignedEmployeeList = db.Employees.ToList();  //This is the list of all the employees in the company
 
             foreach (Employee e in assignedEmployeeList.ToList())
             {
@@ -88,8 +88,8 @@ namespace EruptiousGamesApp.Controllers
             CampaignEmployee ce = new CampaignEmployee
             {
                 campaign = campaign,
-                assignedEmployeeList = assignedEmployeeList,
-                unassignedEmployeeList = unassignedEmployeeList
+                assignedEmployeeList = assignedEmployeeList.OrderBy(r => r.EmpName),
+                unassignedEmployeeList = unassignedEmployeeList.OrderBy(r => r.EmpName)
             };
             return View(ce);
 

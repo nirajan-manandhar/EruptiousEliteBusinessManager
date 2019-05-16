@@ -1,14 +1,14 @@
 ﻿@model EruptiousGamesApp.Entities.Campaign
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Campaign Details";
 }
 
-<h2>Details</h2>
-
+<hr />
+<h3>Campaign Details for: <i>@Html.DisplayFor(model => model.CamName)</i></h3>
+<hr />
 <div>
-    <h4>Campaign</h4>
-    <hr />
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.CamName)
