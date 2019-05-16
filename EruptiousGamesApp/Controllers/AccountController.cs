@@ -11,7 +11,6 @@ using Microsoft.Owin.Security;
 using EruptiousGamesApp.Models;
 using EruptiousGamesApp.Entities;
 using System.Data.Entity;
-using System.Data.Entity;
 using System.Net;
 using EruptiousGamesApp.Authorization;
 using OfficeOpenXml;
@@ -85,14 +84,17 @@ namespace EruptiousGamesApp.Controllers
             // To enable password failures to trigger account lockout, change to shouldLockout: true
 
             SignInStatus result;
-            var currentUser = db.Users.Include(u => u.Employee).FirstOrDefault(x => x.UserName == model.UserName);
-            if(currentUser.Employee.EmpStatus == EmpStatus.INACTIVE)
+            result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
+            if(result == SignInStatus.Success)
             {
-                result = SignInStatus.LockedOut;
-            } else
-            {
-                result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
+                var currentUser = db.Users.Include(u => u.Employee).FirstOrDefault(x => x.UserName == model.UserName);
+                if (currentUser.Employee.EmpStatus == EmpStatus.INACTIVE)
+                {
+                    result = SignInStatus.LockedOut;
+                }
             }
+
+            
 
             switch (result)
             {
@@ -148,7 +150,7 @@ namespace EruptiousGamesApp.Controllers
         [AuthorizeUser(Role = Role.ADMIN)]
         public ActionResult AccountList()
         {
-            var users = db.Users.Include(r => r.Employee).OrderBy(r => r.Employee.EmpName);
+            var users = db.Users.Include(r => r.Employee).Include(r => r.Employee.Workings).OrderBy(r => r.Employee.EmpName);
             return View(users.ToList());
         }
 

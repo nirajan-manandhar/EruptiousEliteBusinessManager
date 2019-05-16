@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<EruptiousGamesApp.Entities.Campaign>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Campaigns";
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     Html.RenderAction("Create", "Campaigns");
 }
@@ -48,9 +48,8 @@
                         </td>
                         <td style="white-space:nowrap">
                             @Html.ActionLink("Edit", "Edit", new { id = item.CamID }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.CamID }) |
                             @Html.ActionLink("Delete", "Delete", new { id = item.CamID }) |
-                            @Html.ActionLink("Assign", "AssignEmp", new { id = item.CamID})
+                            @Html.ActionLink("Assign", "AssignEmp", new { id = item.CamID })
                         </td>
                     </tr>
                 }
@@ -98,12 +97,12 @@
                             @Html.ActionLink("Edit", "Edit", new { id = item.CamID }) |
                             @Html.ActionLink("Details", "Details", new { id = item.CamID }) |
                             @Html.ActionLink("Delete", "Delete", new { id = item.CamID }) |
-                            @Html.ActionLink("Assign", "AssignEmp", new { id = item.CamID})
+                            @Html.ActionLink("Assign", "AssignEmp", new { id = item.CamID })
                         </td>
                     </tr>
                 }
             </table>
         </div>
 
-        </div>
     </div>
+</div>

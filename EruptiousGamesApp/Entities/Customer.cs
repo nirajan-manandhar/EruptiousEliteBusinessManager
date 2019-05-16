@@ -28,6 +28,8 @@ namespace EruptiousGamesApp.Entities
         public string Email { get; set; }
         public string Phone { get; set; }
         public string City { get; set; }
+        [Range(1, 200)]
+        [RegularExpression("[0-9]{1,}", ErrorMessage = "Please enter an integer between 0 and 200")]
         public int? Age { get; set; }
         public Gender? Gender { get; set; }
         [Required]
