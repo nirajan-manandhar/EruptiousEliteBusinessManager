@@ -41,6 +41,13 @@ namespace EruptiousGamesApp.Entities
 
         public Campaign GetTodaysCampaign()
         {
+            foreach (Campaign c in Campaigns)
+            {
+                if (c.StartDate <= DateTime.Now && c.EndDate >= DateTime.Now)
+                {
+                    return c;
+                }
+            }
 
             return null;
         }
