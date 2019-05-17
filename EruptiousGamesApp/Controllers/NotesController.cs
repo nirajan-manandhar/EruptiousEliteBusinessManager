@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -81,7 +82,15 @@ namespace EruptiousGamesApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "NoteID,EmpID,DateTime,Title,Comment")] Note note, [Bind(Include = "CustomerPlayWith, Sold")] Work work)
         {
-            //Hard coded ID
+            if (!ModelState.IsValid){
+                WorkSession ws = new WorkSession
+                {
+                    note = note,
+                    work = work
+                };
+                return View(ws);
+            }
+
             string currentUserId = User.Identity.GetUserId();
             ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
 
@@ -103,19 +112,16 @@ namespace EruptiousGamesApp.Controllers
 
                 if (existingWork.Count() > 0)
                 {
+                    db.Entry(existingWork.First()).State = EntityState.Modified;
                     existingWork.First().CustomerPlayWith += work.CustomerPlayWith;
-                    existingWork.First().Sold += work.Sold; 
+                    existingWork.First().Sold += work.Sold;
                 }
                 else
                 {
                     db.Works.Add(work);
                 }
-                /*
-                if (work.Sold > 0)
-                {
-                    currentUser.Employee.DecksOnHand -= work.Sold;
-                }
-                */
+                db.Entry(currentUser.Employee).State = EntityState.Modified;
+                currentUser.Employee.DecksOnHand -= work.Sold;
             }
 
             if (!String.IsNullOrWhiteSpace(note.Title) || !String.IsNullOrWhiteSpace(note.Comment))
@@ -123,6 +129,7 @@ namespace EruptiousGamesApp.Controllers
                 db.Notes.Add(note);
             }
 
+            db.Configuration.ValidateOnSaveEnabled = false;
             db.SaveChanges();
 
             return Redirect("/home");

@@ -61,6 +61,7 @@ namespace EruptiousGamesApp.Controllers
             int empID = currentUser.Employee.EmpID;
             di.personalStat.role = currentUser.Employee.Role;
             di.personalStat.name = currentUser.Employee.EmpName;
+            di.personalStat.decks = currentUser.Employee.DecksOnHand;
 
             //Ambassdor per day
             var work = db.Works.Where(s => s.EmpID == empID && s.Date == DateTime.Today);
