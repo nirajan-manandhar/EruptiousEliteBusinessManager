@@ -43,6 +43,11 @@ namespace EruptiousGamesApp.Controllers
             customer.EmpID = currentUser.Employee.EmpID;
             customer.DateTime = DateTime.Now;
 
+            //Encrypt
+            customer.CustName = Encryptor.Encrypt(customer.CustName);
+            customer.Email = Encryptor.Encrypt(customer.Email);
+            customer.Phone = Encryptor.Encrypt(customer.Phone);
+
             if (ModelState.IsValid)
             {
                 db.Customers.Add(customer);

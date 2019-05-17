@@ -666,8 +666,6 @@ C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\Syst
 C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Http.WebHost.xml
 C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\WebMatrix.Data.xml
 C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\bin\WebMatrix.WebData.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration114.resources
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.GenerateResource.cache
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\System.Net.Http.Formatting.dll
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Http.dll
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Http.WebHost.dll
@@ -680,3 +678,5 @@ C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\WebMatrix
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\WebMatrix.WebData.xml
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration114.resources
 C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration114.resources
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration131.resources
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.GenerateResource.cache
