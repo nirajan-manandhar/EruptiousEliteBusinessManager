@@ -70,7 +70,7 @@ namespace EruptiousGamesApp.Controllers
             }
 
             Campaign campaign = db.Campaigns.Include(c => c.Employees).FirstOrDefault(c => c.CamID == id);
-
+https://stackoverflow.com/jobs?med=site-ui&ref=jobs-tab
             if (campaign == null)
             {
                 return HttpNotFound();
@@ -98,7 +98,19 @@ namespace EruptiousGamesApp.Controllers
         public ActionResult AssignAction(int CamId, int EmpId)//Assign this EmpId to this CamId
         {
             Campaign campaign = db.Campaigns.Include(c => c.Employees).FirstOrDefault(c => c.CamID == CamId);
-            Employee employee = db.Employees.Find(EmpId);
+            Employee employee = db.Employees.Include(e => e.Campaigns).FirstOrDefault(e => e.EmpID == EmpId);
+
+            foreach (Campaign c in employee.Campaigns)
+            {
+                if (!(DateTime.Compare(c.StartDate, campaign.EndDate) > 0) && !(DateTime.Compare(c.EndDate, campaign.StartDate) < 0))
+                {
+                    TempData["error"] = "There is overlap in date between this campaign and the employees' campaigns";
+                    return RedirectToAction("AssignEmp", new { id = CamId });
+                }
+            }
+          
+            Campaign employeeCampaign = employee.GetTodaysCampaign();
+            
 
             campaign.Employees.Add(employee);
 
