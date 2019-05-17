@@ -263,9 +263,9 @@ namespace EruptiousGamesApp.Controllers
                 Sheet.Cells[string.Format("B{0}", row)].Value = item.Campaign.CamName;
                 Sheet.Cells[string.Format("C{0}", row)].Value = item.Employee.EmpName;
                 Sheet.Cells[string.Format("D{0}", row)].Value = item.DateTime.ToString("MM/dd/yyyy hh:mm tt");
-                Sheet.Cells[string.Format("E{0}", row)].Value = item.CustName;
-                Sheet.Cells[string.Format("F{0}", row)].Value = item.Email;
-                Sheet.Cells[string.Format("G{0}", row)].Value = item.Phone;
+                Sheet.Cells[string.Format("E{0}", row)].Value = Encryptor.Decrypt(item.CustName);
+                Sheet.Cells[string.Format("F{0}", row)].Value = Encryptor.Decrypt(item.Email);
+                Sheet.Cells[string.Format("G{0}", row)].Value = Encryptor.Decrypt(item.Phone);
                 Sheet.Cells[string.Format("H{0}", row)].Value = item.City;
                 Sheet.Cells[string.Format("I{0}", row)].Value = item.Age;
                 Sheet.Cells[string.Format("J{0}", row)].Value = item.Gender;
