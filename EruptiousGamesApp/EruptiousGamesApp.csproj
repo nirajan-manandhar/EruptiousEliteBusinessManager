@@ -217,19 +217,22 @@
     <Compile Include="Entities\Campaign.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Entities\NeedPT.cs" />
     <Compile Include="Entities\Note.cs" />
     <Compile Include="Entities\Request.cs" />
+    <Compile Include="Entities\soldValidation.cs" />
     <Compile Include="Entities\StartEndDateValidation.cs" />
     <Compile Include="Entities\Work.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905151040400_Migration11.4.cs" />
-    <Compile Include="Migrations\201905151040400_Migration11.4.Designer.cs">
-      <DependentUpon>201905151040400_Migration11.4.cs</DependentUpon>
+    <Compile Include="Migrations\201905170923325_Migration13.1.cs" />
+    <Compile Include="Migrations\201905170923325_Migration13.1.Designer.cs">
+      <DependentUpon>201905170923325_Migration13.1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Encryptor.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Entities\InventoryCannotBeZeroForInactivation.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -401,8 +404,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905151040400_Migration11.4.resx">
-      <DependentUpon>201905151040400_Migration11.4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905170923325_Migration13.1.resx">
+      <DependentUpon>201905170923325_Migration13.1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

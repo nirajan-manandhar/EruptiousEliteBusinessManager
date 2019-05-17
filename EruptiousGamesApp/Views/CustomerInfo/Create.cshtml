@@ -2,31 +2,68 @@
 @model EruptiousGamesApp.Entities.Customer
 
 @{
-
     ViewBag.Title = "Create";
     <link href="~/Content/form.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 }
 
 <script>
+
+    var isValid = true;
+
     $(function () {
+
+        //function validateForm() {
+        var defaultRangeValidator = $.validator.methods.range;
+	    $.validator.methods.range = function(value, element, param) {
+		    if(element.type === 'checkbox') {
+                // if it's a checkbox return true if it is checked
+                isValid = element.checked;
+			    return element.checked;
+		    } else {
+			    // otherwise run the default validation function
+                isValid = defaultRangeValidator.call(this, value, element, param);
+			    return defaultRangeValidator.call(this, value, element, param);
+		    }
+        }
+
+        $('body').on('click', "#submit-form", function () {
+            if (isValid) {
+                $('#otherCustomer').modal("show");
+            }
+        });
+
         $('body').on('click', '#yes-btn', function () {
+            $('#morePeople').val(1);
             $('#info-form').submit();
-            $('#otherCustomer').modal("toggle");
-            $('body').removeClass('modal-open');
-            $('.modal-backdrop').remove();
+            if (!isValid) {
+                $('#otherCustomer').modal("hide");
+            }
         });
 
         $('body').on('click', '#no-btn', function (e) {
-            var url = '@Url.Action("Create", "Notes")';
+            $('#morePeople').val(0);
             $('#info-form').submit();
-            $('#otherCustomer').modal("toggle");
-            $('body').removeClass('modal-open');
-            $('.modal-backdrop').remove();
-            //window.location.href = url;
-        })
+            $('#otherCustomer').modal("hide");
+        });
+
+        
+       // }
+
+        
+
     });
+
 </script>
+
+@section crumbContent{
+    <span>
+        <img class="mb-4" src='@Url.Content("~/Content/Images/workspace.png")' style="width:20%; max-width:40px; margin:5px;">
+        @Html.ActionLink("Workspace", "Index", "Home", null, new { @class = "h5", @style = "display: inline-block" })
+        ⮞
+        @Html.ActionLink("Customer Information Input", "Create", "CustomerInfo", null, new { @class = "h5", @style = "display: inline-block" })
+    </span>
+}
 
 <div class="mainContent">
     <div class="form-basic">
@@ -196,12 +233,14 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-horizontal shadow" style="padding:10px; padding-top:25px;">
+            //Hidden field that checks if more people want to input information
+            @Html.Hidden("morePeople", 0)
 
+            <div class="form-horizontal shadow" style="padding:10px; padding-top:25px;">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     @Html.LabelFor(model => model.CustName, "Full Name", htmlAttributes: new { @class = "control-label col-md-4 arial" })
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         @Html.EditorFor(model => model.CustName, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.CustName, "", new { @class = "text-danger" })
                     </div>
@@ -209,7 +248,7 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2 arial" })
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                     </div>
@@ -217,17 +256,15 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2 arial" })
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2 arial" })
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -235,7 +272,6 @@
                     @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2 arial" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -254,7 +290,6 @@
                             @Html.RadioButtonFor(model => model.Gender, "OTHER", new { @id = "Other" })
                             @Html.Label("Other", "Other")
                         </div>
-                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -276,7 +311,7 @@
                 <div class="form-group">
 
                     <div class="col-md-offset-2 col-md-10">
-                        <input data-toggle="modal" data-target="#otherCustomer" class="btn btn-success" value="Submit" />
+                        <button type="button" id="submit-form" class="btn btn-success">Submit</button>
                     </div>
 
                 </div>

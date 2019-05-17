@@ -34,7 +34,7 @@ namespace EruptiousGamesApp.Controllers
         //POST: CustomerInfo/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CustID,CamID,EmpID,DateTime,CustName,Email,Phone,City,Age,Gender,PTCheck")] Customer customer)
+        public ActionResult Create([Bind(Include = "CustID,CamID,EmpID,DateTime,CustName,Email,Phone,City,Age,Gender,PTCheck")] Customer customer, int morePeople)
         {
             string currentUserId = User.Identity.GetUserId();
             ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
@@ -43,12 +43,25 @@ namespace EruptiousGamesApp.Controllers
             customer.EmpID = currentUser.Employee.EmpID;
             customer.DateTime = DateTime.Now;
 
+            //Encrypt
+            customer.CustName = Encryptor.Encrypt(customer.CustName);
+            customer.Email = Encryptor.Encrypt(customer.Email);
+            customer.Phone = Encryptor.Encrypt(customer.Phone);
+
             if (ModelState.IsValid)
             {
                 db.Customers.Add(customer);
                 db.SaveChanges();
-                return RedirectToAction("Create");
-            }
+
+                if (morePeople == 0)
+                {
+                    return RedirectToAction("Create", "Notes");
+                }
+                else if (morePeople == 1) 
+                {
+                    return RedirectToAction("Create");
+                }
+            } 
 
             ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", customer.CamID);
             ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", customer.EmpID);
