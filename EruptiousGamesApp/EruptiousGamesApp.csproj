@@ -217,6 +217,7 @@
     <Compile Include="Entities\Campaign.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Entities\NeedPT.cs" />
     <Compile Include="Entities\Note.cs" />
     <Compile Include="Entities\Request.cs" />
     <Compile Include="Entities\StartEndDateValidation.cs" />
