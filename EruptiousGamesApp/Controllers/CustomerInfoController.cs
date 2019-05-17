@@ -46,7 +46,10 @@ namespace EruptiousGamesApp.Controllers
             //Encrypt
             customer.CustName = Encryptor.Encrypt(customer.CustName);
             customer.Email = Encryptor.Encrypt(customer.Email);
-            customer.Phone = Encryptor.Encrypt(customer.Phone);
+            if (customer.Phone != null)
+            {
+                customer.Phone = Encryptor.Encrypt(customer.Phone);
+            }
 
             if (ModelState.IsValid)
             {
