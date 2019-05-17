@@ -11,9 +11,10 @@
 
     var isValid = true;
 
-    $(function () {
+    //$(function () {
 
         //function validateForm() {
+        /*
         var defaultRangeValidator = $.validator.methods.range;
 	    $.validator.methods.range = function(value, element, param) {
 		    if(element.type === 'checkbox') {
@@ -26,9 +27,14 @@
 			    return defaultRangeValidator.call(this, value, element, param);
 		    }
         }
-
+        */
         $('body').on('click', "#submit-form", function () {
+            /*
             if (isValid) {
+                $('#otherCustomer').modal("show");
+            }
+            */
+            if ($('#info-form').valid()) {
                 $('#otherCustomer').modal("show");
             }
         });
@@ -52,7 +58,7 @@
 
         
 
-    });
+    //});
 
 </script>
 

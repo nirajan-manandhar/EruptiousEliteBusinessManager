@@ -10,19 +10,17 @@ using static EruptiousGamesApp.Controllers.NotesController;
 
 namespace EruptiousGamesApp.Entities
 {
-    public class soldValidation : ValidationAttribute
+    public class SoldValidation : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             var work = (Work)validationContext.ObjectInstance;
-            //ApplicationDbContext db = new ApplicationDbContext();
+            ApplicationDbContext db = new ApplicationDbContext();
 
+            string currentUserId = HttpContext.Current.User.Identity.GetUserId();
+            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
 
-            //string currentUserId = HttpContext.Current.User.Identity.GetUserId();
-            //ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
-
-
-            if (work.Sold == 4)
+            if (work.Sold > currentUser.Employee.DecksOnHand)
             {
                 return new ValidationResult("You don't have enough decks on hand.");
             }

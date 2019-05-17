@@ -24,7 +24,7 @@ namespace EruptiousGamesApp.Entities
         public DateTime Date { get; set;}
 
         [Required]
-        //[soldValidation]
+        [SoldValidation]
         [Range(0, int.MaxValue)]
         [RegularExpression("[0-9]{1,}", ErrorMessage = "Please enter 0 or an positive integer")]
         public int Sold { get; set; }
