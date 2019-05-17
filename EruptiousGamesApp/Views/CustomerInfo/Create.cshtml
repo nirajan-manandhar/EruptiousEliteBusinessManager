@@ -2,7 +2,6 @@
 @model EruptiousGamesApp.Entities.Customer
 
 @{
-
     ViewBag.Title = "Create";
     <link href="~/Content/form.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -27,6 +26,15 @@
         })
     });
 </script>
+
+@section crumbContent{
+    <span>
+        <img class="mb-4" src='@Url.Content("~/Content/Images/workspace.png")' style="width:20%; max-width:40px; margin:5px;">
+        @Html.ActionLink("Workspace", "Index", "Home", null, new { @class = "h5", @style = "display: inline-block" })
+        ⮞
+        @Html.ActionLink("Customer Information Input", "Create", "CustomerInfo", null, new { @class = "h5", @style = "display: inline-block" })
+    </span>
+}
 
 <div class="mainContent">
     <div class="form-basic">
@@ -201,7 +209,7 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     @Html.LabelFor(model => model.CustName, "Full Name", htmlAttributes: new { @class = "control-label col-md-4 arial" })
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         @Html.EditorFor(model => model.CustName, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.CustName, "", new { @class = "text-danger" })
                     </div>
@@ -209,7 +217,7 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2 arial" })
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                     </div>
@@ -217,7 +225,7 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2 arial" })
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                     </div>
@@ -225,7 +233,7 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2 arial" })
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
                     </div>

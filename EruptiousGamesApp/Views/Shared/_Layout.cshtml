@@ -8,10 +8,14 @@
     @Scripts.Render("~/bundles/modernizr")
     @using Microsoft.AspNet.Identity
 
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     @{
         EruptiousGamesApp.Models.ApplicationDbContext db = new EruptiousGamesApp.Models.ApplicationDbContext();
 
@@ -25,46 +29,46 @@
 <body>
     @if (Request.IsAuthenticated)
     {
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-        <!-- Brand -->
-        <a class="navbar-brand" href='@Url.Action("Index", "Home")'>
-            <img src='@Url.Content("~/Content/Images/Logo.png")' style="width:100px; margin:5px; float:left" />
-        </a>
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+            <!-- Brand -->
+            <a class="navbar-brand" href='@Url.Action("Index", "Home")'>
+                <img src='@Url.Content("~/Content/Images/Logo.png")' style="width:100px; margin:5px; float:left" />
+            </a>
 
-        <!-- Toggler/collapsibe Button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <!-- Navbar links -->
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav" style="margin-left:5px">
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav" style="margin-left:5px">
 
-                <li class="nav-item h6">
-                    @Html.ActionLink("Dashboard", "Index", "Dashboard", null, new { @class = "nav-link" })
-                </li>
-                <li class="nav-item h6">
-                    @Html.ActionLink("Workspace", "Index", "Home", null, new { @class = "nav-link" })
-                </li>
-
-                @if ((int)employeeRole != 0)
-                {
                     <li class="nav-item h6">
-                        @Html.ActionLink("Campaigns", "Index", "Campaigns", null, new { @class = "nav-link" })
+                        @Html.ActionLink("Dashboard", "Index", "Dashboard", null, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item h6">
-                        @Html.ActionLink("Feedback", "Index", "Notes", null, new { @class = "nav-link" })
+                        @Html.ActionLink("Workspace", "Index", "Home", null, new { @class = "nav-link" })
                     </li>
-                    <li class="nav-item h6">
-                        @Html.ActionLink("Inventory", "RequestAdmin", "Requests", null, new { @class = "nav-link" })
-                    </li>
-                    if ((int)employeeRole == 2)
+
+                    @if ((int)employeeRole != 0)
                     {
                         <li class="nav-item h6">
-                            @Html.ActionLink("Account", "AccountList", "Account", null, new { @class = "nav-link" })
+                            @Html.ActionLink("Campaigns", "Index", "Campaigns", null, new { @class = "nav-link" })
                         </li>
+                        <li class="nav-item h6">
+                            @Html.ActionLink("Feedback", "Index", "Notes", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item h6">
+                            @Html.ActionLink("Inventory", "RequestAdmin", "Requests", null, new { @class = "nav-link" })
+                        </li>
+                        if ((int)employeeRole == 2)
+                        {
+                            <li class="nav-item h6">
+                                @Html.ActionLink("Account", "AccountList", "Account", null, new { @class = "nav-link" })
+                            </li>
+                        }
                     }
-                }
 
                     <li class="nav-item h6">
                         @if (Request.IsAuthenticated)
@@ -78,23 +82,57 @@
                     </li>
 
                 </ul>
-        </div>
-    </nav>
+            </div>
+        </nav>
     }
-    <div class="container body-content">
+<nav aria-label="breadcrumb" class="w3-animate-left arial" style="width:100%; margin:0; font-family: 'Nunito', sans-serif;">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">
+            @RenderSection("crumbContent", required: false)
+            @if (IsSectionDefined("Admin"))
+            {
+                <span>
+                    <img class="mb-4" src='@Url.Content("~/Content/Images/adminFunctions.png")' style="width:20%; max-width:40px; margin:5px;">
+                    <a class="h5" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Administrative Tools
+                    </a>
+                    ⮞
+                    @Html.ActionLink("Campaign Details", "Index", "Campaigns", null, new { @class = "h5", @style = "display: inline-block" })
+
+                    <div class="collapse w3-animate-left" style="margin-left:5px;" id="collapseExample">
+                        <div class="card card-body">
+                            @Html.ActionLink("Campaign Details", "Index", "Campaigns", null, new { @class = "h5", @style = "display: inline-block" })
+                            @Html.ActionLink("Feedback Details", "Index", "Campaigns", null, new { @class = "h5", @style = "display: inline-block" })
+                            @Html.ActionLink("Inventory Details", "Index", "Campaigns", null, new { @class = "h5", @style = "display: inline-block" })
+                            @if ((int)employeeRole == 2)
+                            {
+                                @Html.ActionLink("Account Details", "Index", "Campaigns", null, new { @class = "h5", @style = "display: inline-block" })
+                            }
+                        </div>
+                    </div>
+                </span>
+            }
+        </li>
+    </ol>
+</nav>
+<div class="container body-content">
+    <div class="w3-animate-zoom">
         @RenderBody()
-        <hr />
-
-        @section Footer {
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Eruptious Games</p>
-            </footer>
-        }
-
     </div>
+
+    <hr />
+
+    @section Footer {
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Eruptious Games</p>
+        </footer>
+    }
+
+</div>
     @Scripts.Render("~/bundles/Bootstrap")
     @RenderSection("scripts", required: false)
     @RenderSection("Footer", false)
+    @RenderSection("Admin", required: false)
 
     <script>
         $(document).on('click', '.navbar-collapse.in', function (e) {

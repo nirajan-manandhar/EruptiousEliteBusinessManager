@@ -6,6 +6,8 @@
 @{
     ViewBag.Title = "Home Page";
     <link href="~/Content/basic.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
 
     EruptiousGamesApp.Models.ApplicationDbContext db = new EruptiousGamesApp.Models.ApplicationDbContext();
 
@@ -19,13 +21,20 @@
     }
 }
 
-
-
+@section crumbContent{
+    <span>
+        <img class="mb-4" src='@Url.Content("~/Content/Images/workspace.png")' style="width:20%; max-width:40px; margin:5px;">
+        @Html.ActionLink("Workspace", "Index", "Home", null, new { @class = "h3", @style="display: inline-block" })
+    </span>
+}
 @if (display == true)
 {
     <div class="form-basic">
-        <img class="mb-4" src='@Url.Content("~/Content/Images/workspace.png")' style="width:50%;display: block; margin-left: auto; margin-right: auto;">
-        <h1 class="h1 font-weight-bold font-weight-normal textShadow" style="text-align:center; color: steelblue">Workspace</h1>
+        @*
+            <img class="mb-4" src='@Url.Content("~/Content/Images/workspace.png")' style="width:50%;display: block; margin-left: auto; margin-right: auto;">
+            <h1 class="h1 font-weight-bold font-weight-normal textShadow" style="text-align:center; color: steelblue">Workspace</h1>
+        *@
+        
 
         <div class="row">
             <div class="col-sm-12" style="margin:10px">
@@ -74,19 +83,21 @@
                 }
             </div>
         </div>
+    </div>
+}
+else
+{
+
+    <div class="card mx-auto" style="width:90%; margin-top:50px">
+
+        <div class="card-body">
+            <img src="~/Content/Images/error.png" style="max-width:100px; margin:10px" alt="Card image cap">
+            <h4 class="card-title">You are not assigned to a campaign today.</h4>
+            <p class="card-text">
+                <h6>Workspace functions cannot be accessed</h6>
+                <h6>Contact manager or administrator for assignment to a campaign.</h6>
+            </p>
         </div>
-        } else {
-        
-            <div class="card mx-auto" style="width:90%; margin-top:50px">
-         
-                <div class="card-body">
-                    <img src="~/Content/Images/error.png" style="max-width:100px; margin:10px" alt="Card image cap">
-                    <h4 class="card-title">You are not assigned to a campaign today.</h4>
-                    <p class="card-text">
-                        <h6>Workspace functions cannot be accessed</h6>
-                        <h6>Contact manager or administrator for assignment to a campaign.</h6>
-                    </p>
-                </div>
-            </div>
-        }
+    </div>
+}
 
