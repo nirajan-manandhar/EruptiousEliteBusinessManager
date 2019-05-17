@@ -104,15 +104,21 @@ namespace EruptiousGamesApp.Controllers
                 if (existingWork.Count() > 0)
                 {
                     existingWork.First().CustomerPlayWith += work.CustomerPlayWith;
-                    existingWork.First().Sold += work.Sold;
+                    existingWork.First().Sold += work.Sold; 
                 }
                 else
                 {
                     db.Works.Add(work);
                 }
+                /*
+                if (work.Sold > 0)
+                {
+                    currentUser.Employee.DecksOnHand -= work.Sold;
+                }
+                */
             }
 
-            if (!String.IsNullOrWhiteSpace(note.Title) && !String.IsNullOrWhiteSpace(note.Comment))
+            if (!String.IsNullOrWhiteSpace(note.Title) || !String.IsNullOrWhiteSpace(note.Comment))
             {
                 db.Notes.Add(note);
             }

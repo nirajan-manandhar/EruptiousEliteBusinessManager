@@ -22,7 +22,9 @@ namespace EruptiousGamesApp.Entities
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set;}
+
         [Required]
+        //[soldValidation]
         [Range(0, int.MaxValue)]
         [RegularExpression("[0-9]{1,}", ErrorMessage = "Please enter 0 or an positive integer")]
         public int Sold { get; set; }
