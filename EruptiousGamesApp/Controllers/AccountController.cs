@@ -163,6 +163,13 @@ namespace EruptiousGamesApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ApplicationUser ApplicationUser = db.Users.Include(r => r.Employee).FirstOrDefault(x => x.Id == id);
+            
+            //Protect Superuser - Terence's account
+            if (ApplicationUser.UserName == "terence")
+            {
+                return RedirectToAction("Unauthorised", "Home");
+            }
+
             if (ApplicationUser == null)
             {
                 return HttpNotFound();
@@ -182,7 +189,16 @@ namespace EruptiousGamesApp.Controllers
             if (ModelState.IsValid)
             {
                 var user = UserManager.FindById(ApplicationUser.Id);
+                //Protect Superuser - Terence's account
+                if (user.UserName == "terence")
+                {
+                    return RedirectToAction("Unauthorised", "Home");
+                }
+
+
                 user.UserName = ApplicationUser.UserName;
+
+
 
                 var result = await UserManager.UpdateAsync(user);
                 if (result.Succeeded)
@@ -208,6 +224,20 @@ namespace EruptiousGamesApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ApplicationUser ApplicationUser = db.Users.Include(r => r.Employee).FirstOrDefault(x => x.Id == id);
+
+            //Protect Superuser - Terence's account
+            if (ApplicationUser.UserName == "terence")
+            {
+                string currentUserId = User.Identity.GetUserId();
+                ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserId);
+
+                if (currentUser.UserName != "terence")
+                {
+                    return RedirectToAction("Unauthorised", "Home");
+                }
+
+            }
+
             if (ApplicationUser == null)
             {
                 return HttpNotFound();
@@ -229,6 +259,21 @@ namespace EruptiousGamesApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Protect Superuser - Terence's account
+                ApplicationUser ApplicationUser = db.Users.FirstOrDefault(x => x.Id == model.UserId);
+                if (ApplicationUser.UserName == "terence")
+                {
+                    string currentUserId = User.Identity.GetUserId();
+                    ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserId);
+
+                    if (currentUser.UserName != "terence")
+                    {
+                        return RedirectToAction("Unauthorised", "Home");
+                    }
+
+                }
+
+
                 var result = UserManager.RemovePassword(model.UserId);
                 
                 if (result.Succeeded)

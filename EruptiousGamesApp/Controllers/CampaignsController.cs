@@ -70,7 +70,7 @@ namespace EruptiousGamesApp.Controllers
             }
 
             Campaign campaign = db.Campaigns.Include(c => c.Employees).FirstOrDefault(c => c.CamID == id);
-https://stackoverflow.com/jobs?med=site-ui&ref=jobs-tab
+
             if (campaign == null)
             {
                 return HttpNotFound();
