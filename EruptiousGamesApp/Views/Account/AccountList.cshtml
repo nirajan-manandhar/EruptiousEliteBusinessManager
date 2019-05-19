@@ -6,9 +6,16 @@
 
 }
 
+@section crumbContent{
+    <span>
+        <img class="mb-4" src='@Url.Content("~/Content/Images/adminFunctions.png")' style="width:20%; max-width:60px; margin:5px;">
+        @Html.ActionLink("Accounts", "AccountList", "Account", null, new { @class = "h3", @style = "display: inline-block" })
+    </span>
+}
+
 <div style="margin-top:5%">
 
-    <div class="card text-center shadow">
+    <div class="card text-center shadow w3-animate-left">
         <div class="card-header">
             <img src="~/Content/Images/account.png" style="width:20%; max-width:80px" />
             <h2 class="arial">Accounts</h2>
@@ -22,7 +29,7 @@
         </div>
     </div>
     <hr />
-    <div class="card text-center shadow">
+    <div class="card text-center shadow w3-animate-bottom">
         <div class="card-header">
             <img src="~/Content/Images/accountList.png" style="width:20%; max-width:80px" />
             <h2 class="arial">Accounts List</h2>
@@ -70,10 +77,10 @@
                                                     @Html.DisplayFor(modelItem => item.Employee.EmpStatus)
                                                 </td>
                                                 <td>
-                                                    @item.Employee.Workings.Sum(w =>w.CustomerPlayWith)
+                                                    @item.Employee.Workings.Sum(w => w.CustomerPlayWith)
                                                 </td>
                                                 <td>
-                                                    @item.Employee.Workings.Sum(w =>w.Sold)
+                                                    @item.Employee.Workings.Sum(w => w.Sold)
                                                 </td>
                                                 <td>
                                                     @Html.ActionLink("Edit", "AccountEdit", new { id = item.Id }) |
@@ -129,10 +136,10 @@
                                                     @Html.DisplayFor(modelItem => item.Employee.EmpStatus)
                                                 </td>
                                                 <td>
-                                                    @item.Employee.Workings.Sum(w =>w.CustomerPlayWith)
+                                                    @item.Employee.Workings.Sum(w => w.CustomerPlayWith)
                                                 </td>
                                                 <td>
-                                                    @item.Employee.Workings.Sum(w =>w.Sold)
+                                                    @item.Employee.Workings.Sum(w => w.Sold)
                                                 </td>
                                                 <td>
                                                     @Html.ActionLink("Edit", "AccountEdit", new { id = item.Id }) |
@@ -186,10 +193,10 @@
                                                     @Html.DisplayFor(modelItem => item.Employee.EmpStatus)
                                                 </td>
                                                 <td>
-                                                    @item.Employee.Workings.Sum(w =>w.CustomerPlayWith)
+                                                    @item.Employee.Workings.Sum(w => w.CustomerPlayWith)
                                                 </td>
                                                 <td>
-                                                    @item.Employee.Workings.Sum(w =>w.Sold)
+                                                    @item.Employee.Workings.Sum(w => w.Sold)
                                                 </td>
                                                 <td>
                                                     @Html.ActionLink("Edit", "AccountEdit", new { id = item.Id }) |

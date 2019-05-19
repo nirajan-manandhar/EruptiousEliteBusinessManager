@@ -126,11 +126,21 @@ namespace EruptiousGamesApp.Controllers
                 currentUser.Employee.DecksOnHand -= work.Sold;
             }
 
-            if (!String.IsNullOrWhiteSpace(note.Title) || !String.IsNullOrWhiteSpace(note.Comment))
+            if (String.IsNullOrWhiteSpace(note.Title) || String.IsNullOrWhiteSpace(note.Comment))
+            {
+                TempData["error"] = "A title or comment is required.";
+                return RedirectToAction("Create");
+            } else
             {
                 db.Notes.Add(note);
             }
 
+            /*
+            if (!String.IsNullOrWhiteSpace(note.Title) || !String.IsNullOrWhiteSpace(note.Comment))
+            {
+                db.Notes.Add(note);
+            }
+            */
             db.Configuration.ValidateOnSaveEnabled = false;
             db.SaveChanges();
 

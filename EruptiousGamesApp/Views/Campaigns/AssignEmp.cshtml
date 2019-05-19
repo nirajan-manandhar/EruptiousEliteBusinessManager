@@ -2,70 +2,108 @@
 
 @{
     ViewBag.Title = "Assign Employee";
+    <link href="~/Content/adminForms.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 }
 
-@TempData["Error"]
+@section crumbContent{
+    <span>
+        <img class="mb-4" src='@Url.Content("~/Content/Images/adminFunctions.png")' style="width:20%; max-width:60px; margin:5px;">
+        @Html.ActionLink("Campaigns", "Index", "Campaigns", null, new { @class = "h5", @style = "display: inline-block" })
+        ⮞
+        @Html.ActionLink("Assign", "AssignEmp", "Campaigns", null, new { @class = "h5", @style = "display: inline-block" })
+    </span>
+}
 
+<div class="card shadow w3-animate-bottom">
+    <div class="card-header  text-center">
+        <img src="~/Content/Images/campaign.png" style="width:20%; max-width:80px" />
+        <h2 class="arial"><h2>@ViewBag.Title</h2></h2>
+        <h3>To: <i>@Html.DisplayFor(model => model.campaign.CamName)</i></h3>
 
-<hr />
-<h3>Assigning to: <i>@Html.DisplayFor(model => model.campaign.CamName)</i></h3>
-<hr />
+    </div>
+    <div class="card-body">
+        <div class="card shadow">
+            <div class="card-header text-center">
+                <h4><b>@Html.DisplayFor(model => model.campaign.CamName) Employees</b></h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered  ">
+                    <tr>
+                        <th>
+                            Employee Name
+                        </th>
+                        <th>
+                            Role
+                        </th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model.assignedEmployeeList)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EmpName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Role)
+                            </td>
+                            <td style="text-align:center">
+                                @Html.ActionLink("Remove", "RemoveAction", new { camID = Model.campaign.CamID, empID = item.EmpID })
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
 
-<table class="table">
-    <tr>
-        <th>
-            Employee Name
-        </th>
-        <th>
-            Role
-        </th>
-        <th></th>
-    </tr>
+        <hr />
 
-    @foreach (var item in Model.assignedEmployeeList)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmpName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Role)
-            </td>
-            <td>
-                @Html.ActionLink("Remove", "RemoveAction", new { camID = Model.campaign.CamID, empID = item.EmpID })
-            </td>
-        </tr>
-    }
+        <div class="card shadow">
+            <div class="card-header text-center">
+                <h4><b>Choose an employee:</b></h4>
+            </div>
 
-</table>
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>@TempData["Error"]</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
 
-<table class="table">
-    <tr>
-        <th>
-            Employee Name
-        </th>
-        <th>
-            Role
-        </th>
-        <th></th>
-    </tr>
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <th>
+                            Employee Name
+                        </th>
+                        <th>
+                            Role
+                        </th>
+                        <th></th>
+                    </tr>
 
-    @foreach (var item in Model.unassignedEmployeeList)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmpName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Role)
-            </td>
-            <td>
-                @Html.ActionLink("Assign", "AssignAction", new { camID = Model.campaign.CamID, empID = item.EmpID })
-            </td>
-        </tr>
-    }
+                    @foreach (var item in Model.unassignedEmployeeList)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EmpName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Role)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Assign", "AssignAction", new { camID = Model.campaign.CamID, empID = item.EmpID })
+                            </td>
+                        </tr>
+                    }
 
-</table>
+                </table>
+            </div>
+        </div>
+        </div>
 
 
 

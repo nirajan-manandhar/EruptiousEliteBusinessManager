@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
-    <link href="~/Content/form.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/adminForms.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 }
 
@@ -37,57 +37,79 @@
     </span>
 }
 
-<div class="mainContent">
-    <div class="form-basic">
-        <img class="mb-4" src='@Url.Content("~/Content/Images/feedbackButton.png")' style="width:80%;display: block; margin-left: auto; margin-right: auto;">
 
-        @using (Html.BeginForm(null,null, FormMethod.Post, new { onsubmit = "ClickOnce(this)" }))
+<div class="mainContent w3-animate-bottom">
+    <div class="form-basic">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { onsubmit = "ClickOnce(this)" }))
         {
             @Html.AntiForgeryToken()
-            <div class="form-horizontal shadow" style="padding:10px;">
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.note.Title, htmlAttributes: new { @class = "control-label col-md-2 arial" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.note.Title, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
+            <div class="card shadow arial" style="width:100%">
+                <div class="card-header">
+                    <img class="mb-4" src='@Url.Content("~/Content/Images/feedbackButton.png")' style="width:80%; max-width:200px; display: block; margin-left: auto; margin-right: auto;">
                 </div>
+                <ul class="list-group list-group-flush">
+                    @if (TempData["Error"] != null)
+                    {
+                        <li class="list-group-item">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                @TempData["Error"]
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </li>
+                        
+                    }
+                   
+                    <li class="list-group-item">
+                        <div class="alert alert-light" role="alert">
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.note.Comment, htmlAttributes: new { @class = "control-label col-md-2 arial" })
-                    <div class="col-md-10">
-                        @Html.TextAreaFor(model => model.note.Comment, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.note.Title, htmlAttributes: new { @class = "control-label col-md-2 arial" })
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.note.Title, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.work.CustomerPlayWith, "Customers Played With", htmlAttributes: new { @class = "control-label col-md-8 arial" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.work.CustomerPlayWith, new { htmlAttributes = new { @class = "form-control", @Value = 0 } })
-                        @Html.ValidationMessageFor(model => model.work.CustomerPlayWith, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.note.Comment, htmlAttributes: new { @class = "control-label col-md-2 arial" })
+                                <div class="col-md-12">
+                                    @Html.TextAreaFor(model => model.note.Comment, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.work.Sold, htmlAttributes: new { @class = "control-label col-md-2 arial" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.work.Sold, new { htmlAttributes = new { @class = "form-control", @Value = 0 } })
-                        @Html.ValidationMessageFor(model => model.work.Sold, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.work.CustomerPlayWith, "Customers Played With", htmlAttributes: new { @class = "control-label col-md-8 arial" })
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.work.CustomerPlayWith, new { htmlAttributes = new { @class = "form-control form-control-lg", @Value = 0 } })
+                                    @Html.ValidationMessageFor(model => model.work.CustomerPlayWith, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <button id="submitBtn" type="submit" class="btn btn-light shadow">
-                            <img src="~/Content/Images/submitButton.png" style="max-width:120px" />
-                        </button>
-                    </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.work.Sold, htmlAttributes: new { @class = "control-label col-md-2 arial" })
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.work.Sold, new { htmlAttributes = new { @class = "form-control form-control-lg", @Value = 0 } })
+                                    @Html.ValidationMessageFor(model => model.work.Sold, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button id="submitBtn" type="submit" class="btn btn-light shadow">
+                                    <img src="~/Content/Images/submitButton.png" style="max-width:120px" />
+                                </button>
+                            </div>
 
-                </div>
+                        </div>
+                    </li>
+
+                </ul>
             </div>
         }
-
-
     </div>
 </div>
 
