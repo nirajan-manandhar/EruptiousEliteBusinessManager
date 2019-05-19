@@ -1,7 +1,10 @@
 ﻿using System;
-using System.Globalization;
+//Delete
+//using System.Globalization;
+//using System.Security.Claims;
+//using OfficeOpenXml;
+//Delete
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -13,7 +16,7 @@ using EruptiousGamesApp.Entities;
 using System.Data.Entity;
 using System.Net;
 using EruptiousGamesApp.Authorization;
-using OfficeOpenXml;
+
 
 namespace EruptiousGamesApp.Controllers
 {
@@ -118,7 +121,6 @@ namespace EruptiousGamesApp.Controllers
             return View();
         }
 
-        //
         // POST: /Account/AccountCreaet
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -131,12 +133,6 @@ namespace EruptiousGamesApp.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
                     return RedirectToAction("AccountList", "Account");
                 }
                 AddErrors(result);
@@ -163,6 +159,13 @@ namespace EruptiousGamesApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ApplicationUser ApplicationUser = db.Users.Include(r => r.Employee).FirstOrDefault(x => x.Id == id);
+            
+            //Protect Superuser - Terence's account
+            if (ApplicationUser.UserName == "terence")
+            {
+                return RedirectToAction("Unauthorised", "Home");
+            }
+
             if (ApplicationUser == null)
             {
                 return HttpNotFound();
@@ -182,7 +185,16 @@ namespace EruptiousGamesApp.Controllers
             if (ModelState.IsValid)
             {
                 var user = UserManager.FindById(ApplicationUser.Id);
+                //Protect Superuser - Terence's account
+                if (user.UserName == "terence")
+                {
+                    return RedirectToAction("Unauthorised", "Home");
+                }
+
+
                 user.UserName = ApplicationUser.UserName;
+
+
 
                 var result = await UserManager.UpdateAsync(user);
                 if (result.Succeeded)
@@ -208,6 +220,20 @@ namespace EruptiousGamesApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ApplicationUser ApplicationUser = db.Users.Include(r => r.Employee).FirstOrDefault(x => x.Id == id);
+
+            //Protect Superuser - Terence's account
+            if (ApplicationUser.UserName == "terence")
+            {
+                string currentUserId = User.Identity.GetUserId();
+                ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserId);
+
+                if (currentUser.UserName != "terence")
+                {
+                    return RedirectToAction("Unauthorised", "Home");
+                }
+
+            }
+
             if (ApplicationUser == null)
             {
                 return HttpNotFound();
@@ -229,6 +255,21 @@ namespace EruptiousGamesApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Protect Superuser - Terence's account
+                ApplicationUser ApplicationUser = db.Users.FirstOrDefault(x => x.Id == model.UserId);
+                if (ApplicationUser.UserName == "terence")
+                {
+                    string currentUserId = User.Identity.GetUserId();
+                    ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserId);
+
+                    if (currentUser.UserName != "terence")
+                    {
+                        return RedirectToAction("Unauthorised", "Home");
+                    }
+
+                }
+
+
                 var result = UserManager.RemovePassword(model.UserId);
                 
                 if (result.Succeeded)
@@ -246,6 +287,7 @@ namespace EruptiousGamesApp.Controllers
             return View(model);
         }
 
+        //Delete
         //public void DownloadExcel(DateTime Start, DateTime End)
         //public void DownloadExcel()
         //{
@@ -590,8 +632,8 @@ namespace EruptiousGamesApp.Controllers
         //    ViewBag.ReturnUrl = returnUrl;
         //    return View(model);
         //}
+        //Delete
 
-        //
         // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -601,6 +643,7 @@ namespace EruptiousGamesApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        //Delete
         //
         // GET: /Account/ExternalLoginFailure
         //[AllowAnonymous]
@@ -608,6 +651,7 @@ namespace EruptiousGamesApp.Controllers
         //{
         //    return View();
         //}
+        //Delete
 
         protected override void Dispose(bool disposing)
         {

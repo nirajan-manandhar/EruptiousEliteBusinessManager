@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -41,7 +42,7 @@ namespace EruptiousGamesApp.Controllers
             return View(nn);
         }
 
-        // POST: Notes/index
+        // POST: Notes/DeleteNote
         [AuthorizeUser(Role = Role.ADMIN)]
         [HttpPost, ActionName("Index")]
         public ActionResult DeleteNote(string noteID)
@@ -52,20 +53,22 @@ namespace EruptiousGamesApp.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: Notes/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Note note = db.Notes.Find(id);
-            if (note == null)
-            {
-                return HttpNotFound();
-            }
-            return View(note);
-        }
+        //Delete
+        //// GET: Notes/Details/5
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Note note = db.Notes.Find(id);
+        //    if (note == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(note);
+        //}
+        //Delete
 
         // GET: Notes/Create
         public ActionResult Create()
@@ -81,7 +84,15 @@ namespace EruptiousGamesApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "NoteID,EmpID,DateTime,Title,Comment")] Note note, [Bind(Include = "CustomerPlayWith, Sold")] Work work)
         {
-            //Hard coded ID
+            if (!ModelState.IsValid){
+                WorkSession ws = new WorkSession
+                {
+                    note = note,
+                    work = work
+                };
+                return View(ws);
+            }
+
             string currentUserId = User.Identity.GetUserId();
             ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
 
@@ -103,19 +114,16 @@ namespace EruptiousGamesApp.Controllers
 
                 if (existingWork.Count() > 0)
                 {
+                    db.Entry(existingWork.First()).State = EntityState.Modified;
                     existingWork.First().CustomerPlayWith += work.CustomerPlayWith;
-                    existingWork.First().Sold += work.Sold; 
+                    existingWork.First().Sold += work.Sold;
                 }
                 else
                 {
                     db.Works.Add(work);
                 }
-                /*
-                if (work.Sold > 0)
-                {
-                    currentUser.Employee.DecksOnHand -= work.Sold;
-                }
-                */
+                db.Entry(currentUser.Employee).State = EntityState.Modified;
+                currentUser.Employee.DecksOnHand -= work.Sold;
             }
 
             if (!String.IsNullOrWhiteSpace(note.Title) || !String.IsNullOrWhiteSpace(note.Comment))
@@ -123,43 +131,46 @@ namespace EruptiousGamesApp.Controllers
                 db.Notes.Add(note);
             }
 
+            db.Configuration.ValidateOnSaveEnabled = false;
             db.SaveChanges();
 
             return Redirect("/home");
         }
 
-        // GET: Notes/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Note note = db.Notes.Find(id);
-            if (note == null)
-            {
-                return HttpNotFound();
-            }
-            //ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", note.EmpID);
-            return View(note);
-        }
+        //Delete
+        //// GET: Notes/Edit/5
+        //public ActionResult Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Note note = db.Notes.Find(id);
+        //    if (note == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    //ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", note.EmpID);
+        //    return View(note);
+        //}
 
-        // POST: Notes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "NoteID,EmpID,DateTime,Title,Comment")] Note note)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(note).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            //ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", note.EmpID);
-            return View(note);
-        }
+        //// POST: Notes/Edit/5
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit([Bind(Include = "NoteID,EmpID,DateTime,Title,Comment")] Note note)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(note).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    //ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", note.EmpID);
+        //    return View(note);
+        //}
+        //Delete
 
         protected override void Dispose(bool disposing)
         {

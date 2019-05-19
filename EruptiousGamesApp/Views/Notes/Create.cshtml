@@ -7,12 +7,16 @@
 }
 
 <script>
-    function ClickOnce(button) {
-        let newbutton = button.cloneNode(true);
-        newbutton.disabled = true;
+    function ClickOnce(form) {
+        button = document.getElementById("submitBtn");
+        if (form.valid()) {
+            let newbutton = button.cloneNode(true);
+            newbutton.id = "submitBtn2";
+            newbutton.disabled = true;
 
-        button.parentNode.insertBefore(newbutton, button);
-        button.style.display = "none";
+            button.parentNode.insertBefore(newbutton, button);
+            button.style.display = "none";
+        }
     }
 
 </script>
@@ -37,10 +41,9 @@
     <div class="form-basic">
         <img class="mb-4" src='@Url.Content("~/Content/Images/feedbackButton.png")' style="width:80%;display: block; margin-left: auto; margin-right: auto;">
 
-        @using (Html.BeginForm())
+        @using (Html.BeginForm(null,null, FormMethod.Post, new { onsubmit = "ClickOnce(this)" }))
         {
             @Html.AntiForgeryToken()
-
             <div class="form-horizontal shadow" style="padding:10px;">
 
                 <div class="form-group">
@@ -58,7 +61,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.work.CustomerPlayWith, "Customers Played With", htmlAttributes: new { @class = "control-label col-md-2 arial" })
+                    @Html.LabelFor(model => model.work.CustomerPlayWith, "Customers Played With", htmlAttributes: new { @class = "control-label col-md-8 arial" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.work.CustomerPlayWith, new { htmlAttributes = new { @class = "form-control", @Value = 0 } })
                         @Html.ValidationMessageFor(model => model.work.CustomerPlayWith, "", new { @class = "text-danger" })
@@ -75,7 +78,7 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <button type="submit" class="btn btn-light shadow" onclick="ClickOnce(this)">
+                        <button id="submitBtn" type="submit" class="btn btn-light shadow">
                             <img src="~/Content/Images/submitButton.png" style="max-width:120px" />
                         </button>
                     </div>

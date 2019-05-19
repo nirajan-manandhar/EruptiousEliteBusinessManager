@@ -23,13 +23,14 @@ namespace EruptiousGamesApp.Controllers
             public Employee employee;
         }
 
-
-        // GET: Requests
-        public ActionResult Index()
-        {
-            var requests = db.Requests.Include(r => r.Campaign).Include(r => r.Employee);
-            return View(requests.ToList());
-        }
+        //Delete
+        //// GET: Requests
+        //public ActionResult Index()
+        //{
+        //    var requests = db.Requests.Include(r => r.Campaign).Include(r => r.Employee);
+        //    return View(requests.ToList());
+        //}
+        //Delete
 
         // GET: Requests/RequestAdmin
         public ActionResult RequestAdmin()
@@ -40,32 +41,33 @@ namespace EruptiousGamesApp.Controllers
             return View(requests.ToList());
         }
 
-        // GET: Requests/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Request request = db.Requests.Find(id);
-            if (request == null)
-            {
-                return HttpNotFound();
-            }
-            return View(request);
-        }
+        //Delete
+        //// GET: Requests/Details/5
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Request request = db.Requests.Find(id);
+        //    if (request == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(request);
+        //}
 
 
-        // GET: Requests/Create
-        public ActionResult Create()
-        {
-            ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName");
-            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName");
-            return View();
-        }
+        //// GET: Requests/Create
+        //public ActionResult Create()
+        //{
+        //    ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName");
+        //    ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName");
+        //    return View();
+        //}
+        //Delete
 
 
-        // Custom Function - Aska
         // GET: Requests/InputRequest
         public ActionResult InputRequest()
         {
@@ -79,25 +81,27 @@ namespace EruptiousGamesApp.Controllers
             return View(empReq);
         }
 
-        // POST: Requests/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RequestID,CamID,EmpID,DateTime,Amount,Action,RequestStatus")] Request request)
-        {
-           
-            if (ModelState.IsValid)
-            {
-                db.Requests.Add(request);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //Delete
+        //// POST: Requests/Create
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "RequestID,CamID,EmpID,DateTime,Amount,Action,RequestStatus")] Request request)
+        //{
 
-            ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
-            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
-            return View(request);
-        }
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Requests.Add(request);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
+        //    ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
+        //    return View(request);
+        //}
+        //Delete
 
         // POST: Requests/InputRequest
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -124,40 +128,42 @@ namespace EruptiousGamesApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        // GET: Requests/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Request request = db.Requests.Find(id);
-            if (request == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
-            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
-            return View(request);
-        }
+        //Delete
+        //// GET: Requests/Edit/5
+        //public ActionResult Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Request request = db.Requests.Find(id);
+        //    if (request == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
+        //    ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
+        //    return View(request);
+        //}
 
-        // POST: Requests/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RequestID,CamID,EmpID,DateTime,Amount,Action,RequestStatus")] Request request)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(request).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
-            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
-            return View(request);
-        }
+        //// POST: Requests/Edit/5
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit([Bind(Include = "RequestID,CamID,EmpID,DateTime,Amount,Action,RequestStatus")] Request request)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(request).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
+        //    ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
+        //    return View(request);
+        //}
+        //Delete
 
         // GET: Requests/Acept/5
         public ActionResult Approve(int? id)
@@ -230,50 +236,51 @@ namespace EruptiousGamesApp.Controllers
             return RedirectToAction("RequestAdmin");
         }
 
+        //Delete
+        //// GET: Requests/ChangeStatus/5
+        //public ActionResult ChangeStatus(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Request request = db.Requests.Find(id);
+        //    if (request == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
+        //    ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
 
-        // GET: Requests/ChangeStatus/5
-        public ActionResult ChangeStatus(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Request request = db.Requests.Find(id);
-            if (request == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
-            ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
+        //    return View(request);
+        //}
 
-            return View(request);
-        }
+        //// GET: Requests/Delete/5
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Request request = db.Requests.Find(id);
+        //    if (request == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(request);
+        //}
 
-        // GET: Requests/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Request request = db.Requests.Find(id);
-            if (request == null)
-            {
-                return HttpNotFound();
-            }
-            return View(request);
-        }
-
-        // POST: Requests/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Request request = db.Requests.Find(id);
-            db.Requests.Remove(request);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //// POST: Requests/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Request request = db.Requests.Find(id);
+        //    db.Requests.Remove(request);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
+        //Delete
 
         protected override void Dispose(bool disposing)
         {

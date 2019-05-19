@@ -1,7 +1,9 @@
 ﻿using EruptiousGamesApp.Entities;
 using EruptiousGamesApp.Models;
 using System;
-using System.Collections.Generic;
+//Delete
+//using System.Collections.Generic;
+//Delete
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
