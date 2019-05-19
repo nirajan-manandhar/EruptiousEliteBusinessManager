@@ -99,7 +99,7 @@
                     ⮞
                     @Html.ActionLink("Campaign Details", "Index", "Campaigns", null, new { @class = "h5", @style = "display: inline-block" })
 
-                    <div class="collapse w3-animate-left" style="margin-left:5px;" id="collapseExample">
+                    <div class="collapse w3-animate-top" style="margin-left:5px;" id="collapseExample">
                         <div class="card card-body">
                             @Html.ActionLink("Campaign Details", "Index", "Campaigns", null, new { @class = "h5", @style = "display: inline-block" })
                             @Html.ActionLink("Feedback Details", "Index", "Campaigns", null, new { @class = "h5", @style = "display: inline-block" })
@@ -116,9 +116,7 @@
     </ol>
 </nav>
 <div class="container body-content">
-    <div class="w3-animate-zoom">
         @RenderBody()
-    </div>
 
     <hr />
 

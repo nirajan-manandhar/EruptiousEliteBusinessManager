@@ -35,7 +35,7 @@ namespace EruptiousGamesApp.Controllers
         // GET: Requests/RequestAdmin
         public ActionResult RequestAdmin()
         {
-            var requests = db.Requests.Include(r => r.Campaign).Include(r => r.Employee);
+            var requests = db.Requests.Include(r => r.Campaign).Include(r => r.Employee).OrderBy(r => r.DateTime).OrderBy(r => r.Campaign.CamName);
             var employees = db.Employees.ToList();
             ViewBag.employeeList = employees;
             return View(requests.ToList());
@@ -115,6 +115,25 @@ namespace EruptiousGamesApp.Controllers
 
             request.CamID = currentUser.GetTodaysCampaign().CamID;
             request.EmpID = currentUser.Employee.EmpID;
+
+            if ((int)request.Action == 0)
+            {
+                if (request.Amount > currentUser.GetTodaysCampaign().Inventory)
+                {
+                    TempData["error"] = "The amount requested exceeds the number of inventory available.";
+                    return RedirectToAction("InputRequest");
+                }
+            }
+            else
+            {
+                if (request.Amount > currentUser.Employee.DecksOnHand)
+                {
+                    TempData["error"] = "You are attempting to return more decks than you have on hand.";
+                    return RedirectToAction("InputRequest");
+                }
+            }
+
+
             if (ModelState.IsValid)
             {
                 db.Requests.Add(request);
