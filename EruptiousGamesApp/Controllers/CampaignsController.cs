@@ -70,7 +70,7 @@ namespace EruptiousGamesApp.Controllers
             }
 
             Campaign campaign = db.Campaigns.Include(c => c.Employees).FirstOrDefault(c => c.CamID == id);
-
+https://stackoverflow.com/jobs?med=site-ui&ref=jobs-tab
             if (campaign == null)
             {
                 return HttpNotFound();
@@ -98,7 +98,19 @@ namespace EruptiousGamesApp.Controllers
         public ActionResult AssignAction(int CamId, int EmpId)//Assign this EmpId to this CamId
         {
             Campaign campaign = db.Campaigns.Include(c => c.Employees).FirstOrDefault(c => c.CamID == CamId);
-            Employee employee = db.Employees.Find(EmpId);
+            Employee employee = db.Employees.Include(e => e.Campaigns).FirstOrDefault(e => e.EmpID == EmpId);
+
+            foreach (Campaign c in employee.Campaigns)
+            {
+                if (!(DateTime.Compare(c.StartDate, campaign.EndDate) > 0) && !(DateTime.Compare(c.EndDate, campaign.StartDate) < 0))
+                {
+                    TempData["error"] = "There is overlap in date between this campaign and the employees' campaigns";
+                    return RedirectToAction("AssignEmp", new { id = CamId });
+                }
+            }
+          
+            Campaign employeeCampaign = employee.GetTodaysCampaign();
+            
 
             campaign.Employees.Add(employee);
 
@@ -258,19 +270,30 @@ namespace EruptiousGamesApp.Controllers
             int row = 2;
             foreach (var item in Customers)
             {
+                try
+                {
+                    Sheet.Cells[string.Format("A{0}", row)].Value = item.CustID;
+                    Sheet.Cells[string.Format("B{0}", row)].Value = item.Campaign.CamName;
+                    Sheet.Cells[string.Format("C{0}", row)].Value = item.Employee.EmpName;
+                    Sheet.Cells[string.Format("D{0}", row)].Value = item.DateTime.ToString("MM/dd/yyyy hh:mm tt");
+                    Sheet.Cells[string.Format("E{0}", row)].Value = Encryptor.Decrypt(item.CustName);
+                    Sheet.Cells[string.Format("F{0}", row)].Value = Encryptor.Decrypt(item.Email);
+                    Sheet.Cells[string.Format("G{0}", row)].Value = Encryptor.Decrypt(item.Phone);
+                    Sheet.Cells[string.Format("H{0}", row)].Value = item.City;
+                    Sheet.Cells[string.Format("I{0}", row)].Value = item.Age;
+                    Sheet.Cells[string.Format("J{0}", row)].Value = item.Gender;
+                    Sheet.Cells[string.Format("K{0}", row)].Value = item.PTCheck;
+                    row++;
+                }
+                catch (System.ArgumentNullException)
+                {
 
-                Sheet.Cells[string.Format("A{0}", row)].Value = item.CustID;
-                Sheet.Cells[string.Format("B{0}", row)].Value = item.Campaign.CamName;
-                Sheet.Cells[string.Format("C{0}", row)].Value = item.Employee.EmpName;
-                Sheet.Cells[string.Format("D{0}", row)].Value = item.DateTime.ToString("MM/dd/yyyy hh:mm tt");
-                Sheet.Cells[string.Format("E{0}", row)].Value = item.CustName;
-                Sheet.Cells[string.Format("F{0}", row)].Value = item.Email;
-                Sheet.Cells[string.Format("G{0}", row)].Value = item.Phone;
-                Sheet.Cells[string.Format("H{0}", row)].Value = item.City;
-                Sheet.Cells[string.Format("I{0}", row)].Value = item.Age;
-                Sheet.Cells[string.Format("J{0}", row)].Value = item.Gender;
-                Sheet.Cells[string.Format("K{0}", row)].Value = item.PTCheck;
-                row++;
+                }
+                catch (System.Security.Cryptography.CryptographicException)
+                {
+
+                }
+
             }
 
 
