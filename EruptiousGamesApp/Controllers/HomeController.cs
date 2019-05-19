@@ -69,22 +69,6 @@ namespace EruptiousGamesApp.Controllers
             return View(di);
         }
 
-        //Delete
-        //public ActionResult About()
-        //{
-        //    ViewBag.Message = "Your application description page.";
-
-        //    return View();
-        //}
-
-        //public ActionResult Contact()
-        //{
-        //    ViewBag.Message = "Your contact page.";
-
-        //    return View();
-        //}
-        //Delete
-
         public ActionResult Unauthorised()
         {
             ViewBag.Message = "Sorry, you are not Authorized to access this page.";

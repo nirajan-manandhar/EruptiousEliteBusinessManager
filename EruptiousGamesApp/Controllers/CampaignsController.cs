@@ -130,50 +130,7 @@ namespace EruptiousGamesApp.Controllers
 
             return RedirectToAction("AssignEmp", new { id = CamId });
         }
-
-
-        //delete
-        //// POST: Campaigns/AssignEmp 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult AssignEmp(int? camID, int? empID)
-        //{
-        //    Campaign campaign = db.Campaigns.Find(camID);
-        //    Employee employee = db.Employees.Find(empID);
-
-        //    bool has = campaign.Employees.Any(cus => cus.EmpID == empID);
-
-        //    if (has)
-        //    {
-        //        campaign.Employees.Remove(employee);
-        //    } else
-        //    {
-        //        campaign.Employees.Add(employee);
-        //    }
-
-        //    db.SaveChanges();
-
-        //    return View(camID);
-        //}
-
-        //// GET: Campaigns/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Campaign campaign = db.Campaigns.Find(id);
-        //    if (campaign == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-
-        //    return View(campaign);
-        //}
-        //delete
-
-        // GET: Campaigns/Edit/5
+        
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -204,34 +161,7 @@ namespace EruptiousGamesApp.Controllers
             return View(campaign);
         }
 
-        //delete
-        //// GET: Campaigns/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Campaign campaign = db.Campaigns.Find(id);
-        //    if (campaign == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(campaign);
-        //}
-
-        //// POST: Campaigns/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    Campaign campaign = db.Campaigns.Find(id);
-        //    db.Campaigns.Remove(campaign);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
-        //delete
-
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)
