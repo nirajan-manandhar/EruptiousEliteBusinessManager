@@ -53,8 +53,9 @@ namespace EruptiousGamesApp.Controllers
             return RedirectToAction("Index");
         }
 
-       
+
         // GET: Notes/Create
+        [AuthorizeUser(Role = Role.AMBASSADOR)]
         public ActionResult Create()
         {
             WorkSession ws = new WorkSession();
@@ -66,6 +67,7 @@ namespace EruptiousGamesApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthorizeUser(Role = Role.AMBASSADOR)]
         public ActionResult Create([Bind(Include = "NoteID,EmpID,DateTime,Title,Comment")] Note note, [Bind(Include = "CustomerPlayWith, Sold")] Work work)
         {
             if (!ModelState.IsValid){

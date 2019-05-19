@@ -1,4 +1,5 @@
-﻿using EruptiousGamesApp.Entities;
+﻿using EruptiousGamesApp.Authorization;
+using EruptiousGamesApp.Entities;
 using EruptiousGamesApp.Models;
 using Microsoft.AspNet.Identity;
 using System;
@@ -50,6 +51,7 @@ namespace EruptiousGamesApp.Controllers
             public IEnumerable<EmployeeStat> employeeStats { get; set; }
         }
 
+        [AuthorizeUser(Role = Role.AMBASSADOR)]
         public ActionResult Index()
         {
             DashBoardItem di = new DashBoardItem();

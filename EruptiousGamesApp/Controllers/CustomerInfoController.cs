@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using EruptiousGamesApp.Authorization;
 using EruptiousGamesApp.Entities;
 using EruptiousGamesApp.Models;
 using Microsoft.AspNet.Identity;
@@ -18,12 +19,14 @@ namespace EruptiousGamesApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Customer/Index
-        public ActionResult Index()
-        {
-            return RedirectToAction("Create", "CustomerInfo");
-        }
+        //[AuthorizeUser(Role = Role.AMBASSADOR)]
+        //public ActionResult Index()
+        //{
+        //    return RedirectToAction("Create", "CustomerInfo");
+        //}
 
         // GET: Customers/Create
+        [AuthorizeUser(Role = Role.AMBASSADOR)]
         public ActionResult Create()
         {
             ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName");
@@ -34,6 +37,7 @@ namespace EruptiousGamesApp.Controllers
         //POST: CustomerInfo/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthorizeUser(Role = Role.AMBASSADOR)]
         public ActionResult Create([Bind(Include = "CustID,CamID,EmpID,DateTime,CustName,Email,Phone,City,Age,Gender,PTCheck")] Customer customer, int morePeople)
         {
             string currentUserId = User.Identity.GetUserId();

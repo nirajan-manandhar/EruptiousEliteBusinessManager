@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using EruptiousGamesApp.Authorization;
 using EruptiousGamesApp.Entities;
 using EruptiousGamesApp.Models;
 using Microsoft.AspNet.Identity;
@@ -24,6 +25,7 @@ namespace EruptiousGamesApp.Controllers
         }
 
         // GET: Requests/RequestAdmin
+        [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult RequestAdmin()
         {
             var max = DateTime.Now.AddDays(1);
@@ -36,6 +38,7 @@ namespace EruptiousGamesApp.Controllers
 
 
         // GET: Requests/InputRequest
+        [AuthorizeUser(Role = Role.AMBASSADOR)]
         public ActionResult InputRequest()
         {
             EmployeeRequest empReq = new EmployeeRequest();
@@ -54,6 +57,7 @@ namespace EruptiousGamesApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthorizeUser(Role = Role.AMBASSADOR)]
         public ActionResult InputRequest([Bind(Include = "RequestID,CamID,EmpID,DateTime,Amount,Action,RequestStatus")] Request request)
         {
             string currentUserId = User.Identity.GetUserId();
@@ -94,6 +98,7 @@ namespace EruptiousGamesApp.Controllers
         }
 
         // GET: Requests/Acept/5
+        [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult Approve(int? id)
         {
             if (id == null)
@@ -136,6 +141,7 @@ namespace EruptiousGamesApp.Controllers
         }
 
         // GET: Requests/Decline/5
+        [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult Deny(int? id)
         {
             if (id == null)

@@ -1,4 +1,6 @@
-﻿using EruptiousGamesApp.Models;
+﻿using EruptiousGamesApp.Authorization;
+using EruptiousGamesApp.Entities;
+using EruptiousGamesApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +25,7 @@ namespace EruptiousGamesApp.Controllers
             public int totalAccount { get; set; }
         }
 
+        [AuthorizeUser(Role = Role.AMBASSADOR)]
         public ActionResult Index()
         {
             DashBoardItem di = new DashBoardItem();

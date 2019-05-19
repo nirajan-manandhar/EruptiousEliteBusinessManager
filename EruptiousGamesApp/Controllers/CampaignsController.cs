@@ -27,12 +27,14 @@ namespace EruptiousGamesApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Campaigns/ (Default) OR Campaigns/Index 
+        [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult Index()
         {
             return View(db.Campaigns.ToList());
         }
 
         // GET: Campaigns/Create
+        [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult Create()
         {
             return View("Create", new Campaign());
@@ -43,6 +45,7 @@ namespace EruptiousGamesApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult Create([Bind(Include = "CamID,CamName,StartDate,EndDate,Inventory")] Campaign campaign)
         {
 
@@ -60,7 +63,7 @@ namespace EruptiousGamesApp.Controllers
         }
 
         //GET: Campaigns/AssignEmp
-
+        [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult AssignEmp(int? id)//This id is CamID
         {
        
@@ -95,6 +98,7 @@ namespace EruptiousGamesApp.Controllers
 
         }
 
+        [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult AssignAction(int CamId, int EmpId)//Assign this EmpId to this CamId
         {
             Campaign campaign = db.Campaigns.Include(c => c.Employees).FirstOrDefault(c => c.CamID == CamId);
@@ -119,6 +123,7 @@ namespace EruptiousGamesApp.Controllers
             return RedirectToAction("AssignEmp", new { id = CamId });
         }
 
+        [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult RemoveAction(int CamId, int EmpId)//Remove this EmpId to this CamId
         {
             Campaign campaign = db.Campaigns.Include(c => c.Employees).FirstOrDefault(c => c.CamID == CamId);
@@ -130,7 +135,8 @@ namespace EruptiousGamesApp.Controllers
 
             return RedirectToAction("AssignEmp", new { id = CamId });
         }
-        
+
+        [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -150,6 +156,7 @@ namespace EruptiousGamesApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult Edit([Bind(Include = "CamID,CamName,StartDate,EndDate,Inventory")] Campaign campaign)
         {
             if (ModelState.IsValid)
