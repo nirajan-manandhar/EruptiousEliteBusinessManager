@@ -35,7 +35,7 @@ namespace EruptiousGamesApp.Controllers
         // GET: Campaigns/Create
         public ActionResult Create()
         {
-            return PartialView("Create", new Campaign());
+            return View("Create", new Campaign());
         }
 
         // POST: Campaigns/Create

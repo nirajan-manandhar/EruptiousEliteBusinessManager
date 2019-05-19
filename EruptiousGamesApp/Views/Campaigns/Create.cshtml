@@ -6,54 +6,69 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 }
 
+@section crumbContent{
+    <span>
+        <img class="mb-4" src='@Url.Content("~/Content/Images/adminFunctions.png")' style="width:20%; max-width:60px; margin:5px;">
+        @Html.ActionLink("Campaigns", "Index", "Campaigns", null, new { @class = "h5", @style = "display: inline-block" })
+        ⮞
+        @Html.ActionLink("Create", "Create", "Campaigns", null, new { @class = "h5", @style = "display: inline-block" })
+    </span>
+}
 
-@using (Html.BeginForm("Create", "Campaigns"))
-{
-    @Html.AntiForgeryToken()
+<div class="card shadow w3-animate-bottom">
+    <div class="card-header  text-center">
+        <img src="~/Content/Images/campaign.png" style="width:20%; max-width:80px" />
+        <h2 class="arial"><h2>@ViewBag.Title.</h2></h2>
+    </div>
+    <div class="card-body arial">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.CamName, "Campaign Name", htmlAttributes: new { @class = "control-label col-md-10" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CamName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CamName, "", new { @class = "text-danger" })
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CamName, "Campaign Name", htmlAttributes: new { @class = "control-label col-md-10" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.CamName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CamName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StartDate, "Campaign Start Date", htmlAttributes: new { @class = "control-label col-md-10" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EndDate, "Campaign End Date", htmlAttributes: new { @class = "control-label col-md-10" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Inventory, "Initial Campaign Inventory", htmlAttributes: new { @class = "control-label col-md-10" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Inventory, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Inventory, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-success" />
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.StartDate, "Campaign Start Date", htmlAttributes: new { @class = "control-label col-md-10" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EndDate, "Campaign End Date", htmlAttributes: new { @class = "control-label col-md-10" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Inventory, "Initial Campaign Inventory", htmlAttributes: new { @class = "control-label col-md-10" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Inventory, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Inventory, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-success" />
-            </div>
+        }
         </div>
     </div>
-}
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
