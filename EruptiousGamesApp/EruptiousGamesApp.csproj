@@ -206,14 +206,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CampaignsController.cs" />
     <Compile Include="Controllers\CustomerInfoController.cs" />
-    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
-    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NotesController.cs" />
     <Compile Include="Controllers\RequestsController.cs" />
-    <Compile Include="Controllers\WorksController.cs" />
     <Compile Include="Entities\Campaign.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Employee.cs" />
