@@ -37,7 +37,12 @@ namespace EruptiousGamesApp.Controllers
         [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult Create()
         {
-            return View("Create", new Campaign());
+            Campaign campaign = new Campaign
+            {
+                StartDate = DateTime.Today,
+                EndDate = DateTime.Today.AddDays(9)
+            };
+            return View("Create", campaign);
         }
 
         // POST: Campaigns/Create
@@ -48,9 +53,6 @@ namespace EruptiousGamesApp.Controllers
         [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult Create([Bind(Include = "CamID,CamName,StartDate,EndDate,Inventory")] Campaign campaign)
         {
-
-            Debug.WriteLine(campaign.StartDate);
-            Debug.WriteLine(campaign.EndDate);
 
             if (ModelState.IsValid)
             {
