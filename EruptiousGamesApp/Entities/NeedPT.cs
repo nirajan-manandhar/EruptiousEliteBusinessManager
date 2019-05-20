@@ -14,7 +14,7 @@ namespace EruptiousGamesApp.Entities
             if (customer.PTCheck == false)
             {
 
-             return new ValidationResult("Need PT Check");
+             return new ValidationResult("You must agree to Privacy Policy, Terms & Conditions");
 
             }
             return ValidationResult.Success;
