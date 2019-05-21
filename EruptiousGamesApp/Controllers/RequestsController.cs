@@ -28,10 +28,6 @@ namespace EruptiousGamesApp.Controllers
         [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult RequestAdmin()
         {
-            //var max = DateTime.Now.AddDays(1);
-            //var min = DateTime.Now.AddDays(-1);
-            //var requests = db.Requests.Include(r => r.Campaign).Include(r => r.Employee).OrderBy(r => r.DateTime).OrderBy(r => r.Campaign.CamName).Where(r => r.DateTime <= max).Where(r => r.DateTime >= min);
-
             var requests = db.Requests.Include(r => r.Campaign).Include(r => r.Employee).OrderBy(r => r.DateTime).OrderBy(r => r.Campaign.CamName);
             var employees = db.Employees.ToList();
             ViewBag.employeeList = employees;
@@ -101,7 +97,6 @@ namespace EruptiousGamesApp.Controllers
 
             ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
             ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
-            //return View(request);
             return RedirectToAction("Index", "Home");
         }
 
@@ -140,7 +135,6 @@ namespace EruptiousGamesApp.Controllers
 
             if (ModelState.IsValid)
             {
-                //db.Entry(request).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("RequestAdmin");
             }
@@ -171,7 +165,6 @@ namespace EruptiousGamesApp.Controllers
 
             if (ModelState.IsValid)
             {
-                //db.Entry(request).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("RequestAdmin");
             }

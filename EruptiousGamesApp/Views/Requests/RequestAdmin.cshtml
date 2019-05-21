@@ -21,11 +21,8 @@
 
 <script>
     $(document).ready(function () {
-        //listen to dropdown for change
         $("#range_select").change(function () {
-            //rehide content on change
             $('.all').removeClass("range_true");
-            //unhides current item
             if ($(this).val() === "all") {
                 $('.' + $(this).val()).addClass("range_true");
             } else {
@@ -38,9 +35,7 @@
         });
 
         $("#cam_select").change(function () {
-            //rehide content on change
             $('.all').removeClass("cam_true");
-            //unhides current item
             if ($(this).val() === "all") {
                 $('.' + $(this).val()).addClass("cam_true");
             } else {
@@ -50,9 +45,7 @@
         });
 
         $("#emp_select").change(function () {
-            //rehide content on change
             $('.all').removeClass("emp_true");
-            //unhides current item
             if ($(this).val() === "all") {
                 $('.' + $(this).val()).addClass("emp_true");
             } else {
@@ -62,9 +55,7 @@
         });
 
         $("#status_select").change(function () {
-            //rehide content on change
             $('.all').removeClass("status_true");
-            //unhides current item
             if ($(this).val() === "all") {
                 $('.' + $(this).val()).addClass("status_true");
             } else {
