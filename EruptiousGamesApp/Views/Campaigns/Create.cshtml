@@ -18,7 +18,7 @@
 <div class="card shadow w3-animate-bottom">
     <div class="card-header  text-center">
         <img src="~/Content/Images/campaign.png" style="width:20%; max-width:80px" />
-        <h2 class="arial"><h2>@ViewBag.Title.</h2></h2>
+        <h2 class="arial">@ViewBag.Title.</h2>
     </div>
     <div class="card-body arial">
         @using (Html.BeginForm())
@@ -46,7 +46,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.EndDate, "Campaign End Date", htmlAttributes: new { @class = "control-label col-md-10" })
                     <div class="col-md-12">
-                        @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", @value = DateTime.Today } })
                         @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
                     </div>
                 </div>

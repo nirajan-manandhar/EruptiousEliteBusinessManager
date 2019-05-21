@@ -37,20 +37,20 @@ namespace EruptiousGamesApp.Controllers
         [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult Create()
         {
-            return View("Create", new Campaign());
+            Campaign campaign = new Campaign
+            {
+                StartDate = DateTime.Today,
+                EndDate = DateTime.Today.AddDays(9)
+            };
+            return View("Create", campaign);
         }
 
         // POST: Campaigns/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult Create([Bind(Include = "CamID,CamName,StartDate,EndDate,Inventory")] Campaign campaign)
         {
-
-            Debug.WriteLine(campaign.StartDate);
-            Debug.WriteLine(campaign.EndDate);
 
             if (ModelState.IsValid)
             {
@@ -98,23 +98,23 @@ namespace EruptiousGamesApp.Controllers
 
         }
 
+        //Action Method to assign an Employee to a Campaign
         [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult AssignAction(int CamId, int EmpId)//Assign this EmpId to this CamId
         {
             Campaign campaign = db.Campaigns.Include(c => c.Employees).FirstOrDefault(c => c.CamID == CamId);
             Employee employee = db.Employees.Include(e => e.Campaigns).FirstOrDefault(e => e.EmpID == EmpId);
 
-            foreach (Campaign c in employee.Campaigns)
-            {
-                if (!(DateTime.Compare(c.StartDate, campaign.EndDate) > 0) && !(DateTime.Compare(c.EndDate, campaign.StartDate) < 0))
+
+                foreach (Campaign c in employee.Campaigns){
+                if (!(DateTime.Compare(c.StartDate, campaign.EndDate) > 0) && !(DateTime.Compare(c.EndDate, campaign.StartDate) < 0) && c.EndDate < DateTime.Today)
                 {
-                    TempData["error"] = "There is overlap in date between this campaign and the employees' campaigns";
-                    return RedirectToAction("AssignEmp", new { id = CamId });
+                       TempData["error"] = "There is overlap in date between this campaign and the employees' campaigns";
+                       return RedirectToAction("AssignEmp", new { id = CamId });
                 }
             }
           
             Campaign employeeCampaign = employee.GetTodaysCampaign();
-            
 
             campaign.Employees.Add(employee);
 
@@ -123,6 +123,7 @@ namespace EruptiousGamesApp.Controllers
             return RedirectToAction("AssignEmp", new { id = CamId });
         }
 
+        //Action method to remove an Employee that was assigned to a Campaign
         [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult RemoveAction(int CamId, int EmpId)//Remove this EmpId to this CamId
         {
@@ -152,23 +153,56 @@ namespace EruptiousGamesApp.Controllers
         }
 
         // POST: Campaigns/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AuthorizeUser(Role = Role.MANAGER)]
-        public ActionResult Edit([Bind(Include = "CamID,CamName,StartDate,EndDate,Inventory")] Campaign campaign)
+        public ActionResult Edit([Bind(Include = "CamID,CamName,StartDate,EndDate,Inventory")] Campaign campaign, DateTime previousStartDate, DateTime previousEndDate, int campaignID)
         {
+            int i = campaign.CamID;
             if (ModelState.IsValid)
             {
-                db.Entry(campaign).State = EntityState.Modified;
+                var cam = db.Campaigns.Find(i);
+                if (previousStartDate.Date != campaign.StartDate.Date || previousEndDate.Date != campaign.EndDate.Date)
+                {
+                    cam.Employees.Clear();
+                    cam.StartDate = campaign.StartDate;
+                    cam.EndDate = campaign.EndDate;
+                }
+                cam.CamName = campaign.CamName;
+                cam.Inventory = campaign.Inventory;
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             return View(campaign);
         }
 
-        
+       //GET: Campaigns/Delete/5
+       public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Campaign campaign = db.Campaigns.Find(id);
+            if (campaign == null)
+            {
+                return HttpNotFound();
+            }
+            return View(campaign);
+        }
+
+        // POST: Campaigns/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Campaign campaign = db.Campaigns.Find(id);
+            db.Campaigns.Remove(campaign);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -178,23 +212,19 @@ namespace EruptiousGamesApp.Controllers
             base.Dispose(disposing);
         }
 
-
-
-        //Should move?
+        //GET Excel 
         [AuthorizeUser(Role = Role.ADMIN)]
         public ActionResult excelCustomer()
         {
             return View();
         }
 
+        //POST Excel 
         [AuthorizeUser(Role = Role.ADMIN)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public void excelCustomer([Bind(Include = "StartDate, EndDate")] Campaign cf)
         {
-            Debug.WriteLine(cf.StartDate);
-            Debug.WriteLine(cf.EndDate);
-
             var Customers = db.Customers.Include(r => r.Campaign).Include(r => r.Employee).Where(x => x.DateTime >= cf.StartDate).Where(x => x.DateTime <= cf.EndDate).ToList();
 
             ExcelPackage Ep = new ExcelPackage();
@@ -222,7 +252,10 @@ namespace EruptiousGamesApp.Controllers
                     Sheet.Cells[string.Format("D{0}", row)].Value = item.DateTime.ToString("MM/dd/yyyy hh:mm tt");
                     Sheet.Cells[string.Format("E{0}", row)].Value = Encryptor.Decrypt(item.CustName);
                     Sheet.Cells[string.Format("F{0}", row)].Value = Encryptor.Decrypt(item.Email);
-                    Sheet.Cells[string.Format("G{0}", row)].Value = Encryptor.Decrypt(item.Phone);
+                    if (item.Phone != null)
+                    {
+                        Sheet.Cells[string.Format("G{0}", row)].Value = Encryptor.Decrypt(item.Phone);
+                    }
                     Sheet.Cells[string.Format("H{0}", row)].Value = item.City;
                     Sheet.Cells[string.Format("I{0}", row)].Value = item.Age;
                     Sheet.Cells[string.Format("J{0}", row)].Value = item.Gender;

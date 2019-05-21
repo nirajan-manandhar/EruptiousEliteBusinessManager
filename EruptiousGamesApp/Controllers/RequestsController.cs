@@ -28,10 +28,6 @@ namespace EruptiousGamesApp.Controllers
         [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult RequestAdmin()
         {
-            //var max = DateTime.Now.AddDays(1);
-            //var min = DateTime.Now.AddDays(-1);
-            //var requests = db.Requests.Include(r => r.Campaign).Include(r => r.Employee).OrderBy(r => r.DateTime).OrderBy(r => r.Campaign.CamName).Where(r => r.DateTime <= max).Where(r => r.DateTime >= min);
-
             var requests = db.Requests.Include(r => r.Campaign).Include(r => r.Employee).OrderBy(r => r.DateTime).OrderBy(r => r.Campaign.CamName);
             var employees = db.Employees.ToList();
             ViewBag.employeeList = employees;
@@ -46,6 +42,12 @@ namespace EruptiousGamesApp.Controllers
             EmployeeRequest empReq = new EmployeeRequest();
             string currentUserId = User.Identity.GetUserId();
             ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
+
+            var todayCam = currentUser.GetTodaysCampaign();
+            if (todayCam == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
             empReq.employee = currentUser.Employee;
             ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName");
@@ -95,7 +97,6 @@ namespace EruptiousGamesApp.Controllers
 
             ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName", request.CamID);
             ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName", request.EmpID);
-            //return View(request);
             return RedirectToAction("Index", "Home");
         }
 
@@ -134,7 +135,6 @@ namespace EruptiousGamesApp.Controllers
 
             if (ModelState.IsValid)
             {
-                //db.Entry(request).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("RequestAdmin");
             }
@@ -144,7 +144,7 @@ namespace EruptiousGamesApp.Controllers
 
         // GET: Requests/Decline/5
         [AuthorizeUser(Role = Role.MANAGER)]
-        public ActionResult Deny(int? id)
+        public ActionResult Reject(int? id)
         {
             if (id == null)
             {
@@ -156,7 +156,7 @@ namespace EruptiousGamesApp.Controllers
                 return HttpNotFound();
             }
 
-            request.RequestStatus = RequestStatus.DENIAL;
+            request.RequestStatus = RequestStatus.REJECTED;
 
             string currentUserId = User.Identity.GetUserId();
             ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
@@ -165,7 +165,6 @@ namespace EruptiousGamesApp.Controllers
 
             if (ModelState.IsValid)
             {
-                //db.Entry(request).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("RequestAdmin");
             }

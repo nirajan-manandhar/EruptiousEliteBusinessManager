@@ -12,7 +12,64 @@
         @Html.ActionLink("Inventory", "RequestAdmin", "Requests", null, new { @class = "h3", @style = "display: inline-block" })
     </span>
 }
+<style>
+    .filter {
+        padding: 5px;
+        margin: 5px;
+    }
+</style>
 
+<script>
+    $(document).ready(function () {
+        $("#range_select").change(function () {
+            $('.all').removeClass("range_true");
+            if ($(this).val() === "all") {
+                $('.' + $(this).val()).addClass("range_true");
+            } else {
+                let i = $(this).val();
+                while (i-- > 0) {
+                    $('.date_' + i).addClass("range_true");
+                }
+            }
+            checkVisible();
+        });
+
+        $("#cam_select").change(function () {
+            $('.all').removeClass("cam_true");
+            if ($(this).val() === "all") {
+                $('.' + $(this).val()).addClass("cam_true");
+            } else {
+                $('.cam_' + $(this).val()).addClass("cam_true");
+            }
+            checkVisible();
+        });
+
+        $("#emp_select").change(function () {
+            $('.all').removeClass("emp_true");
+            if ($(this).val() === "all") {
+                $('.' + $(this).val()).addClass("emp_true");
+            } else {
+                $('.emp_' + $(this).val()).addClass("emp_true");
+            }
+            checkVisible();
+        });
+
+        $("#status_select").change(function () {
+            $('.all').removeClass("status_true");
+            if ($(this).val() === "all") {
+                $('.' + $(this).val()).addClass("status_true");
+            } else {
+                $('.status_' + $(this).val()).addClass("status_true");
+            }
+            checkVisible();
+        });
+
+        function checkVisible() {
+            $(".all").hide();
+            $(".range_true.status_true.cam_true.emp_true").show();
+        }
+    });
+</script>
 
 <div style="margin-top:5%">
 
@@ -24,12 +81,70 @@
             <h2>Quick Actions</h2>
             <div class="form-group">
                 @Html.ActionLink("Add Request", "InputRequest", "Requests", null, new { @class = "btn btn-info btn-md shadow" })
-                <button class="btn btn-info btn-md shadow" data-toggle="modal" data-target="#employeeInventory">Employee Inventory</a>
+                <button class="btn btn-info btn-md shadow" data-toggle="modal" data-target="#employeeInventory">Employee Inventory</button>
             </div>
         </div>
     </div>
 
     <hr />
+    <div id="accordion">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-block btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h2>Search fields</h2>
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    <select id="cam_select" size="3" class="form-control">
+                        <option value="all">All campaign</option>
+                        @{
+                            List<string> cam = new List<string>();
+                            foreach (var item in Model)
+                            {
+                                if (!cam.Contains(item.Campaign.CamName))
+                                {
+                                    cam.Add(item.Campaign.CamName);
+                                    <option value="@item.Campaign.CamName">@item.Campaign.CamName</option>
+                                }
+                            }
+                        }
+                    </select>
+                    <br />
+                    <select id="emp_select" size="3" class="form-control">
+                        <option value="all">All employee</option>
+                        @{
+                            List<string> emp = new List<string>();
+                            foreach (var item in Model)
+                            {
+                                if (!emp.Contains(item.Employee.EmpName))
+                                {
+                                    emp.Add(item.Employee.EmpName);
+                                    <option value="@item.Employee.EmpName">@item.Employee.EmpName</option>
+                                }
+                            }
+                        }
+                    </select>
+                    <br />
+                    <select id="range_select" class="form-control">
+                        <option value="all">All time</option>
+                        <option value="1">Today</option>
+                        <option value="8">Week before</option>
+                    </select>
+                    <br />
+                    <select id="status_select" class="form-control">
+                        <option value="all">All status</option>
+                        <option value="PENDING">Pending</option>
+                        <option value="APPROVED">Approved</option>
+                        <option value="REJECTED">Rejected</option>
+                    </select>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="card text-center shadow w3-animate-bottom">
         <div class="card-header">
             <img src="~/Content/Images/request.png" style="width:20%; max-width:100px" />
@@ -52,49 +167,46 @@
                             Amount of Decks
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Action)
-                        </th>
-                        <th>
                             Status
                         </th>
                         <th></th>
                     </tr>
 
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.OrderBy(s => s.DateTime).Reverse())
                     {
                         if ((int)(item.Action) == 0)
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Campaign.CamName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Employee.EmpName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DateTime)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Amount)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Action)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.RequestStatus)
-                                </td>
-                                <td>
-                                    @if ((int)(item.RequestStatus) == 0)
-                                    {
-                                        <button class="btn btn-success btn-sm shadow" style="width:80px; text-decoration:none;">
-                                            @Html.ActionLink("Approve", "Approve", new { id = item.RequestID })
-                                        </button>
-                                        <button class="btn btn-danger btn-sm shadow" style="width:80px; text-decoration:none;">
-                                            @Html.ActionLink("Deny", "Deny", new { id = item.RequestID })
-                                        </button>
-                                    }
-                                </td>
-                            </tr>
+                            int days = (int)(DateTime.Today - @item.DateTime.Date).TotalDays;
+                            <tbody class="cam_@item.Campaign.CamName emp_@item.Employee.EmpName all date_@days status_@item.RequestStatus cam_true status_true range_true emp_true">
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Campaign.CamName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Employee.EmpName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DateTime)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Amount)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RequestStatus)
+                                    </td>
+                                    <td>
+                                        @if ((int)(item.RequestStatus) == 0)
+                                        {
+                                            <button class="btn btn-success btn-sm shadow" style="width:80px; text-decoration:none;">
+                                                @Html.ActionLink("Approve", "Approve", new { id = item.RequestID })
+                                            </button>
+                                            <button class="btn btn-danger btn-sm shadow" style="width:80px; text-decoration:none;">
+                                                @Html.ActionLink("Reject", "Reject", new { id = item.RequestID })
+                                            </button>
+                                        }
+                                    </td>
+                                </tr>
+                            </tbody>
                         }
                     }
                 </table>
@@ -124,49 +236,46 @@
                             Amount of Decks
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Action)
-                        </th>
-                        <th>
                             Status
                         </th>
                         <th></th>
                     </tr>
 
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.OrderBy(s => s.DateTime).Reverse())
                     {
                         if ((int)(item.Action) == 1)
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Campaign.CamName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Employee.EmpName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DateTime)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Amount)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Action)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.RequestStatus)
-                                </td>
-                                <td>
-                                    @if ((int)(item.RequestStatus) == 0)
-                                    {
-                                        <button class="btn btn-success btn-sm shadow" style="width:80px; text-decoration:none;">
-                                            @Html.ActionLink("Approve", "Approve", new { id = item.RequestID })
-                                        </button>
-                                        <button class="btn btn-danger btn-sm shadow" style="width:80px; text-decoration:none;">
-                                            @Html.ActionLink("Deny", "Deny", new { id = item.RequestID })
-                                        </button>
-                                    }
-                                </td>
-                            </tr>
+                            int days = (int)(DateTime.Today - @item.DateTime.Date).TotalDays;
+                            <tbody class="cam_@item.Campaign.CamName emp_@item.Employee.EmpName all date_@days status_@item.RequestStatus cam_true status_true range_true emp_true">
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Campaign.CamName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Employee.EmpName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DateTime)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Amount)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RequestStatus)
+                                    </td>
+                                    <td>
+                                        @if ((int)(item.RequestStatus) == 0)
+                                        {
+                                            <button class="btn btn-success btn-sm shadow" style="width:80px; text-decoration:none;">
+                                                @Html.ActionLink("Approve", "Approve", new { id = item.RequestID })
+                                            </button>
+                                            <button class="btn btn-danger btn-sm shadow" style="width:80px; text-decoration:none;">
+                                                @Html.ActionLink("Reject", "Reject", new { id = item.RequestID })
+                                            </button>
+                                        }
+                                    </td>
+                                </tr>
+                            </tbody>
                         }
                     }
 
@@ -178,47 +287,47 @@
     </div>
 </div>
 
-<!-- Employee Inventory Modal -->
-<div class="modal fade" id="employeeInventory" tabindex="-1" role="dialog" aria-labelledby="employeeInventory" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="privacypolicyLabel">Employee Inventory</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="card-body">
-                    <div class="table-responsive table-bordered">
-                        <table class="table">
-                            <tr class="thead-dark">
-                                <th>
-                                    Employee Name
-                                </th>
-                                <th>
-                                    Inventory
-                                </th>
-                            </tr>
-
-                            @foreach (var item in ViewBag.employeeList)
-                            {
-                                <tr>
-                                    <td>
-                                        @item.EmpName
-                                    </td>
-                                    <td>
-                                        @item.DecksOnHand
-                                    </td>
+    <!-- Employee Inventory Modal -->
+    <div class="modal fade" id="employeeInventory" tabindex="-1" role="dialog" aria-labelledby="employeeInventory" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="privacypolicyLabel">Employee Inventory</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body">
+                        <div class="table-responsive table-bordered">
+                            <table class="table">
+                                <tr class="thead-dark">
+                                    <th>
+                                        Employee Name
+                                    </th>
+                                    <th>
+                                        Inventory
+                                    </th>
                                 </tr>
-                            }
-                        </table>
+
+                                @foreach (var item in ViewBag.employeeList)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.EmpName
+                                        </td>
+                                        <td>
+                                            @item.DecksOnHand
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>

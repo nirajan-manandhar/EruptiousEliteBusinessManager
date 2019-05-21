@@ -18,17 +18,18 @@ namespace EruptiousGamesApp.Controllers
 
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Customer/Index
-        //[AuthorizeUser(Role = Role.AMBASSADOR)]
-        //public ActionResult Index()
-        //{
-        //    return RedirectToAction("Create", "CustomerInfo");
-        //}
-
         // GET: Customers/Create
         [AuthorizeUser(Role = Role.AMBASSADOR)]
         public ActionResult Create()
         {
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
+            var todayCam = currentUser.GetTodaysCampaign();
+            if (todayCam == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName");
             ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName");
             return View();

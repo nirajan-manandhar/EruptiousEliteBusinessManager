@@ -58,6 +58,14 @@ namespace EruptiousGamesApp.Controllers
         [AuthorizeUser(Role = Role.AMBASSADOR)]
         public ActionResult Create()
         {
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
+            var todayCam = currentUser.GetTodaysCampaign();
+            if (todayCam == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             WorkSession ws = new WorkSession();
             return View(ws);
         }
@@ -112,22 +120,11 @@ namespace EruptiousGamesApp.Controllers
                 currentUser.Employee.DecksOnHand -= work.Sold;
             }
 
-            if (String.IsNullOrWhiteSpace(note.Title) || String.IsNullOrWhiteSpace(note.Comment))
-            {
-                TempData["error"] = "A title or comment is required.";
-                return RedirectToAction("Create");
-            } else
-            {
-                db.Notes.Add(note);
-            }
-
-            /*
             if (!String.IsNullOrWhiteSpace(note.Title) || !String.IsNullOrWhiteSpace(note.Comment))
             {
                 db.Notes.Add(note);
             }
-            */
-            db.Configuration.ValidateOnSaveEnabled = false;
+
             db.SaveChanges();
 
             return Redirect("/home");
