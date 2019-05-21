@@ -58,6 +58,14 @@ namespace EruptiousGamesApp.Controllers
         [AuthorizeUser(Role = Role.AMBASSADOR)]
         public ActionResult Create()
         {
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
+            var todayCam = currentUser.GetTodaysCampaign();
+            if (todayCam == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             WorkSession ws = new WorkSession();
             return View(ws);
         }
