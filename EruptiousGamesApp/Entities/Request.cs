@@ -12,7 +12,7 @@ namespace EruptiousGamesApp.Entities
     }
     public enum RequestStatus
     {
-        PENDING, APPROVED, DENIAL
+        PENDING, APPROVED, REJECTED
     }
 
 

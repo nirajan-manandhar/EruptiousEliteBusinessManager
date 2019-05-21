@@ -35,8 +35,6 @@ namespace EruptiousGamesApp.Entities
         public Gender? Gender { get; set; }
         [Required]
         [NeedPT]
-        //[Compare("isTrue", ErrorMessage = "Please agree to Terms and Conditions")]
-        //[Range(typeof(bool), "true", "true", ErrorMessage = "You must agree to Privacy Policy, Terms & Conditions")]
         public bool PTCheck { get; set; }
         public virtual Campaign Campaign { get; set; }
         public virtual Employee Employee { get; set; }
