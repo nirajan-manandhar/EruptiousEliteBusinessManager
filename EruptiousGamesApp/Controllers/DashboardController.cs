@@ -76,7 +76,8 @@ namespace EruptiousGamesApp.Controllers
 
             //Ambassdor per campaign
             var todayCam = currentUser.GetTodaysCampaign();
-            if (todayCam != null) {
+            if (todayCam != null)
+            {
                 di.personalStat.assignedToCampaign = true;
                 work = db.Works.Where(s => s.EmpID == empID && s.CamID == todayCam.CamID);
                 if (work.Count() > 0)

@@ -104,7 +104,7 @@ namespace EruptiousGamesApp.Controllers
                 int camID = currentCam.CamID;
                 work.CamID = camID;
 
-                var existingWork = db.Works.Where(s => s.Date == work.Date && s.EmpID == work.EmpID);
+                var existingWork = db.Works.Where(s => s.Date == work.Date && s.EmpID == work.EmpID && s.CamID == work.CamID);
 
                 if (existingWork.Count() > 0)
                 {
