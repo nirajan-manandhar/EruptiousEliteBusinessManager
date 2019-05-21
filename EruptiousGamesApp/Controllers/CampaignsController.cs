@@ -46,8 +46,6 @@ namespace EruptiousGamesApp.Controllers
         }
 
         // POST: Campaigns/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AuthorizeUser(Role = Role.MANAGER)]
@@ -100,6 +98,7 @@ namespace EruptiousGamesApp.Controllers
 
         }
 
+        //Action Method to assign an Employee to a Campaign
         [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult AssignAction(int CamId, int EmpId)//Assign this EmpId to this CamId
         {
@@ -116,7 +115,6 @@ namespace EruptiousGamesApp.Controllers
             }
           
             Campaign employeeCampaign = employee.GetTodaysCampaign();
-            
 
             campaign.Employees.Add(employee);
 
@@ -125,6 +123,7 @@ namespace EruptiousGamesApp.Controllers
             return RedirectToAction("AssignEmp", new { id = CamId });
         }
 
+        //Action method to remove an Employee that was assigned to a Campaign
         [AuthorizeUser(Role = Role.MANAGER)]
         public ActionResult RemoveAction(int CamId, int EmpId)//Remove this EmpId to this CamId
         {
@@ -154,8 +153,6 @@ namespace EruptiousGamesApp.Controllers
         }
 
         // POST: Campaigns/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AuthorizeUser(Role = Role.MANAGER)]
