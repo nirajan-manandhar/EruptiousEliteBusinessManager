@@ -18,7 +18,7 @@
 <div class="card shadow w3-animate-bottom">
     <div class="card-header  text-center">
         <img src="~/Content/Images/campaign.png" style="width:20%; max-width:80px" />
-        <h2 class="arial">@ViewBag.Title.</h2>
+      <h2 class="arial">@ViewBag.Title.</h2>
         <h5>Editing campaign: <i>@Html.DisplayFor(model => model.CamName)</i></h5>
 
     </div>
@@ -27,6 +27,9 @@
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
+            @Html.Hidden("previousStartDate", Model.StartDate);
+            @Html.Hidden("previousEndDate", Model.EndDate);
+            @Html.Hidden("campaignID", Model.CamID);
 
             <div class="form-horizontal">
 
@@ -40,6 +43,8 @@
                         @Html.ValidationMessageFor(model => model.CamName, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
+                <p class="text-warning">Editing the dates will make all employees to be removed from the campaign</p>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.StartDate, "Start Date", htmlAttributes: new { @class = "control-label col-md-12" })
