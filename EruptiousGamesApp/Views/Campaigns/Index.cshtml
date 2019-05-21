@@ -70,7 +70,8 @@
                             </td>
                             <td style="white-space:nowrap">
                                 @Html.ActionLink("Edit", "Edit", new { id = item.CamID }) |
-                                @Html.ActionLink("Assign", "AssignEmp", new { id = item.CamID })
+                                @Html.ActionLink("Assign", "AssignEmp", new { id = item.CamID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.CamID })
                             </td>
                         </tr>
                     }
@@ -121,7 +122,8 @@
                             </td>
                             <td style="white-space:nowrap">
                                 @Html.ActionLink("Edit", "Edit", new { id = item.CamID }) |
-                                @Html.ActionLink("Assign", "AssignEmp", new { id = item.CamID })
+                                @Html.ActionLink("Assign", "AssignEmp", new { id = item.CamID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.CamID })
                             </td>
                         </tr>
                     }

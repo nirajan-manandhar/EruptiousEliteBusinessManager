@@ -167,7 +167,32 @@ namespace EruptiousGamesApp.Controllers
             return View(campaign);
         }
 
-        
+       //GET: Campaigns/Delete/5
+       public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Campaign campaign = db.Campaigns.Find(id);
+            if (campaign == null)
+            {
+                return HttpNotFound();
+            }
+            return View(campaign);
+        }
+
+        // POST: Campaigns/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Campaign campaign = db.Campaigns.Find(id);
+            db.Campaigns.Remove(campaign);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -177,23 +202,19 @@ namespace EruptiousGamesApp.Controllers
             base.Dispose(disposing);
         }
 
-
-
-        //Should move?
+        //GET Excel 
         [AuthorizeUser(Role = Role.ADMIN)]
         public ActionResult excelCustomer()
         {
             return View();
         }
 
+        //POST Excel 
         [AuthorizeUser(Role = Role.ADMIN)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public void excelCustomer([Bind(Include = "StartDate, EndDate")] Campaign cf)
         {
-            Debug.WriteLine(cf.StartDate);
-            Debug.WriteLine(cf.EndDate);
-
             var Customers = db.Customers.Include(r => r.Campaign).Include(r => r.Employee).Where(x => x.DateTime >= cf.StartDate).Where(x => x.DateTime <= cf.EndDate).ToList();
 
             ExcelPackage Ep = new ExcelPackage();
