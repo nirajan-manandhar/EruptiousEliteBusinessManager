@@ -16,18 +16,20 @@ namespace EruptiousGamesApp.Entities
             var request = (Request)validationContext.ObjectInstance;
 
             ApplicationDbContext db = new ApplicationDbContext();
+            string currentUserId = HttpContext.Current.User.Identity.GetUserId();
+            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
 
             if ((int)request.Action == 0)
             {
-                if (request.Amount > db.Campaigns.Find(request.CamID).Inventory)
+                if (request.Amount > currentUser.GetTodaysCampaign().Inventory)
                 {
                     return new ValidationResult("The amount requested exceeds the number of inventory available.");
                 }
             } else
             {
-                if (request.Amount > db.Employees.Find(request.EmpID).DecksOnHand)
+                if (request.Amount > currentUser.Employee.DecksOnHand)
                 {
-                    return new ValidationResult("This employee is attempting to return more decks than the employee has on hand.");
+                    return new ValidationResult("You are attempting to return more decks than you have on hand.");
                 }
             }
             return ValidationResult.Success;
