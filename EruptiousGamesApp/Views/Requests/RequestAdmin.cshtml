@@ -111,13 +111,13 @@
                     <select id="cam_select" size="3" class="form-control">
                         <option value="all">All campaign</option>
                         @{
-                            List<string> cam = new List<string>();
+                            List<int> cam = new List<int>();
                             foreach (var item in Model)
                             {
-                                if (!cam.Contains(item.Campaign.CamName))
+                                if (!cam.Contains(item.Campaign.CamID))
                                 {
-                                    cam.Add(item.Campaign.CamName);
-                                    <option value="@item.Campaign.CamName">@item.Campaign.CamName</option>
+                                    cam.Add(item.Campaign.CamID);
+                                    <option value="@item.Campaign.CamID">@item.Campaign.CamName</option>
                                 }
                             }
                         }
@@ -126,13 +126,13 @@
                     <select id="emp_select" size="3" class="form-control">
                         <option value="all">All employee</option>
                         @{
-                            List<string> emp = new List<string>();
+                            List<int> emp = new List<int>();
                             foreach (var item in Model)
                             {
-                                if (!emp.Contains(item.Employee.EmpName))
+                                if (!emp.Contains(item.Employee.EmpID))
                                 {
-                                    emp.Add(item.Employee.EmpName);
-                                    <option value="@item.Employee.EmpName">@item.Employee.EmpName</option>
+                                    emp.Add(item.Employee.EmpID);
+                                    <option value="@item.Employee.EmpID">@item.Employee.EmpName</option>
                                 }
                             }
                         }
@@ -187,7 +187,7 @@
                         if ((int)(item.Action) == 0)
                         {
                             int days = (int)(DateTime.Today - @item.DateTime.Date).TotalDays;
-                            <tbody class="cam_@item.Campaign.CamName emp_@item.Employee.EmpName all date_@days status_@item.RequestStatus cam_true status_true range_true emp_true">
+                            <tbody class="cam_@item.Campaign.CamID emp_@item.Employee.EmpID all date_@days status_@item.RequestStatus cam_true status_true range_true emp_true">
                                 <tr>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Campaign.CamName)
@@ -256,7 +256,7 @@
                         if ((int)(item.Action) == 1)
                         {
                             int days = (int)(DateTime.Today - @item.DateTime.Date).TotalDays;
-                            <tbody class="cam_@item.Campaign.CamName emp_@item.Employee.EmpName all date_@days status_@item.RequestStatus cam_true status_true range_true emp_true">
+                            <tbody class="cam_@item.Campaign.CamID emp_@item.Employee.EmpID all date_@days status_@item.RequestStatus cam_true status_true range_true emp_true">
                                 <tr>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Campaign.CamName)
