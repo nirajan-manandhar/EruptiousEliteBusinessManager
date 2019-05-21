@@ -26,7 +26,7 @@
             <div class="card-header text-center">
                 <h4><b>@Html.DisplayFor(model => model.campaign.CamName) Employees</b></h4>
             </div>
-            <div class="card-body">
+            <div class="table-responsive card-body">
                 <table class="table table-bordered  ">
                     <tr>
                         <th>
@@ -72,8 +72,8 @@
                 </div>
             }
 
-            <div class="card-body">
-                <table class="table">
+            <div class="table-responsive card-body">
+                <table class="table table-bordered">
                     <tr>
                         <th>
                             Employee Name
@@ -93,7 +93,7 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Role)
                             </td>
-                            <td>
+                            <td style="text-align:center">
                                 @Html.ActionLink("Assign", "AssignAction", new { camID = Model.campaign.CamID, empID = item.EmpID })
                             </td>
                         </tr>
