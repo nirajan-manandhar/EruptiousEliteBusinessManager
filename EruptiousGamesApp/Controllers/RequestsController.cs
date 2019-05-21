@@ -144,7 +144,7 @@ namespace EruptiousGamesApp.Controllers
 
         // GET: Requests/Decline/5
         [AuthorizeUser(Role = Role.MANAGER)]
-        public ActionResult Deny(int? id)
+        public ActionResult Reject(int? id)
         {
             if (id == null)
             {
@@ -156,7 +156,7 @@ namespace EruptiousGamesApp.Controllers
                 return HttpNotFound();
             }
 
-            request.RequestStatus = RequestStatus.DENIAL;
+            request.RequestStatus = RequestStatus.REJECTED;
 
             string currentUserId = User.Identity.GetUserId();
             ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
