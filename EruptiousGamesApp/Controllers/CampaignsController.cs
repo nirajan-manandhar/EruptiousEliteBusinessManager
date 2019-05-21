@@ -107,7 +107,7 @@ namespace EruptiousGamesApp.Controllers
 
             foreach (Campaign c in employee.Campaigns)
             {
-                if (!(DateTime.Compare(c.StartDate, campaign.EndDate) > 0) && !(DateTime.Compare(c.EndDate, campaign.StartDate) < 0))
+                if (!(DateTime.Compare(c.StartDate, campaign.EndDate) > 0) && !(DateTime.Compare(c.EndDate, campaign.StartDate) < 0) && c.EndDate < DateTime.Today)
                 {
                     TempData["error"] = "There is overlap in date between this campaign and the employees' campaigns";
                     return RedirectToAction("AssignEmp", new { id = CamId });
