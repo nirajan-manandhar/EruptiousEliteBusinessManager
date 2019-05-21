@@ -26,7 +26,6 @@ namespace EruptiousGamesApp.Entities
         [Display(Name = "Customer Name")]
         public string CustName { get; set; }
         [Required]
-        [EmailAddress]
         public string Email { get; set; }
         public string Phone { get; set; }
         public string City { get; set; }
