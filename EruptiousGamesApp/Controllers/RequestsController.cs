@@ -114,6 +114,22 @@ namespace EruptiousGamesApp.Controllers
                 return HttpNotFound();
             }
 
+            if ((int)request.Action == 0)
+            {
+                if (request.Amount > db.Campaigns.Find(request.CamID).Inventory)
+                {
+                    TempData["error"] = "The amount requested exceeds the number of inventory available.";
+                    return RedirectToAction("RequestAdmin");
+                }
+            }
+            else
+            {
+                if (request.Amount > db.Employees.Find(request.EmpID).DecksOnHand)
+                {
+                    TempData["error"] = "This employee is attempting to return more decks than the employee has on hand.";
+                    return RedirectToAction("RequestAdmin");
+                }
+            }
 
             request.RequestStatus = RequestStatus.APPROVED;
             if (request.Action == Entities.Action.REQUEST)
@@ -125,13 +141,7 @@ namespace EruptiousGamesApp.Controllers
             {
                 request.Employee.DecksOnHand -= request.Amount;
                 request.Campaign.Inventory += request.Amount;
-
             }
-
-            string currentUserId = User.Identity.GetUserId();
-            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
-
-            request.EmpID = currentUser.Employee.EmpID;
 
             if (ModelState.IsValid)
             {
@@ -158,13 +168,9 @@ namespace EruptiousGamesApp.Controllers
 
             request.RequestStatus = RequestStatus.REJECTED;
 
-            string currentUserId = User.Identity.GetUserId();
-            ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
-
-            request.EmpID = currentUser.Employee.EmpID;
-
             if (ModelState.IsValid)
             {
+                db.Configuration.ValidateOnSaveEnabled = false;
                 db.SaveChanges();
                 return RedirectToAction("RequestAdmin");
             }
