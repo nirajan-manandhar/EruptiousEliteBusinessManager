@@ -47,6 +47,12 @@ namespace EruptiousGamesApp.Controllers
             string currentUserId = User.Identity.GetUserId();
             ApplicationUser currentUser = (db.Users.Include(r => r.Employee).Include(r => r.Employee.Campaigns).FirstOrDefault(x => x.Id == currentUserId));
 
+            var todayCam = currentUser.GetTodaysCampaign();
+            if (todayCam == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             empReq.employee = currentUser.Employee;
             ViewBag.CamID = new SelectList(db.Campaigns, "CamID", "CamName");
             ViewBag.EmpID = new SelectList(db.Employees, "EmpID", "EmpName");

@@ -43,7 +43,7 @@ namespace EruptiousGamesApp.Entities
         {
             foreach (Campaign c in Campaigns)
             {
-                if (c.StartDate <= DateTime.Now && c.EndDate >= DateTime.Now)
+                if (c.StartDate <= DateTime.Today && c.EndDate >= DateTime.Today)
                 {
                     return c;
                 }

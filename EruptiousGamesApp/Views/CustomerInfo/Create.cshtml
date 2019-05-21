@@ -11,29 +11,8 @@
 
     var isValid = true;
 
-    //$(function () {
-
-        //function validateForm() {
-        /*
-        var defaultRangeValidator = $.validator.methods.range;
-	    $.validator.methods.range = function(value, element, param) {
-		    if(element.type === 'checkbox') {
-                // if it's a checkbox return true if it is checked
-                isValid = element.checked;
-			    return element.checked;
-		    } else {
-			    // otherwise run the default validation function
-                isValid = defaultRangeValidator.call(this, value, element, param);
-			    return defaultRangeValidator.call(this, value, element, param);
-		    }
-        }
-        */
+  
         $('body').on('click', "#submit-form", function () {
-            /*
-            if (isValid) {
-                $('#otherCustomer').modal("show");
-            }
-            */
             if ($('#info-form').valid()) {
                 $('#otherCustomer').modal("show");
             }
@@ -52,13 +31,6 @@
             $('#info-form').submit();
             $('#otherCustomer').modal("hide");
         });
-
-        
-       // }
-
-        
-
-    //});
 
 </script>
 

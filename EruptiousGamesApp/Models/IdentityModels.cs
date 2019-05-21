@@ -25,7 +25,7 @@ namespace EruptiousGamesApp.Models
         {
             foreach (Campaign c in Employee.Campaigns)
             {
-                if (c.StartDate <= DateTime.Now && c.EndDate >= DateTime.Now)
+                if (c.StartDate <= DateTime.Today && c.EndDate >= DateTime.Today)
                 {
                     return c;
                 }

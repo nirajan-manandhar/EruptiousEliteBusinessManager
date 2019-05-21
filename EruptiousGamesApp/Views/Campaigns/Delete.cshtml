@@ -1,0 +1,86 @@
+﻿@model EruptiousGamesApp.Entities.Campaign
+@{
+    ViewBag.Title = "Delete Campaign";
+}
+
+<script>
+
+    $('body').on('click', "#yes-btn", function () {
+        $('#delete-confirm').submit();
+    });
+
+    $('body').on('click', "#no-btn", function () {
+        $('#deleteModal').modal("hide");
+    });
+
+    $('body').on('click', '#delete-btn', function () {
+        $('#deleteModal').modal("show");
+    });
+
+</script>
+
+<!-- More User Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2>Are you sure you want to delete this campaign?</h2>
+            </div>
+            <div class="modal-footer">
+                <button id="yes-btn" class="btn btn-danger">Delete</button> |
+                @Html.ActionLink("Cancel", "Index")
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+<h3><span style="color:red;">Deleting campaign: </span><i>@Html.DisplayFor(model => model.CamName)</i></h3>
+<hr />
+
+<div>
+    <h2 style="color:red">
+        Deleting this campaign will delete all of the associated customer information, and statistics.
+        This cannot be undone.
+    </h2>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Campaign Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CamName)
+        </dd>
+        <dt>
+            Start Date
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        <dt>
+            End Date
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+        <dt>
+            Inventory
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Inventory)
+        </dd>
+    </dl>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "delete-confirm" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <button type="button" id="delete-btn" class="btn btn-danger">Delete</button>
+        </div>
+    }
+</div>

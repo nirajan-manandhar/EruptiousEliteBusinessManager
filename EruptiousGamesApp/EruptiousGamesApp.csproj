@@ -339,6 +339,7 @@
     <Content Include="Views\Campaigns\AssignEmp.cshtml" />
     <Content Include="Views\Campaigns\excelCustomer.cshtml" />
     <Content Include="Views\Account\AccountChangePassword.cshtml" />
+    <Content Include="Views\Campaigns\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
