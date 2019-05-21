@@ -105,15 +105,19 @@ namespace EruptiousGamesApp.Controllers
             Campaign campaign = db.Campaigns.Include(c => c.Employees).FirstOrDefault(c => c.CamID == CamId);
             Employee employee = db.Employees.Include(e => e.Campaigns).FirstOrDefault(e => e.EmpID == EmpId);
 
-
-                foreach (Campaign c in employee.Campaigns){
-                if (!(DateTime.Compare(c.StartDate, campaign.EndDate) > 0) && !(DateTime.Compare(c.EndDate, campaign.StartDate) < 0) && c.EndDate < DateTime.Today)
+            if(!(campaign.EndDate < DateTime.Today)) {
+                foreach (Campaign c in employee.Campaigns)
                 {
-                       TempData["error"] = "There is overlap in date between this campaign and the employees' campaigns";
-                       return RedirectToAction("AssignEmp", new { id = CamId });
+                    if (!(c.EndDate < DateTime.Today)) {
+                        if (!(DateTime.Compare(c.StartDate, campaign.EndDate) > 0) && !(DateTime.Compare(c.EndDate, campaign.StartDate) < 0))
+                        {
+                            TempData["error"] = "There is overlap in date between this campaign and the employees' campaigns";
+                            return RedirectToAction("AssignEmp", new { id = CamId });
+                        }
+                    }
                 }
             }
-          
+
             Campaign employeeCampaign = employee.GetTodaysCampaign();
 
             campaign.Employees.Add(employee);
