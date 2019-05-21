@@ -673,8 +673,6 @@ C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\System.We
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\System.Web.Http.WebHost.xml
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\WebMatrix.Data.xml
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\bin\WebMatrix.WebData.xml
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration131.resources
-D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.GenerateResource.cache
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration131.resources
 C:\Users\snail\Desktop\Files\Github\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration131.resources
 C:\Users\Aska\Documents\GitHub\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csprojAssemblyReference.cache
@@ -800,3 +798,5 @@ C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\Eruptio
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.CopyComplete
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.dll
 C:\Users\Nirajan\Documents\BCIT\4900 Project Term\Code\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.pdb
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.Migrations.Migration141.resources
+D:\BCIT\term4\COMP 4900 Computer Projects Practicum 2\code_new\work\EruptiousGamesApp\EruptiousGamesApp\obj\Debug\EruptiousGamesApp.csproj.GenerateResource.cache
