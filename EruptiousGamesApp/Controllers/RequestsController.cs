@@ -145,6 +145,7 @@ namespace EruptiousGamesApp.Controllers
 
             if (ModelState.IsValid)
             {
+                db.Configuration.ValidateOnSaveEnabled = false;
                 db.SaveChanges();
                 return RedirectToAction("RequestAdmin");
             }
