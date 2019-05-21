@@ -104,17 +104,21 @@ namespace EruptiousGamesApp.Controllers
             Campaign campaign = db.Campaigns.Include(c => c.Employees).FirstOrDefault(c => c.CamID == CamId);
             Employee employee = db.Employees.Include(e => e.Campaigns).FirstOrDefault(e => e.EmpID == EmpId);
 
-            foreach (Campaign c in employee.Campaigns)
+            if (DateTime.Today < campaign.EndDate.Date)
             {
-                if (!(DateTime.Compare(c.StartDate, campaign.EndDate) > 0) && !(DateTime.Compare(c.EndDate, campaign.StartDate) < 0))
+                foreach (Campaign c in employee.Campaigns)
                 {
-                    TempData["error"] = "There is overlap in date between this campaign and the employees' campaigns";
-                    return RedirectToAction("AssignEmp", new { id = CamId });
+                    if (DateTime.Today < c.EndDate.Date) {
+                        if ((!(DateTime.Compare(c.StartDate, campaign.EndDate) > 0) && !(DateTime.Compare(c.EndDate, campaign.StartDate) < 0)))
+                        {
+                            TempData["error"] = "There is overlap in date between this campaign and the employees' campaigns";
+                            return RedirectToAction("AssignEmp", new { id = CamId });
+                        }
+                    }
                 }
             }
           
             Campaign employeeCampaign = employee.GetTodaysCampaign();
-            
 
             campaign.Employees.Add(employee);
 
@@ -157,12 +161,22 @@ namespace EruptiousGamesApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AuthorizeUser(Role = Role.MANAGER)]
-        public ActionResult Edit([Bind(Include = "CamID,CamName,StartDate,EndDate,Inventory")] Campaign campaign)
+        public ActionResult Edit([Bind(Include = "CamID,CamName,StartDate,EndDate,Inventory")] Campaign campaign, DateTime previousStartDate, DateTime previousEndDate, int campaignID)
         {
+            int i = campaign.CamID;
             if (ModelState.IsValid)
             {
-                db.Entry(campaign).State = EntityState.Modified;
+                var cam = db.Campaigns.Find(i);
+                if (previousStartDate.Date != campaign.StartDate.Date || previousEndDate.Date != campaign.EndDate.Date)
+                {
+                    cam.Employees.Clear();
+                    cam.StartDate = campaign.StartDate;
+                    cam.EndDate = campaign.EndDate;
+                }
+                cam.CamName = campaign.CamName;
+                cam.Inventory = campaign.Inventory;
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             return View(campaign);
