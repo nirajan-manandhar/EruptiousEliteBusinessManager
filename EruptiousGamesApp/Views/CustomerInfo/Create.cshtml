@@ -7,32 +7,6 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 }
 
-<script>
-
-    var isValid = true;
-
-  
-        $('body').on('click', "#submit-form", function () {
-            if ($('#info-form').valid()) {
-                $('#otherCustomer').modal("show");
-            }
-        });
-
-        $('body').on('click', '#yes-btn', function () {
-            $('#morePeople').val(1);
-            $('#info-form').submit();
-            if (!isValid) {
-                $('#otherCustomer').modal("hide");
-            }
-        });
-
-        $('body').on('click', '#no-btn', function (e) {
-            $('#morePeople').val(0);
-            $('#info-form').submit();
-            $('#otherCustomer').modal("hide");
-        });
-
-</script>
 
 @section crumbContent{
     <span>
@@ -213,6 +187,7 @@
 
             //Hidden field that checks if more people want to input information
             @Html.Hidden("morePeople", 0)
+            @Html.Hidden("PTCheck", true)
 
             <div class="form-horizontal shadow" style="padding:10px; padding-top:25px;">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -272,22 +247,18 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.PTCheck, "", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <div class="checkbox">
-                            <label>
-                                @Html.EditorFor(model => model.PTCheck, new { @id = "ptcheck" })
-                                I agree to the <a href="privacypolicy" data-toggle="modal" data-target="#privacypolicy">Privacy Policy</a>
-                                and the <a href="tc" data-toggle="modal" data-target="#tc">Terms & Conditions</a>.
-                            </label>
-                            @Html.ValidationMessageFor(model => model.PTCheck, "", new { @class = "text-danger" })
-                        </div>
+                        <input type="checkbox" id="ptcheck" onclick="checkcheck(this)" />
+                        I agree to the <a href="privacypolicy" data-toggle="modal" data-target="#privacypolicy" style="color:blue">Privacy Policy</a>
+                        and the <a href="tc" data-toggle="modal" data-target="#tc" style="color:blue">Terms & Conditions</a>.
                     </div>
+
+                    <p id="pterror" class="col-md-10 text-danger">You must agree to Privacy Policy, Terms & Conditions</p>
+
                 </div>
 
 
                 <div class="form-group">
-
                     <div class="col-md-offset-2 col-md-10">
                         <button type="button" id="submit-form" class="btn btn-success">Submit</button>
                     </div>
@@ -302,8 +273,44 @@
 
     </div>
 </div>
+<script>
+    $('#pterror').hide();
 
+    var isValid = true;
+    $('body').on('click', "#submit-form", function () {
+        let it = document.getElementById("ptcheck");
+        if (!it.checked) {
+            $('#pterror').show();
+            $('#info-form').valid()
+            return false;
+        }
+        if ($('#info-form').valid()) {
+            $('#otherCustomer').modal("show");
+        }
+    });
 
+    $('body').on('click', '#yes-btn', function () {
+        $('#morePeople').val(1);
+        $('#info-form').submit();
+        if (!isValid) {
+            $('#otherCustomer').modal("hide");
+        }
+    });
+
+    $('body').on('click', '#no-btn', function (e) {
+        $('#morePeople').val(0);
+        $('#info-form').submit();
+        $('#otherCustomer').modal("hide");
+    });
+
+    function checkcheck(it) {
+        if (it.checked) {
+            $('#pterror').hide();
+        } else {
+            $('#pterror').show();
+        }
+    }
+</script>
 
 
 @section Scripts {
