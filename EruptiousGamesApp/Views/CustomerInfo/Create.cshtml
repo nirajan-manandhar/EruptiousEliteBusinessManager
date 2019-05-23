@@ -7,32 +7,6 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 }
 
-<script>
-
-    var isValid = true;
-
-  
-        $('body').on('click', "#submit-form", function () {
-            if ($('#info-form').valid()) {
-                $('#otherCustomer').modal("show");
-            }
-        });
-
-        $('body').on('click', '#yes-btn', function () {
-            $('#morePeople').val(1);
-            $('#info-form').submit();
-            if (!isValid) {
-                $('#otherCustomer').modal("hide");
-            }
-        });
-
-        $('body').on('click', '#no-btn', function (e) {
-            $('#morePeople').val(0);
-            $('#info-form').submit();
-            $('#otherCustomer').modal("hide");
-        });
-
-</script>
 
 @section crumbContent{
     <span>
@@ -210,6 +184,7 @@
 
             //Hidden field that checks if more people want to input information
             @Html.Hidden("morePeople", 0)
+            @Html.Hidden("PTCheck", true)
 
             <div class="card shadow arial" style="width:100%">
                 <div class="card-header">
@@ -299,17 +274,62 @@
                         </div>
                         </li>
                     </ul>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="checkbox" id="ptcheck" onclick="checkcheck(this)" />
+                        I agree to the <a href="privacypolicy" data-toggle="modal" data-target="#privacypolicy" style="color:blue">Privacy Policy</a>
+                        and the <a href="tc" data-toggle="modal" data-target="#tc" style="color:blue">Terms & Conditions</a>.
+                    </div>
 
-                        </div>
+                    <p id="pterror" class="col-md-10 text-danger">You must agree to Privacy Policy, Terms & Conditions</p>
+
+                </div>
 
 
-                        }
-
-
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="button" id="submit-form" class="btn btn-success">Submit</button>
+                    </div>
 </div>
 </div>
+<script>
+    $('#pterror').hide();
 
+    var isValid = true;
+    $('body').on('click', "#submit-form", function () {
+        let it = document.getElementById("ptcheck");
+        if (!it.checked) {
+            $('#pterror').show();
+            $('#info-form').valid()
+            return false;
+        }
+        if ($('#info-form').valid()) {
+            $('#otherCustomer').modal("show");
+        }
+    });
 
+    $('body').on('click', '#yes-btn', function () {
+        $('#morePeople').val(1);
+        $('#info-form').submit();
+        if (!isValid) {
+            $('#otherCustomer').modal("hide");
+        }
+    });
+
+    $('body').on('click', '#no-btn', function (e) {
+        $('#morePeople').val(0);
+        $('#info-form').submit();
+        $('#otherCustomer').modal("hide");
+    });
+
+    function checkcheck(it) {
+        if (it.checked) {
+            $('#pterror').hide();
+        } else {
+            $('#pterror').show();
+        }
+    }
+</script>
 
 
 @section Scripts {
