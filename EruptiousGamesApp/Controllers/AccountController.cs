@@ -78,11 +78,15 @@ namespace EruptiousGamesApp.Controllers
             }
 
             var currentUser = db.Users.Include(u => u.Employee).FirstOrDefault(x => x.UserName == model.UserName);
-            if (currentUser.Employee.EmpStatus == EmpStatus.INACTIVE)
+            if (currentUser != null)
             {
-                ModelState.AddModelError("", "Inactive Account.");
-                return View(model);
+                if (currentUser.Employee.EmpStatus == EmpStatus.INACTIVE)
+                {
+                    ModelState.AddModelError("", "Inactive Account.");
+                    return View(model);
+                }
             }
+
 
             SignInStatus result;
             result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);

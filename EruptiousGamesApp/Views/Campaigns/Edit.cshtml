@@ -1,7 +1,7 @@
 ﻿@model EruptiousGamesApp.Entities.Campaign
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Campaign";
     <link href="~/Content/adminForms.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 }
@@ -10,7 +10,7 @@
     <span>
         <img class="mb-4" src='@Url.Content("~/Content/Images/adminFunctions.png")' style="width:20%; max-width:60px; margin:5px;">
         @Html.ActionLink("Campaigns", "Index", "Campaigns", null, new { @class = "h5", @style = "display: inline-block" })
-        ⮞
+        >
         @Html.ActionLink("Edit", "Edit", "Campaigns", null, new { @class = "h5", @style = "display: inline-block" })
     </span>
 }

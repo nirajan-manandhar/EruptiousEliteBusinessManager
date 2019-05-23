@@ -2,8 +2,8 @@
 @model EruptiousGamesApp.Entities.Customer
 
 @{
-    ViewBag.Title = "Create";
-    <link href="~/Content/form.css" rel="stylesheet" type="text/css" />
+    ViewBag.Title = "Create Customer";
+    <link href="~/Content/adminForms.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 }
 
@@ -12,16 +12,13 @@
     <span>
         <img class="mb-4" src='@Url.Content("~/Content/Images/workspace.png")' style="width:20%; max-width:40px; margin:5px;">
         @Html.ActionLink("Workspace", "Index", "Home", null, new { @class = "h5", @style = "display: inline-block" })
-        ⮞
+        >
         @Html.ActionLink("Customer Info", "Create", "CustomerInfo", null, new { @class = "h5", @style = "display: inline-block" })
     </span>
 }
 
-<div class="mainContent">
+<div class="mainContent w3-animate-bottom">
     <div class="form-basic">
-
-        <img class="mb-4" src='@Url.Content("~/Content/Images/custInfoButton.png")' style="width:80%;display: block; margin-left: auto; margin-right: auto;">
-
         <!-- More User Modal -->
         <div class="modal fade" id="otherCustomer" tabindex="-1" role="dialog" aria-labelledby="otherCustomer" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -189,63 +186,94 @@
             @Html.Hidden("morePeople", 0)
             @Html.Hidden("PTCheck", true)
 
-            <div class="form-horizontal shadow" style="padding:10px; padding-top:25px;">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(model => model.CustName, "Full Name", htmlAttributes: new { @class = "control-label col-md-4 arial" })
-                    <div class="col-md-12">
-                        @Html.EditorFor(model => model.CustName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.CustName, "", new { @class = "text-danger" })
-                    </div>
+            <div class="card shadow arial" style="width:100%">
+                <div class="card-header">
+                    <img class="mb-4" src='@Url.Content("~/Content/Images/custInfoButton.png")' style="width:80%; max-width:200px; display: block; margin-left: auto; margin-right: auto;">
                 </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="alert alert-light" role="alert">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CustName, "Full Name", htmlAttributes: new { @class = "control-label col-md-12 arial" })
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.CustName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CustName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2 arial" })
-                    <div class="col-md-12">
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-12 arial" })
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2 arial" })
-                    <div class="col-md-12">
-                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-12 arial" })
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2 arial" })
-                    <div class="col-md-12">
-                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-12 arial" })
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2 arial" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-12 arial" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="radio">
-                            @Html.RadioButtonFor(model => model.Gender, "MALE", new { @id = "Male" })
-                            @Html.Label("Male", "Male")
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-12" })
+                                <div class="col-md-10">
+                                    <div class="radio">
+                                        @Html.RadioButtonFor(model => model.Gender, "MALE", new { @id = "Male" })
+                                        @Html.Label("Male", "Male")
+                                    </div>
+                                    <div class="radio">
+                                        @Html.RadioButtonFor(model => model.Gender, "FEMALE", new { @id = "Female" })
+                                        @Html.Label("Female", "Female")
+                                    </div>
+                                    <div class="radio">
+                                        @Html.RadioButtonFor(model => model.Gender, "OTHER", new { @id = "Other" })
+                                        @Html.Label("Other", "Other")
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PTCheck, "", htmlAttributes: new { @class = "control-label col-md-12" })
+                                <div class="col-md-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            @Html.EditorFor(model => model.PTCheck, new { @id = "ptcheck" })
+                                            I agree to the <a href="privacypolicy" data-toggle="modal" data-target="#privacypolicy">Privacy Policy</a>
+                                            and the <a href="tc" data-toggle="modal" data-target="#tc">Terms & Conditions</a>.
+                                        </label>
+                                        @Html.ValidationMessageFor(model => model.PTCheck, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                    <li class="list-group-item">
+                        <div class="form-group">
+
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="button" id="submit-form" class="btn btn-success">Submit</button>
+                            </div>
+
                         </div>
-                        <div class="radio">
-                            @Html.RadioButtonFor(model => model.Gender, "FEMALE", new { @id = "Female" })
-                            @Html.Label("Female", "Female")
-                        </div>
-                        <div class="radio">
-                            @Html.RadioButtonFor(model => model.Gender, "OTHER", new { @id = "Other" })
-                            @Html.Label("Other", "Other")
-                        </div>
-                    </div>
-                </div>
-
+                        </li>
+                    </ul>
                 <div class="form-group">
                     <div class="col-md-10">
                         <input type="checkbox" id="ptcheck" onclick="checkcheck(this)" />
@@ -262,16 +290,7 @@
                     <div class="col-md-offset-2 col-md-10">
                         <button type="button" id="submit-form" class="btn btn-success">Submit</button>
                     </div>
-
-                </div>
-
-            </div>
-
-
-        }
-
-
-    </div>
+</div>
 </div>
 <script>
     $('#pterror').hide();
